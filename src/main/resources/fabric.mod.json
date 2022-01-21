@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+
+  "id": "thematic",
+  "version": "${version}",
+
+  "name": "Thematic",
+  "icon": "assets/thematic/icon.png",
+  "description": "A fresh take on Minecraft-friendly furniture",
+
+  "license": [
+    "MIT (Code)",
+    "All Rights Reserved (Assets)"
+  ],
+  "authors": [
+    "Gaetano Russo (Ninni)",
+    "Daniel Orr (Andante)"
+  ],
+
+  "contact": {
+    "homepage": "https://moddingplayground.net/thematic",
+    "sources": "https://github.com/moddingplayground/thematic-fabric",
+    "issues": "https://github.com/moddingplayground/thematic-fabric/issues"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "mod.thematic.contact.discord": "https://discord.moddingplayground.net"
+      }
+    }
+  },
+
+  "environment": "*",
+  "entrypoints": {
+    "main":     [ "net.moddingplayground.thematic.Thematic" ],
+    "client":   [ "net.moddingplayground.thematic.client.ThematicClient" ],
+    "toymaker": [ "net.moddingplayground.thematic.datagen.ThematicToymaker" ]
+  },
+  "mixins": [ "thematic.mixins.json" ],
+
+  "depends": {
+    "java": ">=17",
+    "minecraft": ">=1.18",
+    "fabricloader": ">=0.12",
+    "fabric": ">=0.46"
+  }
+}
