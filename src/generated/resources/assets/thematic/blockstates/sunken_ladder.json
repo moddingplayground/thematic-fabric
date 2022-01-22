@@ -1,19 +1,74 @@
 {
   "variants": {
-    "facing=east": {
-      "model": "thematic:block/sunken_ladder",
-      "y": 90
-    },
-    "facing=south": {
-      "model": "thematic:block/sunken_ladder",
-      "y": 180
-    },
-    "facing=north": {
-      "model": "thematic:block/sunken_ladder"
-    },
-    "facing=west": {
-      "model": "thematic:block/sunken_ladder",
-      "y": 270
-    }
+    "facing=south": [
+      {
+        "model": "thematic:block/sunken_ladder",
+        "y": 180,
+        "uvlock": true,
+        "weight": 3
+      },
+      {
+        "model": "thematic:block/sunken_ladder1",
+        "y": 180,
+        "uvlock": true,
+        "weight": 2
+      },
+      {
+        "model": "thematic:block/sunken_ladder2",
+        "y": 180,
+        "uvlock": true
+      }
+    ],
+    "facing=east": [
+      {
+        "model": "thematic:block/sunken_ladder",
+        "y": 90,
+        "uvlock": true,
+        "weight": 3
+      },
+      {
+        "model": "thematic:block/sunken_ladder1",
+        "y": 90,
+        "uvlock": true,
+        "weight": 2
+      },
+      {
+        "model": "thematic:block/sunken_ladder2",
+        "y": 90,
+        "uvlock": true
+      }
+    ],
+    "facing=north": [
+      {
+        "model": "thematic:block/sunken_ladder",
+        "weight": 3
+      },
+      {
+        "model": "thematic:block/sunken_ladder1",
+        "weight": 2
+      },
+      {
+        "model": "thematic:block/sunken_ladder2"
+      }
+    ],
+    "facing=west": [
+      {
+        "model": "thematic:block/sunken_ladder",
+        "y": 270,
+        "uvlock": true,
+        "weight": 3
+      },
+      {
+        "model": "thematic:block/sunken_ladder1",
+        "y": 270,
+        "uvlock": true,
+        "weight": 2
+      },
+      {
+        "model": "thematic:block/sunken_ladder2",
+        "y": 270,
+        "uvlock": true
+      }
+    ]
   }
 }

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/ladder",
+  "textures": {
+    "texture": "thematic:block/sunken_ladder1",
+    "particle": "#texture"
+  }
+}
