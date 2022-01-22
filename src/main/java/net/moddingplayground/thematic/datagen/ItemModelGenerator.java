@@ -9,6 +9,7 @@ import net.moddingplayground.thematic.block.ThematicBlocks;
 import net.moddingplayground.toymaker.api.generator.model.item.AbstractItemModelGenerator;
 
 import static net.moddingplayground.thematic.api.theme.DefaultDecoratables.*;
+import static net.moddingplayground.thematic.item.ThematicItems.*;
 
 public class ItemModelGenerator extends AbstractItemModelGenerator {
     public ItemModelGenerator() {
@@ -24,6 +25,8 @@ public class ItemModelGenerator extends AbstractItemModelGenerator {
                 this.add(block, this::generatedItem);
             } else this.add(block, this::inherit);
         });
+
+        this.add(ANCIENT_ROPE, OVERGROWN_ANCHOR, OXIDIZED_COG);
 
         for (Block block : Registry.BLOCK) {
             if (block.asItem() == Items.AIR) continue;

@@ -1,7 +1,15 @@
 {
   "mod.thematic.name": "Thematic",
   "mod.thematic.contact.discord": "Discord",
+
   "itemGroup.thematic.item_group": "Thematic",
+  "itemGroup.thematic.theme_rustic": "Thematic (Rustic)",
+  "itemGroup.thematic.theme_sunken": "Thematic (Sunken)",
+  "itemGroup.thematic.theme_mechanical": "Thematic (Mechanical)",
+
+  "item.thematic.ancient_rope": "Ancient Rope",
+  "item.thematic.overgrown_anchor": "Overgrown Anchor",
+  "item.thematic.oxidized_cog": "Oxidized Cog",
 
   "block.thematic.rustic_lantern": "Rustic Lantern",
   "block.thematic.rustic_ladder": "Rustic Ladder",
