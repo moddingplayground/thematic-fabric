@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=true": {
+      "model": "thematic:block/sunken_lantern_hanging"
+    },
+    "hanging=false": {
+      "model": "thematic:block/sunken_lantern"
+    }
+  }
+}

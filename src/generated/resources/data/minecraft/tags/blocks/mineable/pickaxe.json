@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "thematic:rustic_lantern",
+    "thematic:sunken_lantern",
+    "thematic:sunken_ladder",
+    "thematic:mechanical_lantern",
+    "thematic:mechanical_ladder"
+  ]
+}

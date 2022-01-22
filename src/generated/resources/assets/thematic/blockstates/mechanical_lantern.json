@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=true": {
+      "model": "thematic:block/mechanical_lantern_hanging"
+    },
+    "hanging=false": {
+      "model": "thematic:block/mechanical_lantern"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "thematic:block/sunken_ladder",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "thematic:block/sunken_ladder",
+      "y": 180
+    },
+    "facing=north": {
+      "model": "thematic:block/sunken_ladder"
+    },
+    "facing=west": {
+      "model": "thematic:block/sunken_ladder",
+      "y": 270
+    }
+  }
+}
