@@ -1,62 +1,62 @@
 package net.moddingplayground.thematic.api.theme;
 
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
 import net.moddingplayground.thematic.Thematic;
+import net.moddingplayground.thematic.block.themed.MechanicalLanternBlock;
+import net.moddingplayground.thematic.block.themed.RusticLanternBlock;
+import net.moddingplayground.thematic.block.themed.SunkenLanternBlock;
+import net.moddingplayground.thematic.block.ThematicLadderBlock;
 
+import java.util.Map;
+import java.util.Optional;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
-import static net.minecraft.block.Block.*;
+import static net.moddingplayground.thematic.api.theme.DefaultDecoratables.*;
 
 public enum Theme {
-    RUSTIC(new Data(
-        false,
-        VoxelShapes.union(
-            createCuboidShape(5, 0, 5, 11, 6, 11),
-            createCuboidShape(4, 6, 4, 12, 8, 12),
-            createCuboidShape(6, 8, 6, 10, 10, 10)
-        ),
-        VoxelShapes.union(
-            createCuboidShape(5, 1, 5, 11, 7, 11),
-            createCuboidShape(4, 7, 4, 12, 9, 12),
-            createCuboidShape(6, 9, 6, 10, 11, 10)
-        )
-    )),
-    SUNKEN(new Data(
-        true,
-        VoxelShapes.union(
-            createCuboidShape(6, 9, 6, 10, 11, 10),
-            createCuboidShape(5, 0, 5, 11, 9, 11)
-        ),
-        VoxelShapes.union(
-            createCuboidShape(6, 9, 6, 10, 11, 10),
-            createCuboidShape(5, 0, 5, 11, 9, 11)
-        )
-    )),
-    MECHANICAL(new Data(
-        true,
-        createCuboidShape(4.5, 0, 4.5, 11.5, 7, 11.5),
-        createCuboidShape(4.5, 3, 4.5, 11.5, 10, 11.5)
-    ));
+    RUSTIC(Map.of(
+        LANTERN, d -> new Decoratable(d, t -> new RusticLanternBlock(FabricBlockSettings.copyOf(Blocks.LANTERN))),
+        LADDER, d -> new Decoratable(d, (theme, decoratable, block) -> {
+            FuelRegistry fuel = FuelRegistry.INSTANCE;
+            fuel.add(block, 300);
+        })
+    ), false),
+    SUNKEN(Map.of(
+        LANTERN, d -> new Decoratable(d, t -> new SunkenLanternBlock(FabricBlockSettings.copyOf(Blocks.LANTERN))),
+        LADDER, d -> new Decoratable(d, t -> new ThematicLadderBlock(FabricBlockSettings.copyOf(Blocks.LADDER).strength(3.5f).requiresTool()))
+    ), true),
+    MECHANICAL(Map.of(
+        LANTERN, d -> new Decoratable(d, t -> new MechanicalLanternBlock(FabricBlockSettings.copyOf(Blocks.LANTERN))),
+        LADDER, d -> new Decoratable(d, t -> new ThematicLadderBlock(FabricBlockSettings.copyOf(Blocks.LADDER).strength(3.5f).requiresTool()))
+    ), true);
 
     private static final Theme[] THEMES = Theme.values();
 
     private final String id;
-    private final Data data;
+    private final Map<Decoratable, Function<Decoratable, Decoratable>> overrides;
+    private final boolean metallic;
 
-    Theme(Data data) {
+    Theme(Map<Decoratable, Function<Decoratable, Decoratable>> overrides, boolean metallic) {
         this.id = this.name().toLowerCase();
-        this.data = data;
+        this.overrides = overrides;
+        this.metallic = metallic;
     }
 
     public String getId() {
         return this.id;
     }
 
-    public Data getData() {
-        return this.data;
+    public Decoratable override(Decoratable decoratable) {
+        return Optional.ofNullable(this.overrides.get(decoratable)).orElse(d -> decoratable).apply(decoratable);
+    }
+
+    public boolean isMetallic() {
+        return this.metallic;
     }
 
     public Block get(Decoratable decoratable) {
@@ -65,9 +65,5 @@ public enum Theme {
 
     public static void forEach(Consumer<Theme> action) {
         for (Theme theme : THEMES) action.accept(theme);
-    }
-
-    public record Data(boolean metallic, VoxelShape lanternShape, VoxelShape lanternShapeHanging) {
-        public static final Data DEFAULT = new Data(false, null, null);
     }
 }

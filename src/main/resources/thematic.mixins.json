@@ -3,8 +3,11 @@
   "minVersion": "0.8",
   "compatibilityLevel": "JAVA_17",
   "package": "net.moddingplayground.thematic.mixin",
-  "mixins": [],
-  "client": [],
+  "mixins": [
+    "DamageTrackerMixin",
+    "FlowableFluidMixin",
+    "LivingEntityMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }

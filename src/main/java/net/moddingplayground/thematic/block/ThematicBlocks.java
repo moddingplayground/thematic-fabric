@@ -28,9 +28,11 @@ public class ThematicBlocks {
             entrypoint.onInitializeThematic();
         }
 
-        Theme.forEach(theme -> DecoratablesRegistry.INSTANCE.forEach(decoratable -> {
-            register(decoratable.format(theme), decoratable.block(theme), block -> decoratable.item(block, theme));
-        }));
+        ThematicBlocks.forEach((theme, decoratable, air) -> {
+            Decoratable dec = theme.override(decoratable);
+            Block block = register(dec.format(theme), dec.block(theme), b -> dec.item(b, theme));
+            dec.getPostRegister().apply(theme, decoratable, block);
+        });
     }
 
     public static final Block FIRST = Registry.BLOCK.stream().filter(block -> Registry.BLOCK.getId(block).getNamespace().equals(Thematic.MOD_ID))

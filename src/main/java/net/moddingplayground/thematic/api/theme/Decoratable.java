@@ -11,19 +11,37 @@ public class Decoratable {
     private final String format;
     private final BlockFactory block;
     private final ItemFactory item;
+    private final PostRegister postRegister;
 
-    public Decoratable(String format, BlockFactory block, ItemFactory item) {
+    public Decoratable(String format, BlockFactory block, ItemFactory item, PostRegister postRegister) {
         this.format = format;
         this.block = block;
         this.item = item;
+        this.postRegister = postRegister;
     }
 
-    public Decoratable(String format, BlockFactory factory) {
-        this(format, factory, (b, t) -> new BlockItem(b, new FabricItemSettings().group(Thematic.ITEM_GROUP)));
+    public Decoratable(String format, BlockFactory factory, PostRegister postRegister) {
+        this(format, factory, (b, t) -> new BlockItem(b, new FabricItemSettings().group(Thematic.ITEM_GROUP)), postRegister);
+    }
+
+    public Decoratable(Decoratable other, BlockFactory factory, PostRegister postRegister) {
+        this(other.getFormat(), factory, postRegister);
+    }
+
+    public Decoratable(Decoratable other, BlockFactory factory) {
+        this(other, factory, PostRegister.NONE);
+    }
+
+    public Decoratable(Decoratable other, PostRegister postRegister) {
+        this(other, other.block, postRegister);
     }
 
     public Decoratable(String format, AbstractBlock.Settings settings) {
-        this(format, t -> new Block(settings));
+        this(format, t -> new Block(settings), PostRegister.NONE);
+    }
+
+    public String getFormat() {
+        return this.format;
     }
 
     public String format(Theme theme) {
@@ -38,6 +56,10 @@ public class Decoratable {
         return this.item.create(block, theme);
     }
 
+    public PostRegister getPostRegister() {
+        return this.postRegister;
+    }
+
     @Override
     public String toString() {
         return "Decoratable{" + this.format.formatted("decoratable") + '}';
@@ -45,4 +67,10 @@ public class Decoratable {
 
     @FunctionalInterface public interface BlockFactory { Block create(Theme theme); }
     @FunctionalInterface public interface ItemFactory { Item create(Block block, Theme theme); }
+
+    @FunctionalInterface
+    public interface PostRegister {
+        PostRegister NONE = (t, d, b) -> {};
+        void apply(Theme theme, Decoratable decoratable, Block block);
+    }
 }
