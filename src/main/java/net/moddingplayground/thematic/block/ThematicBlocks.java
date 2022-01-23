@@ -29,9 +29,8 @@ public class ThematicBlocks {
         }
 
         ThematicBlocks.forEach((theme, decoratable, air) -> {
-            Decoratable dec = theme.override(decoratable);
-            Block block = register(dec.format(theme), dec.block(theme), b -> dec.item(b, theme));
-            dec.getPostRegister().apply(theme, decoratable, block);
+            Block block = register(decoratable.format(theme), decoratable.block(theme), b -> decoratable.item(b, theme));
+            decoratable.getPostRegister().apply(theme, decoratable, block);
         });
     }
 
