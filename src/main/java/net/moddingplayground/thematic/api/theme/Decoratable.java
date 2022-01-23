@@ -3,8 +3,8 @@ package net.moddingplayground.thematic.api.theme;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.moddingplayground.thematic.item.ThemedBlockItem;
 
 public class Decoratable {
     private final String format;
@@ -20,7 +20,7 @@ public class Decoratable {
     }
 
     public Decoratable(String format, BlockFactory factory, PostRegister postRegister) {
-        this(format, factory, (b, t) -> new BlockItem(b, new FabricItemSettings().group(t.getItemGroup())), postRegister);
+        this(format, factory, (b, t) -> new ThemedBlockItem(t, b, new FabricItemSettings().group(t.getItemGroup())), postRegister);
     }
 
     public Decoratable(Decoratable other, BlockFactory factory, PostRegister postRegister) {

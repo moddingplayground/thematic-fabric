@@ -7,7 +7,6 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.moddingplayground.thematic.block.ThematicBlocks;
-import net.moddingplayground.thematic.item.ThematicItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,7 +20,7 @@ public class Thematic implements ModInitializer {
     @Override
     public void onInitialize() {
         LOGGER.info("Initializing {}", MOD_NAME);
-        Reflection.initialize(ThematicItems.class, ThematicBlocks.class);
+        Reflection.initialize(ThematicBlocks.class);
         LOGGER.info("Initialized {}", MOD_NAME);
     }
 

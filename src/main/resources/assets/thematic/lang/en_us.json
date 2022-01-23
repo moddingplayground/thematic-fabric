@@ -7,16 +7,21 @@
   "itemGroup.thematic.theme_sunken": "Thematic (Sunken)",
   "itemGroup.thematic.theme_mechanical": "Thematic (Mechanical)",
 
+  "text.thematic.theme": "Theme: %s",
+  "thematic.theme.rustic": "Rustic",
+  "thematic.theme.sunken": "Sunken",
+  "thematic.theme.mechanical": "Mechanical",
+
   "item.thematic.ancient_rope": "Ancient Rope",
   "item.thematic.overgrown_anchor": "Overgrown Anchor",
   "item.thematic.oxidized_cog": "Oxidized Cog",
 
-  "block.thematic.rustic_lantern": "Rustic Lantern",
-  "block.thematic.rustic_ladder": "Rustic Ladder",
+  "block.thematic.rustic_lantern": "Gas Lamp",
+  "block.thematic.rustic_ladder": "Rope Ladder",
 
-  "block.thematic.sunken_lantern": "Sunken Lantern",
-  "block.thematic.sunken_ladder": "Sunken Ladder",
+  "block.thematic.sunken_lantern": "Marooned Lantern",
+  "block.thematic.sunken_ladder": "Chain Ladder",
 
-  "block.thematic.mechanical_lantern": "Mechanical Lantern",
-  "block.thematic.mechanical_ladder": "Mechanical Ladder"
+  "block.thematic.mechanical_lantern": "Copper Lantern",
+  "block.thematic.mechanical_ladder": "Copper Ladder"
 }
