@@ -4,6 +4,7 @@ import com.google.common.reflect.Reflection;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.text.Style;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 import net.moddingplayground.frame.api.gui.itemgroup.Tab;
@@ -14,6 +15,8 @@ import net.moddingplayground.thematic.block.ThematicBlocks;
 import net.moddingplayground.thematic.item.Themed;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static net.moddingplayground.frame.api.gui.itemgroup.Tab.*;
 
 @SuppressWarnings("UnstableApiUsage")
 public class Thematic implements ModInitializer {
@@ -26,6 +29,7 @@ public class Thematic implements ModInitializer {
                 for (Theme theme : Theme.values()) {
                     builder.tab(
                         Tab.builder()
+                           .displayText(tab -> createDisplayText(tab.getGroup(), tab).shallowCopy().fillStyle(Style.EMPTY.withColor(theme.getTooltipColor())))
                            .predicate((g, item) -> item instanceof Themed themed && themed.getTheme() == theme && item != theme.getItem())
                            .build(theme.getId(), GUIIcon.of(() -> new ItemStack(theme.getItem())))
                     );
