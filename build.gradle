@@ -6,7 +6,6 @@ plugins {
 }
 
 sourceCompatibility = targetCompatibility = JavaVersion.VERSION_17
-
 archivesBaseName = "${project.archives_base_name}-${project.minecraft_version}"
 group = project.maven_group
 
@@ -33,6 +32,9 @@ dependencies {
 
   modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
   modImplementation "com.terraformersmc:modmenu:${project.mod_menu_version}"
+
+  modImplementation "net.moddingplayground.frame:frame-fabric:${project.frame_version}"
+  include "net.moddingplayground.frame:frame-fabric:${project.frame_version}"
 
   modImplementation "net.moddingplayground.toymaker:toymaker-fabric:${project.toymaker_version}"
   include "net.moddingplayground.toymaker:toymaker-fabric:${project.toymaker_version}"

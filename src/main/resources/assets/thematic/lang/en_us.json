@@ -3,9 +3,10 @@
   "mod.thematic.contact.discord": "Discord",
 
   "itemGroup.thematic.item_group": "Thematic",
-  "itemGroup.thematic.theme_rustic": "Thematic (Rustic)",
-  "itemGroup.thematic.theme_sunken": "Thematic (Sunken)",
-  "itemGroup.thematic.theme_mechanical": "Thematic (Mechanical)",
+  "itemGroup.thematic.item_group.tab": "Thematic (%s)",
+  "itemGroup.thematic.item_group.tab.rustic": "Rustic",
+  "itemGroup.thematic.item_group.tab.sunken": "Sunken",
+  "itemGroup.thematic.item_group.tab.mechanical": "Mechanical",
 
   "text.thematic.theme": "Theme: %s",
   "thematic.theme.rustic": "Rustic",

@@ -1,11 +1,8 @@
 package net.moddingplayground.thematic.api.theme;
 
-import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.moddingplayground.thematic.Thematic;
@@ -21,27 +18,19 @@ public enum Theme {
 
     private static final Theme[] THEMES = Theme.values();
 
+    private final String id, translationKey;
     private final Supplier<Integer> tooltipColor;
     private final boolean metallic;
-
-    private final String id, translationKey;
     private final Item item;
-    private final ItemGroup itemGroup;
 
-    Theme(String item, Supplier<Integer> tooltipColor, boolean metallic) {
-        this.tooltipColor = tooltipColor;
-        this.metallic = metallic;
-
+    Theme(String itemId, Supplier<Integer> tooltipColor, boolean metallic) {
         this.id = this.name().toLowerCase();
         this.translationKey = "%s.theme.%s".formatted(Thematic.MOD_ID, this.id);
-
+        this.tooltipColor = tooltipColor;
+        this.metallic = metallic;
         this.item = Registry.register(
-            Registry.ITEM, new Identifier(Thematic.MOD_ID, item),
-            new ThemeItem(this, new FabricItemSettings().maxCount(1).group(Thematic.ITEM_GROUP))
-        );
-        this.itemGroup = FabricItemGroupBuilder.build(
-            new Identifier(Thematic.MOD_ID, "theme_%s".formatted(this.getId())),
-            () -> new ItemStack(this.getItem())
+            Registry.ITEM, new Identifier(Thematic.MOD_ID, itemId),
+            new ThemeItem(this, new FabricItemSettings().maxCount(1))
         );
     }
 
@@ -53,10 +42,6 @@ public enum Theme {
         return this.translationKey;
     }
 
-    public Item getItem() {
-        return this.item;
-    }
-
     public int getTooltipColor() {
         return this.tooltipColor.get();
     }
@@ -65,8 +50,8 @@ public enum Theme {
         return this.metallic;
     }
 
-    public ItemGroup getItemGroup() {
-        return this.itemGroup;
+    public Item getItem() {
+        return this.item;
     }
 
     public Block get(Decoratable decoratable) {
