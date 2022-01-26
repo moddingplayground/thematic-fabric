@@ -4,9 +4,11 @@
   "compatibilityLevel": "JAVA_17",
   "package": "net.moddingplayground.thematic.mixin",
   "mixins": [
-    "DamageTrackerMixin",
-    "FlowableFluidMixin",
-    "LivingEntityMixin"
+    "bookshelf.EnchantingTableBlockMixin",
+    "bookshelf.EnchantmentScreenHandlerMixin",
+    "ladder.DamageTrackerMixin",
+    "ladder.FlowableFluidMixin",
+    "ladder.LivingEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

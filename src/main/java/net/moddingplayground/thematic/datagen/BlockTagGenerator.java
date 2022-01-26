@@ -7,6 +7,8 @@ import net.moddingplayground.thematic.Thematic;
 import net.moddingplayground.thematic.block.ThematicBlocks;
 import net.moddingplayground.toymaker.api.generator.tag.AbstractTagGenerator;
 
+import java.util.List;
+
 import static net.moddingplayground.thematic.api.theme.DefaultDecoratables.*;
 
 public class BlockTagGenerator extends AbstractTagGenerator<Block> {
@@ -19,9 +21,12 @@ public class BlockTagGenerator extends AbstractTagGenerator<Block> {
         ThematicBlocks.forEach((theme, decoratable, block) -> {
             if (decoratable == LADDER) {
                 this.add(BlockTags.CLIMBABLE, block);
-                this.add(theme.isMetallic() ? BlockTags.PICKAXE_MINEABLE : BlockTags.AXE_MINEABLE, block);
             } else if (decoratable == LANTERN) {
                 this.add(BlockTags.PICKAXE_MINEABLE, block);
+            }
+
+            if (List.of(LADDER, BOOKSHELF).contains(decoratable)) {
+                this.add(theme.isMetallic() ? BlockTags.PICKAXE_MINEABLE : BlockTags.AXE_MINEABLE, block);
             }
         });
     }

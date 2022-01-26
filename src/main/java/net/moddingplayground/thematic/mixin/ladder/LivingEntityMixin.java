@@ -1,4 +1,4 @@
-package net.moddingplayground.thematic.mixin;
+package net.moddingplayground.thematic.mixin.ladder;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

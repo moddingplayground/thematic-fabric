@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "thematic:block/sunken_bookshelf_top",
+    "side": "thematic:block/sunken_bookshelf"
+  }
+}

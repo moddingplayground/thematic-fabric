@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "thematic:block/mechanical_bookshelf_top",
+    "side": "thematic:block/mechanical_bookshelf"
+  }
+}

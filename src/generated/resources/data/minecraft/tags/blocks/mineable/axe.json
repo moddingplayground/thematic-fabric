@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "thematic:rustic_ladder"
+    "thematic:rustic_ladder",
+    "thematic:rustic_bookshelf"
   ]
 }

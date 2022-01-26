@@ -1,5 +1,6 @@
 package net.moddingplayground.thematic.datagen;
 
+import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.Direction;
@@ -18,6 +19,7 @@ import java.util.function.IntFunction;
 
 import static net.moddingplayground.thematic.api.theme.DefaultDecoratables.*;
 import static net.moddingplayground.thematic.api.theme.Theme.*;
+import static net.moddingplayground.toymaker.api.generator.model.InheritingModelGen.*;
 import static net.moddingplayground.toymaker.api.generator.model.StateModelInfo.*;
 import static net.moddingplayground.toymaker.api.generator.model.block.BuildingBlocks.*;
 
@@ -35,6 +37,18 @@ public class StateModelGenerator extends AbstractStateModelGenerator {
                 } else this.add(block, b -> facingHorizontalRotated(name(b), ladder(name(b))));
             } else if (decoratable == LANTERN) {
                 this.add(block, b -> lantern(name(b)));
+            } else if (decoratable == BOOKSHELF) {
+                if (theme == RUSTIC) {
+                    this.add(block, b -> {
+                        Identifier n = name(b);
+                        return simple(n, cubeColumn(name(Blocks.SPRUCE_PLANKS), n));
+                    });
+                } else {
+                    this.add(block, b -> {
+                        Identifier n = name(b);
+                        return simple(n, cubeColumn(Identifier.tryParse(n + "_top"), n));
+                    });
+                }
             } else this.add(block);
         });
     }

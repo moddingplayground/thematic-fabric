@@ -38,7 +38,7 @@ public class ThematicBlocks {
                                                     .toList().get(0);
 
     public static void forEach(TriConsumer<Theme, Decoratable, Block> action) {
-        Theme.forEach(theme -> DecoratablesRegistry.INSTANCE.forEach(decoratable -> {
+        DecoratablesRegistry.INSTANCE.forEach(decoratable -> Theme.forEach(theme -> {
             Block block = theme.get(decoratable);
             action.accept(theme, decoratable, block);
         }));
