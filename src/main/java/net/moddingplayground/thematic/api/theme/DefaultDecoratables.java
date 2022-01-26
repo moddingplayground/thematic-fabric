@@ -8,6 +8,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.LanternBlock;
 import net.minecraft.block.MapColor;
 import net.minecraft.sound.BlockSoundGroup;
+import net.moddingplayground.frame.api.registry.StateRegistry;
 import net.moddingplayground.thematic.api.registry.DecoratablesRegistry;
 import net.moddingplayground.thematic.block.ThematicBlock;
 import net.moddingplayground.thematic.block.ThematicLadderBlock;
@@ -38,11 +39,14 @@ public class DefaultDecoratables {
                                .strength(3.5f).requiresTool()
         );
         return new ThematicLadderBlock(FabricBlockSettings.copyOf(Blocks.LADDER));
-    }, (t, d, b) -> {
-        if (t == RUSTIC) {
+    }, (theme, decoratable, block) -> {
+        if (theme == RUSTIC) {
             FuelRegistry fuel = FuelRegistry.INSTANCE;
-            fuel.add(b, 300);
+            fuel.add(block, 300);
         }
+
+        StateRegistry.LADDERS.add(block);
+        StateRegistry.LADDERS_DEATH_MESSAGES.add(block);
     });
 
     public static final Decoratable BOOKSHELF = register("%s_bookshelf", t -> {
@@ -61,13 +65,15 @@ public class DefaultDecoratables {
                                .strength(3.5f).requiresTool()
         );
         return new ThematicBlock(FabricBlockSettings.copyOf(Blocks.BOOKSHELF));
-    }, (t, d, b) -> {
-        if (t == RUSTIC) {
+    }, (theme, decoratable, block) -> {
+        if (theme == RUSTIC) {
             FuelRegistry fuel = FuelRegistry.INSTANCE;
-            fuel.add(b, 300);
+            fuel.add(block, 300);
             FlammableBlockRegistry flammable = FlammableBlockRegistry.getDefaultInstance();
-            flammable.add(b, 30, 20);
+            flammable.add(block, 30, 20);
         }
+
+        StateRegistry.BOOKSHELVES.add(block);
     });
 
     private static Decoratable register(String format, Decoratable.BlockFactory blockFactory, Decoratable.ItemFactory itemFactory, Decoratable.PostRegister postRegister) {
