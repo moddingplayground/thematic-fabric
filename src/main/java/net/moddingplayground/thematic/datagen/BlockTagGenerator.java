@@ -3,9 +3,9 @@ package net.moddingplayground.thematic.datagen;
 import net.minecraft.block.Block;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.registry.Registry;
+import net.moddingplayground.frame.api.toymaker.v0.generator.tag.AbstractTagGenerator;
 import net.moddingplayground.thematic.Thematic;
 import net.moddingplayground.thematic.block.ThematicBlocks;
-import net.moddingplayground.toymaker.api.generator.tag.AbstractTagGenerator;
 
 import java.util.List;
 

@@ -3,9 +3,9 @@ package net.moddingplayground.thematic.datagen;
 import net.minecraft.item.BlockItem;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import net.moddingplayground.frame.api.toymaker.v0.generator.model.item.AbstractItemModelGenerator;
 import net.moddingplayground.thematic.Thematic;
 import net.moddingplayground.thematic.block.ThematicBlocks;
-import net.moddingplayground.toymaker.api.generator.model.item.AbstractItemModelGenerator;
 
 import static net.moddingplayground.thematic.api.theme.DefaultDecoratables.*;
 

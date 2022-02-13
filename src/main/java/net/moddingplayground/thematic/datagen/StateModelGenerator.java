@@ -4,14 +4,14 @@ import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.Direction;
+import net.moddingplayground.frame.api.toymaker.v0.generator.model.InheritingModelGen;
+import net.moddingplayground.frame.api.toymaker.v0.generator.model.ModelGen;
+import net.moddingplayground.frame.api.toymaker.v0.generator.model.StateGen;
+import net.moddingplayground.frame.api.toymaker.v0.generator.model.StateModelInfo;
+import net.moddingplayground.frame.api.toymaker.v0.generator.model.block.AbstractStateModelGenerator;
+import net.moddingplayground.frame.api.toymaker.v0.generator.model.block.VariantsStateGen;
 import net.moddingplayground.thematic.Thematic;
 import net.moddingplayground.thematic.block.ThematicBlocks;
-import net.moddingplayground.toymaker.api.generator.model.InheritingModelGen;
-import net.moddingplayground.toymaker.api.generator.model.ModelGen;
-import net.moddingplayground.toymaker.api.generator.model.StateGen;
-import net.moddingplayground.toymaker.api.generator.model.StateModelInfo;
-import net.moddingplayground.toymaker.api.generator.model.block.AbstractStateModelGenerator;
-import net.moddingplayground.toymaker.api.generator.model.block.VariantsStateGen;
 
 import java.util.ArrayList;
 import java.util.function.Function;
@@ -19,9 +19,9 @@ import java.util.function.IntFunction;
 
 import static net.moddingplayground.thematic.api.theme.DefaultDecoratables.*;
 import static net.moddingplayground.thematic.api.theme.Theme.*;
-import static net.moddingplayground.toymaker.api.generator.model.InheritingModelGen.*;
-import static net.moddingplayground.toymaker.api.generator.model.StateModelInfo.*;
-import static net.moddingplayground.toymaker.api.generator.model.block.BuildingBlocks.*;
+import static net.moddingplayground.frame.api.toymaker.v0.generator.model.InheritingModelGen.*;
+import static net.moddingplayground.frame.api.toymaker.v0.generator.model.StateModelInfo.*;
+import static net.moddingplayground.frame.api.toymaker.v0.generator.model.block.BuildingBlocks.*;
 
 public class StateModelGenerator extends AbstractStateModelGenerator {
     public StateModelGenerator() {

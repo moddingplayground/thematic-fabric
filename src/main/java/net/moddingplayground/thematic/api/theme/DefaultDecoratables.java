@@ -8,7 +8,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.LanternBlock;
 import net.minecraft.block.MapColor;
 import net.minecraft.sound.BlockSoundGroup;
-import net.moddingplayground.frame.api.registry.StateRegistry;
+import net.moddingplayground.frame.api.contentregistries.v0.StateRegistry;
 import net.moddingplayground.thematic.api.registry.DecoratablesRegistry;
 import net.moddingplayground.thematic.block.ThematicBlock;
 import net.moddingplayground.thematic.block.ThematicLadderBlock;

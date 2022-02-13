@@ -7,8 +7,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.text.Style;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
-import net.moddingplayground.frame.api.gui.itemgroup.Tab;
-import net.moddingplayground.frame.api.gui.itemgroup.TabbedItemGroup;
+import net.moddingplayground.frame.api.tabbeditemgroups.v0.Tab;
+import net.moddingplayground.frame.api.tabbeditemgroups.v0.TabbedItemGroup;
 import net.moddingplayground.frame.api.util.GUIIcon;
 import net.moddingplayground.thematic.api.theme.Theme;
 import net.moddingplayground.thematic.block.ThematicBlocks;
@@ -16,13 +16,13 @@ import net.moddingplayground.thematic.item.Themed;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static net.moddingplayground.frame.api.gui.itemgroup.Tab.*;
+import static net.moddingplayground.frame.api.tabbeditemgroups.v0.Tab.*;
 
 @SuppressWarnings("UnstableApiUsage")
 public class Thematic implements ModInitializer {
-    public static final String    MOD_ID     = "thematic";
-    public static final String    MOD_NAME   = "Thematic";
-    public static final Logger    LOGGER     = LoggerFactory.getLogger(MOD_ID);
+    public static final String MOD_ID   = "thematic";
+    public static final String MOD_NAME = "Thematic";
+    public static final Logger LOGGER   = LoggerFactory.getLogger(MOD_ID);
 
     public static final ItemGroup ITEM_GROUP =
         Util.make(TabbedItemGroup.builder(), builder -> {
