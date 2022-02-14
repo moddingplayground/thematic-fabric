@@ -2,8 +2,6 @@
   "replace": false,
   "values": [
     "thematic:rustic_ladder",
-    "thematic:rustic_bookshelf",
-    "thematic:sunken_bookshelf",
-    "thematic:mechanical_bookshelf"
+    "thematic:rustic_bookshelf"
   ]
 }

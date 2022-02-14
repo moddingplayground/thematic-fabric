@@ -28,9 +28,9 @@ public final class BuiltinDecoratablesImpl {
         .add(MECHANICAL, t -> LadderThemeData.of(t, s -> s.sounds(BlockSoundGroup.COPPER).strength(3.5f).requiresTool(), false));
 
     public static final Decoratable BOOKSHELF = register("bookshelf", "%s_bookshelf")
-        .add(RUSTIC, t -> BookshelfThemeData.of(t, s -> s.mapColor(MapColor.SPRUCE_BROWN), true))
-        .add(SUNKEN, t -> BookshelfThemeData.of(t, s -> s.sounds(BlockSoundGroup.NETHERITE).strength(3.5f).requiresTool()))
-        .add(MECHANICAL, t -> BookshelfThemeData.of(t, s -> s.sounds(BlockSoundGroup.COPPER).strength(3.5f).requiresTool()));
+        .add(RUSTIC, t -> BookshelfThemeData.of(t, s -> s.mapColor(MapColor.SPRUCE_BROWN)))
+        .add(SUNKEN, t -> BookshelfThemeData.of(t, s -> s.sounds(BlockSoundGroup.NETHERITE).strength(3.5f).requiresTool(), false))
+        .add(MECHANICAL, t -> BookshelfThemeData.of(t, s -> s.sounds(BlockSoundGroup.COPPER).strength(3.5f).requiresTool(), false));
 
     private BuiltinDecoratablesImpl() {}
 
