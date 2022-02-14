@@ -1,17 +1,17 @@
-package net.moddingplayground.thematic.datagen;
+package net.moddingplayground.thematic.impl.datagen;
 
 import net.minecraft.item.BlockItem;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.item.AbstractItemModelGenerator;
-import net.moddingplayground.thematic.Thematic;
-import net.moddingplayground.thematic.block.ThematicBlocks;
+import net.moddingplayground.thematic.api.Thematic;
+import net.moddingplayground.thematic.impl.block.ThematicBlocks;
 
 import static net.moddingplayground.thematic.api.theme.DefaultDecoratables.*;
 
 public class ItemModelGenerator extends AbstractItemModelGenerator {
-    public ItemModelGenerator() {
-        super(Thematic.MOD_ID);
+    public ItemModelGenerator(String modId) {
+        super(modId);
     }
 
     @Override

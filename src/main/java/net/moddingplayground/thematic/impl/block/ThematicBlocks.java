@@ -1,4 +1,4 @@
-package net.moddingplayground.thematic.block;
+package net.moddingplayground.thematic.impl.block;
 
 import com.google.common.reflect.Reflection;
 import net.fabricmc.loader.api.FabricLoader;
@@ -7,9 +7,9 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import net.moddingplayground.thematic.Thematic;
+import net.moddingplayground.thematic.api.Thematic;
 import net.moddingplayground.thematic.api.ThematicEntrypoint;
-import net.moddingplayground.thematic.api.registry.DecoratablesRegistry;
+import net.moddingplayground.thematic.api.registry.DecoratableRegistry;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.DefaultDecoratables;
 import net.moddingplayground.thematic.api.theme.Theme;
@@ -38,7 +38,7 @@ public class ThematicBlocks {
                                                     .toList().get(0);
 
     public static void forEach(TriConsumer<Theme, Decoratable, Block> action) {
-        DecoratablesRegistry.INSTANCE.forEach(decoratable -> Theme.forEach(theme -> {
+        DecoratableRegistry.INSTANCE.forEach(decoratable -> Theme.forEach(theme -> {
             Block block = theme.get(decoratable);
             action.accept(theme, decoratable, block);
         }));

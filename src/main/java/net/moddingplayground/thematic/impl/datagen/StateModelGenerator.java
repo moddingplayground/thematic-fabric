@@ -1,4 +1,4 @@
-package net.moddingplayground.thematic.datagen;
+package net.moddingplayground.thematic.impl.datagen;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
@@ -10,8 +10,7 @@ import net.moddingplayground.frame.api.toymaker.v0.generator.model.StateGen;
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.StateModelInfo;
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.block.AbstractStateModelGenerator;
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.block.VariantsStateGen;
-import net.moddingplayground.thematic.Thematic;
-import net.moddingplayground.thematic.block.ThematicBlocks;
+import net.moddingplayground.thematic.impl.block.ThematicBlocks;
 
 import java.util.ArrayList;
 import java.util.function.Function;
@@ -24,8 +23,8 @@ import static net.moddingplayground.frame.api.toymaker.v0.generator.model.StateM
 import static net.moddingplayground.frame.api.toymaker.v0.generator.model.block.BuildingBlocks.*;
 
 public class StateModelGenerator extends AbstractStateModelGenerator {
-    public StateModelGenerator() {
-        super(Thematic.MOD_ID);
+    public StateModelGenerator(String modId) {
+        super(modId);
     }
 
     @Override

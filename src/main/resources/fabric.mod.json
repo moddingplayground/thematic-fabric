@@ -32,17 +32,19 @@
 
   "environment": "*",
   "entrypoints": {
-    "main":     [ "net.moddingplayground.thematic.Thematic" ],
-    "client":   [ "net.moddingplayground.thematic.client.ThematicClient" ],
-    "toymaker": [ "net.moddingplayground.thematic.datagen.ThematicToymaker" ]
+    "main":     [ "net.moddingplayground.thematic.impl.ThematicImpl" ],
+    "client":   [ "net.moddingplayground.thematic.impl.client.ThematicClientImpl" ],
+    "toymaker": [
+      "net.moddingplayground.thematic.impl.datagen.ThematicToymakerImpl"
+    ]
   },
   "mixins": [ "thematic.mixins.json" ],
 
   "depends": {
     "java": ">=17",
     "minecraft": ">=1.18",
-    "fabricloader": ">=0.12",
+    "fabricloader": ">=0.13",
     "fabric": ">=0.46",
-    "frame": ">=0.7.2"
+    "frame": ">=0.8"
   }
 }

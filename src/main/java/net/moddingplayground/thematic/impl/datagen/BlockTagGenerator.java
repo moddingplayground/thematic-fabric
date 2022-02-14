@@ -1,19 +1,18 @@
-package net.moddingplayground.thematic.datagen;
+package net.moddingplayground.thematic.impl.datagen;
 
 import net.minecraft.block.Block;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.registry.Registry;
 import net.moddingplayground.frame.api.toymaker.v0.generator.tag.AbstractTagGenerator;
-import net.moddingplayground.thematic.Thematic;
-import net.moddingplayground.thematic.block.ThematicBlocks;
+import net.moddingplayground.thematic.impl.block.ThematicBlocks;
 
 import java.util.List;
 
 import static net.moddingplayground.thematic.api.theme.DefaultDecoratables.*;
 
 public class BlockTagGenerator extends AbstractTagGenerator<Block> {
-    public BlockTagGenerator() {
-        super(Thematic.MOD_ID, Registry.BLOCK);
+    public BlockTagGenerator(String modId) {
+        super(modId, Registry.BLOCK);
     }
 
     @Override

@@ -5,8 +5,8 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import net.moddingplayground.thematic.Thematic;
-import net.moddingplayground.thematic.item.ThemeItem;
+import net.moddingplayground.thematic.api.Thematic;
+import net.moddingplayground.thematic.impl.item.ThemeItem;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;

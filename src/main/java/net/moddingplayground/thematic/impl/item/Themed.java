@@ -1,10 +1,10 @@
-package net.moddingplayground.thematic.item;
+package net.moddingplayground.thematic.impl.item;
 
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
-import net.moddingplayground.thematic.Thematic;
+import net.moddingplayground.thematic.api.Thematic;
 import net.moddingplayground.thematic.api.theme.Theme;
 
 import java.util.List;

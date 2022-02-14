@@ -4,8 +4,8 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.moddingplayground.thematic.Thematic;
-import net.moddingplayground.thematic.item.ThemedBlockItem;
+import net.moddingplayground.thematic.api.Thematic;
+import net.moddingplayground.thematic.impl.item.ThemedBlockItem;
 
 public class Decoratable {
     private final String format;

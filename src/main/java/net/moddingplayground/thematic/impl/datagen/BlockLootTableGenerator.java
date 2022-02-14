@@ -1,12 +1,11 @@
-package net.moddingplayground.thematic.datagen;
+package net.moddingplayground.thematic.impl.datagen;
 
 import net.moddingplayground.frame.api.toymaker.v0.generator.loot.AbstractBlockLootTableGenerator;
-import net.moddingplayground.thematic.Thematic;
-import net.moddingplayground.thematic.block.ThematicBlocks;
+import net.moddingplayground.thematic.impl.block.ThematicBlocks;
 
 public class BlockLootTableGenerator extends AbstractBlockLootTableGenerator {
-    public BlockLootTableGenerator() {
-        super(Thematic.MOD_ID);
+    public BlockLootTableGenerator(String modId) {
+        super(modId);
     }
 
     @Override

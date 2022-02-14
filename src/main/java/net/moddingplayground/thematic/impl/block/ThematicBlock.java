@@ -1,4 +1,4 @@
-package net.moddingplayground.thematic.block;
+package net.moddingplayground.thematic.impl.block;
 
 import net.minecraft.block.Block;
 

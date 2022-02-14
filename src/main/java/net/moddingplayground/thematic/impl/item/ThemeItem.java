@@ -1,8 +1,7 @@
-package net.moddingplayground.thematic.item;
+package net.moddingplayground.thematic.impl.item;
 
-import net.minecraft.block.Block;
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.world.World;
@@ -11,11 +10,11 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class ThemedBlockItem extends BlockItem implements Themed {
+public class ThemeItem extends Item implements Themed {
     private final Theme theme;
 
-    public ThemedBlockItem(Theme theme, Block block, Settings settings) {
-        super(block, settings);
+    public ThemeItem(Theme theme, Settings settings) {
+        super(settings);
         this.theme = theme;
     }
 

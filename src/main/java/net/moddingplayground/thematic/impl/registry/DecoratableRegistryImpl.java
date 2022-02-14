@@ -1,17 +1,19 @@
-package net.moddingplayground.thematic.api.registry;
+package net.moddingplayground.thematic.impl.registry;
 
+import net.moddingplayground.thematic.api.registry.DecoratableRegistry;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public final class DecoratablesRegistry implements Iterable<Decoratable> {
-    public static final DecoratablesRegistry INSTANCE = new DecoratablesRegistry();
+public final class DecoratableRegistryImpl implements DecoratableRegistry {
+    private final ArrayList<Decoratable> entries;
 
-    private final ArrayList<Decoratable> entries = new ArrayList<>();
+    public DecoratableRegistryImpl() {
+        this.entries = new ArrayList<>();
+    }
 
-    private DecoratablesRegistry() {}
-
+    @Override
     public Decoratable register(Decoratable decoratable) {
         if (!this.entries.add(decoratable)) throw new IllegalArgumentException("The same decoratable was registered twice");
         return decoratable;

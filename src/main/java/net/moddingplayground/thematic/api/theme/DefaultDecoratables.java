@@ -9,12 +9,12 @@ import net.minecraft.block.LanternBlock;
 import net.minecraft.block.MapColor;
 import net.minecraft.sound.BlockSoundGroup;
 import net.moddingplayground.frame.api.contentregistries.v0.StateRegistry;
-import net.moddingplayground.thematic.api.registry.DecoratablesRegistry;
-import net.moddingplayground.thematic.block.ThematicBlock;
-import net.moddingplayground.thematic.block.ThematicLadderBlock;
-import net.moddingplayground.thematic.block.themed.MechanicalLanternBlock;
-import net.moddingplayground.thematic.block.themed.RusticLanternBlock;
-import net.moddingplayground.thematic.block.themed.SunkenLanternBlock;
+import net.moddingplayground.thematic.api.registry.DecoratableRegistry;
+import net.moddingplayground.thematic.impl.block.ThematicBlock;
+import net.moddingplayground.thematic.impl.block.ThematicLadderBlock;
+import net.moddingplayground.thematic.impl.block.themed.MechanicalLanternBlock;
+import net.moddingplayground.thematic.impl.block.themed.RusticLanternBlock;
+import net.moddingplayground.thematic.impl.block.themed.SunkenLanternBlock;
 
 import static net.moddingplayground.thematic.api.theme.Theme.*;
 
@@ -97,6 +97,6 @@ public class DefaultDecoratables {
     }
 
     private static Decoratable register(Decoratable decoratable) {
-        return DecoratablesRegistry.INSTANCE.register(decoratable);
+        return DecoratableRegistry.INSTANCE.register(decoratable);
     }
 }
