@@ -18,18 +18,21 @@ public interface Thematic {
     String MOD_ID   = "thematic";
     String MOD_NAME = "Thematic";
 
-    ItemGroup ITEM_GROUP = Util.make(TabbedItemGroup.builder(), builder -> {
-                                   for (Theme theme : Theme.values()) {
-                                       builder.tab(
-                                           Tab.builder()
-                                              .displayText(tab -> createDisplayText(tab.getGroup(), tab).shallowCopy().fillStyle(Style.EMPTY.withColor(theme.getTooltipColor())))
-                                              .predicate((g, item) -> item instanceof Themed themed && themed.getTheme() == theme && item != theme.getItem())
-                                              .build(theme.getId(), GUIIcon.of(() -> new ItemStack(theme.getItem())))
-                                       );
-                                   }
-                               })
-                               .defaultPredicate((g, item) -> item instanceof Themed)
-                               .build(new Identifier(MOD_ID, "item_group"), g -> GUIIcon.of(() -> new ItemStack(ThematicBlocks.FIRST)));
+    ItemGroup ITEM_GROUP =
+        Util.make(TabbedItemGroup.builder(), builder -> {
+                for (Theme theme : Theme.values()) {
+                    String id = theme.getId();
+                    Theme.Colors colors = theme.getColors();
+                    Style style = Style.EMPTY.withColor(colors.getTitle());
+                    builder.tab(Tab.builder()
+                                   .displayText(tab -> createDisplayText(tab.getGroup(), tab).shallowCopy().fillStyle(style))
+                                   .predicate((group, item) -> Theme.tabPredicate(theme, item))
+                                   .build(id, GUIIcon.of(() -> new ItemStack(theme.getItem())))
+                    );
+                }
+            })
+            .defaultPredicate((group, item) -> item instanceof Themed)
+            .build(new Identifier(MOD_ID, "item_group"), group -> GUIIcon.of(() -> new ItemStack(ThematicBlocks.FIRST)));
 
     static Identifier defaultedId(String id) {
         return id.indexOf(Identifier.NAMESPACE_SEPARATOR) != -1 ? new Identifier(id) : new Identifier(Thematic.MOD_ID, id);

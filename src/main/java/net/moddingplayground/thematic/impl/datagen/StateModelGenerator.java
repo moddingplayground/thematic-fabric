@@ -16,11 +16,11 @@ import java.util.ArrayList;
 import java.util.function.Function;
 import java.util.function.IntFunction;
 
-import static net.moddingplayground.thematic.api.theme.DefaultDecoratables.*;
-import static net.moddingplayground.thematic.api.theme.Theme.*;
 import static net.moddingplayground.frame.api.toymaker.v0.generator.model.InheritingModelGen.*;
 import static net.moddingplayground.frame.api.toymaker.v0.generator.model.StateModelInfo.*;
 import static net.moddingplayground.frame.api.toymaker.v0.generator.model.block.BuildingBlocks.*;
+import static net.moddingplayground.thematic.api.theme.DefaultDecoratables.*;
+import static net.moddingplayground.thematic.api.theme.Theme.*;
 
 public class StateModelGenerator extends AbstractStateModelGenerator {
     public StateModelGenerator(String modId) {

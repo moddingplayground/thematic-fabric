@@ -12,15 +12,21 @@ import java.util.List;
 public interface Themed {
     Theme getTheme();
 
-    default Text colorText(Text text) {
+    default Text colorText(Text text, boolean title) {
         Theme theme = this.getTheme();
-        Style style = Style.EMPTY.withColor(theme.getTooltipColor());
+        Theme.Colors colors = theme.getColors();
+        Style style = Style.EMPTY.withColor(title ? colors.getTitle() : colors.getDescription());
         return text.shallowCopy().fillStyle(style);
+    }
+
+    default Text colorText(Text text) {
+        return colorText(text, true);
     }
 
     default void addColoredTooltip(List<Text> tooltip) {
         Theme theme = this.getTheme();
-        Text themeText = this.colorText(new TranslatableText(theme.getTranslationKey()));
-        tooltip.add(new TranslatableText("text.%s.theme".formatted(Thematic.MOD_ID), themeText).formatted(Formatting.GRAY));
+        String key = theme.getTranslationKey();
+        Text text = this.colorText(new TranslatableText(key), false);
+        tooltip.add(new TranslatableText("text.%s.theme".formatted(Thematic.MOD_ID), text).formatted(Formatting.GRAY));
     }
 }
