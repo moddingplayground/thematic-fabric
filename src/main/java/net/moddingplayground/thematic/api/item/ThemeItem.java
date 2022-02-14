@@ -1,4 +1,4 @@
-package net.moddingplayground.thematic.impl.item;
+package net.moddingplayground.thematic.api.item;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

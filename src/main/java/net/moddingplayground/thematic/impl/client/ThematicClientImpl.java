@@ -3,14 +3,10 @@ package net.moddingplayground.thematic.impl.client;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.minecraft.client.render.RenderLayer;
 import net.moddingplayground.thematic.api.Thematic;
-import net.moddingplayground.thematic.impl.block.ThematicBlocks;
+import net.moddingplayground.thematic.api.theme.Decoratable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import static net.moddingplayground.thematic.api.theme.DefaultDecoratables.*;
 
 @Environment(EnvType.CLIENT)
 public class ThematicClientImpl implements Thematic, ClientModInitializer {
@@ -24,12 +20,8 @@ public class ThematicClientImpl implements Thematic, ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        logger.info("Initializing {}-client", MOD_NAME);
-
-        BlockRenderLayerMap renderLayers = BlockRenderLayerMap.INSTANCE;
-        ThematicBlocks.forEach((theme, decoratable, block) -> {
-            if (decoratable == LADDER || decoratable == LANTERN) renderLayers.putBlock(block, RenderLayer.getCutout());
-        });
+        this.logger.info("Initializing {}-client", MOD_NAME);
+        Thematic.DECORATABLE_REGISTRY.forEach(Decoratable::registerClient);
     }
 
     public static ThematicClientImpl getInstance() {

@@ -1,4 +1,4 @@
-package net.moddingplayground.thematic.impl.item;
+package net.moddingplayground.thematic.api.item;
 
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
@@ -6,6 +6,7 @@ import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.moddingplayground.thematic.api.Thematic;
 import net.moddingplayground.thematic.api.theme.Theme;
+import net.moddingplayground.thematic.api.theme.ThemeColors;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public interface Themed {
 
     default Text colorText(Text text, boolean title) {
         Theme theme = this.getTheme();
-        Theme.Colors colors = theme.getColors();
+        ThemeColors colors = theme.getColors();
         Style style = Style.EMPTY.withColor(title ? colors.getTitle() : colors.getDescription());
         return text.shallowCopy().fillStyle(style);
     }

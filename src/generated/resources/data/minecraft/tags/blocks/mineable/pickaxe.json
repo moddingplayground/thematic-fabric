@@ -3,10 +3,8 @@
   "values": [
     "thematic:rustic_lantern",
     "thematic:sunken_lantern",
-    "thematic:mechanical_lantern",
     "thematic:sunken_ladder",
-    "thematic:mechanical_ladder",
-    "thematic:sunken_bookshelf",
-    "thematic:mechanical_bookshelf"
+    "thematic:mechanical_lantern",
+    "thematic:mechanical_ladder"
   ]
 }

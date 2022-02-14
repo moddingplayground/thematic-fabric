@@ -1,13 +1,12 @@
 package net.moddingplayground.thematic.impl.datagen;
 
-import net.minecraft.item.BlockItem;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.item.AbstractItemModelGenerator;
 import net.moddingplayground.thematic.api.Thematic;
-import net.moddingplayground.thematic.impl.block.ThematicBlocks;
+import net.moddingplayground.thematic.api.theme.Decoratable;
+import net.moddingplayground.thematic.api.theme.Theme;
+import net.moddingplayground.thematic.api.theme.data.ThemeDataToymaker;
 
-import static net.moddingplayground.thematic.api.theme.DefaultDecoratables.*;
+import static net.moddingplayground.thematic.impl.item.ThematicItems.*;
 
 public class ItemModelGenerator extends AbstractItemModelGenerator {
     public ItemModelGenerator(String modId) {
@@ -16,22 +15,14 @@ public class ItemModelGenerator extends AbstractItemModelGenerator {
 
     @Override
     public void generate() {
-        ThematicBlocks.forEach((theme, decoratable, block) -> {
-            if (decoratable == LADDER) {
-                this.add(block, this::generatedBlock);
-            } else if (decoratable == LANTERN) {
-                this.add(block, this::generatedItem);
-            } else this.add(block, this::inherit);
-        });
+        this.add(ANCIENT_ROPE, OVERGROWN_ANCHOR, OXIDIZED_COG);
 
-        Registry.ITEM.stream()
-                     .filter(item -> {
-                         Identifier id = Registry.ITEM.getId(item);
-                         return !this.map.containsKey(id) && id.getNamespace().equals(Thematic.MOD_ID);
-                     })
-                     .forEach(item -> {
-                         if (item instanceof BlockItem blockItem) this.block(blockItem.getBlock());
-                         else this.add(item);
-                     });
+        for (Theme theme : Thematic.THEME_REGISTRY) {
+            for (Decoratable decoratable : Thematic.DECORATABLE_REGISTRY) {
+                if (decoratable.getData(theme) instanceof ThemeDataToymaker toymaker) {
+                    toymaker.generateItemModels(this);
+                }
+            }
+        }
     }
 }

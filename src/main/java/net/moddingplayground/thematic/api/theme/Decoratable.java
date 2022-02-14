@@ -1,76 +1,50 @@
 package net.moddingplayground.thematic.api.theme;
 
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
+import com.google.common.collect.Maps;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.minecraft.util.Identifier;
 import net.moddingplayground.thematic.api.Thematic;
-import net.moddingplayground.thematic.impl.item.ThemedBlockItem;
+import net.moddingplayground.thematic.api.theme.data.ThemeData;
+
+import java.util.Map;
+import java.util.function.Function;
 
 public class Decoratable {
+    private final Map<Theme, ThemeData> themes;
     private final String format;
-    private final BlockFactory block;
-    private final ItemFactory item;
-    private final PostRegister postRegister;
 
-    public Decoratable(String format, BlockFactory block, ItemFactory item, PostRegister postRegister) {
+    public Decoratable(String format) {
         this.format = format;
-        this.block = block;
-        this.item = item;
-        this.postRegister = postRegister;
-    }
-
-    public Decoratable(String format, BlockFactory factory, PostRegister postRegister) {
-        this(format, factory, (b, t) -> new ThemedBlockItem(t, b, new FabricItemSettings().group(Thematic.ITEM_GROUP)), postRegister);
-    }
-
-    public Decoratable(Decoratable other, BlockFactory factory, PostRegister postRegister) {
-        this(other.getFormat(), factory, postRegister);
-    }
-
-    public Decoratable(Decoratable other, BlockFactory factory) {
-        this(other, factory, PostRegister.NONE);
-    }
-
-    public Decoratable(Decoratable other, PostRegister postRegister) {
-        this(other, other.block, postRegister);
-    }
-
-    public Decoratable(String format, AbstractBlock.Settings settings) {
-        this(format, t -> new Block(settings), PostRegister.NONE);
+        this.themes = Maps.newHashMap();
     }
 
     public String getFormat() {
         return this.format;
     }
 
-    public String format(Theme theme) {
-        return this.format.formatted(theme.getId());
+    public ThemeData getData(Theme theme) {
+        return this.themes.get(theme);
     }
 
-    public Block block(Theme theme) {
-        return this.block.create(theme);
+    public Decoratable add(Theme theme, Function<Theme, ThemeData> data) {
+        if (this.themes.containsKey(theme)) throw new IllegalArgumentException("Theme " + theme + "already registered to " + this);
+        this.themes.put(theme, data.apply(theme));
+        return this;
     }
 
-    public Item item(Block block, Theme theme) {
-        return this.item.create(block, theme);
+    public void register() {
+        for (ThemeData data : this.themes.values()) data.register(this);
     }
 
-    public PostRegister getPostRegister() {
-        return this.postRegister;
+    @Environment(EnvType.CLIENT)
+    public void registerClient() {
+        for (ThemeData data : this.themes.values()) data.registerClient(this);
     }
 
     @Override
     public String toString() {
-        return "Decoratable{" + this.format.formatted("decoratable") + '}';
-    }
-
-    @FunctionalInterface public interface BlockFactory { Block create(Theme theme); }
-    @FunctionalInterface public interface ItemFactory { Item create(Block block, Theme theme); }
-
-    @FunctionalInterface
-    public interface PostRegister {
-        PostRegister NONE = (t, d, b) -> {};
-        void apply(Theme theme, Decoratable decoratable, Block block);
+        Identifier id = Thematic.DECORATABLE_REGISTRY.getId(this);
+        return id == null ? "Unregistered Decoratable" : id.toString();
     }
 }

@@ -1,4 +1,4 @@
-package net.moddingplayground.thematic.impl.block.themed;
+package net.moddingplayground.thematic.impl.block.theme;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.LanternBlock;
