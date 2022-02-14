@@ -4,9 +4,7 @@ import com.google.common.reflect.Reflection;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.entrypoint.EntrypointContainer;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.text.Style;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
@@ -61,7 +59,7 @@ public class ThematicImpl implements ModInitializer, Thematic {
                 for (Theme theme : Thematic.THEME_REGISTRY) {
                     Identifier id = theme.getId();
                     ThemeColors colors = theme.getColors();
-                    Style style = Style.EMPTY.withColor(colors.getTitle());
+                    Style style = Style.EMPTY.withColor(colors.getDark());
                     builder.tab(Tab.builder()
                                    .displayText(tab -> createDisplayText(tab.getGroup(), tab).shallowCopy().fillStyle(style))
                                    .predicate((group, item) -> Theme.tabPredicate(theme, item))

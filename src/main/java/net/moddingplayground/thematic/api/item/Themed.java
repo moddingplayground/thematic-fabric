@@ -13,10 +13,10 @@ import java.util.List;
 public interface Themed {
     Theme getTheme();
 
-    default Text colorText(Text text, boolean title) {
+    default Text colorText(Text text, boolean light) {
         Theme theme = this.getTheme();
         ThemeColors colors = theme.getColors();
-        Style style = Style.EMPTY.withColor(title ? colors.getTitle() : colors.getDescription());
+        Style style = Style.EMPTY.withColor(light ? colors.getLight() : colors.getDark());
         return text.shallowCopy().fillStyle(style);
     }
 
