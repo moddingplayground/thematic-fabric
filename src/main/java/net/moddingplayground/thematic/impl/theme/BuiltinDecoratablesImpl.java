@@ -12,7 +12,7 @@ import net.moddingplayground.thematic.impl.block.theme.SunkenLanternBlock;
 import net.moddingplayground.thematic.impl.theme.data.BookshelfThemeData;
 import net.moddingplayground.thematic.impl.theme.data.LadderThemeData;
 import net.moddingplayground.thematic.impl.theme.data.LanternThemeData;
-import net.moddingplayground.thematic.impl.theme.data.SunkenLadderThemeData;
+import net.moddingplayground.thematic.impl.theme.data.VaryingLadderThemeData;
 
 import static net.moddingplayground.thematic.impl.theme.BuiltinThemesImpl.*;
 
@@ -24,7 +24,7 @@ public final class BuiltinDecoratablesImpl {
 
     public static final Decoratable LADDER = register("ladder", "%s_ladder")
         .add(RUSTIC, LadderThemeData::of)
-        .add(SUNKEN, t -> SunkenLadderThemeData.of(t, s -> s.sounds(BlockSoundGroup.CHAIN).strength(3.5f).requiresTool(), false))
+        .add(SUNKEN, t -> VaryingLadderThemeData.of(t, s -> s.sounds(BlockSoundGroup.CHAIN).strength(3.5f).requiresTool(), false))
         .add(MECHANICAL, t -> LadderThemeData.of(t, s -> s.sounds(BlockSoundGroup.COPPER).strength(3.5f).requiresTool(), false));
 
     public static final Decoratable BOOKSHELF = register("bookshelf", "%s_bookshelf")

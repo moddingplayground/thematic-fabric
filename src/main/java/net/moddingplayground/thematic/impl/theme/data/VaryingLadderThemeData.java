@@ -9,13 +9,13 @@ import java.util.function.Consumer;
 
 import static net.moddingplayground.frame.api.toymaker.v0.generator.model.block.BuildingBlocks.*;
 
-public class SunkenLadderThemeData extends LadderThemeData {
-    public SunkenLadderThemeData(Theme theme, Consumer<FabricBlockSettings> modifier, boolean wooden) {
+public class VaryingLadderThemeData extends LadderThemeData {
+    public VaryingLadderThemeData(Theme theme, Consumer<FabricBlockSettings> modifier, boolean wooden) {
         super(theme, modifier, wooden);
     }
 
-    public static SunkenLadderThemeData of(Theme theme, Consumer<FabricBlockSettings> modifier, boolean wooden) {
-        return new SunkenLadderThemeData(theme, modifier, wooden);
+    public static VaryingLadderThemeData of(Theme theme, Consumer<FabricBlockSettings> modifier, boolean wooden) {
+        return new VaryingLadderThemeData(theme, modifier, wooden);
     }
 
     @Override
