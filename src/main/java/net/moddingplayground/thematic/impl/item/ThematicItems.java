@@ -19,7 +19,7 @@ public class ThematicItems {
     }
 
     private static Item unstackable(String id, ItemFactory<Item> factory) {
-        return register(id, factory.create(new FabricItemSettings().maxCount(1)));
+        return register(id, factory.create(new FabricItemSettings().group(Thematic.getItemGroup()).maxCount(1)));
     }
 
     private static Item theme(String id, Theme theme) {

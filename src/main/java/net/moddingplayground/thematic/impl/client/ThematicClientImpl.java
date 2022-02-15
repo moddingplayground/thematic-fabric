@@ -7,6 +7,7 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.minecraft.block.entity.ChestBlockEntity;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
+import net.moddingplayground.frame.api.util.InitializationLogger;
 import net.moddingplayground.thematic.api.BuiltinDecoratables;
 import net.moddingplayground.thematic.api.BuiltinThemes;
 import net.moddingplayground.thematic.api.Thematic;
@@ -17,30 +18,30 @@ import net.moddingplayground.thematic.impl.client.model.ThematicEntityModelLayer
 import net.moddingplayground.thematic.impl.client.render.block.entity.MechanicalChestBlockEntityRenderer;
 import net.moddingplayground.thematic.impl.client.render.block.entity.RusticChestBlockEntityRenderer;
 import net.moddingplayground.thematic.impl.client.render.block.entity.SunkenChestBlockEntityRenderer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Environment(EnvType.CLIENT)
 public class ThematicClientImpl implements Thematic, ClientModInitializer {
     private static ThematicClientImpl instance = null;
-    protected final Logger logger;
+    protected final InitializationLogger initializer;
 
     public ThematicClientImpl() {
-        this.logger = LoggerFactory.getLogger("%s-client".formatted(MOD_ID));
+        this.initializer = new InitializationLogger(LOGGER, MOD_NAME, EnvType.CLIENT);
         instance = this;
     }
 
     @SuppressWarnings("UnstableApiUsage")
     @Override
     public void onInitializeClient() {
-        this.logger.info("Initializing {}-client", MOD_NAME);
+        this.initializer.start();
+
         Thematic.DECORATABLE_REGISTRY.forEach(Decoratable::registerClient);
 
         Reflection.initialize(ThematicEntityModelLayers.class);
-
         this.registerChestRenderer(BuiltinThemes.RUSTIC, RusticChestBlockEntityRenderer::new);
         this.registerChestRenderer(BuiltinThemes.SUNKEN, SunkenChestBlockEntityRenderer::new);
         this.registerChestRenderer(BuiltinThemes.MECHANICAL, MechanicalChestBlockEntityRenderer::new);
+
+        this.initializer.finish();
     }
 
     public void registerChestRenderer(Theme theme, BlockEntityRendererFactory<ChestBlockEntity> renderer) {

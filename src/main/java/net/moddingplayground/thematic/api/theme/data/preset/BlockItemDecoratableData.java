@@ -1,8 +1,6 @@
 package net.moddingplayground.thematic.api.theme.data.preset;
 
 import com.google.common.base.Suppliers;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -11,6 +9,7 @@ import net.minecraft.util.registry.Registry;
 import net.moddingplayground.frame.api.toymaker.v0.generator.loot.AbstractBlockLootTableGenerator;
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.block.AbstractStateModelGenerator;
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.item.AbstractItemModelGenerator;
+import net.moddingplayground.thematic.api.Thematic;
 import net.moddingplayground.thematic.api.item.ThemedBlockItem;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.Theme;
@@ -28,13 +27,14 @@ public class BlockItemDecoratableData implements DecoratableData, DecoratableDat
     public BlockItemDecoratableData(Theme theme, BlockFactory block, ItemFactory item) {
         this.theme = theme;
         if (block != null) this.block = Suppliers.memoize(block::create);
-        if (item != null)  this.item  = Suppliers.memoize(() -> item.create(theme, this.getBlock(), new FabricItemSettings()));
+        if (item != null)  this.item  = Suppliers.memoize(() -> item.create(theme, this.getBlock(), new FabricItemSettings().group(Thematic.getItemGroup())));
     }
 
     public BlockItemDecoratableData(Theme theme, BlockFactory block) {
         this(theme, block, ThemedBlockItem::new);
     }
 
+    @Override
     public Theme getTheme() {
         return this.theme;
     }
@@ -72,12 +72,8 @@ public class BlockItemDecoratableData implements DecoratableData, DecoratableDat
 
         Registry.register(Registry.BLOCK, id, this.getBlock());
         Item item = this.getItem();
-        if (item != null) Registry.register(Registry.ITEM, id, this.getItem());
+        if (item != null) Registry.register(Registry.ITEM, id, item);
     }
-
-    @Override
-    @Environment(EnvType.CLIENT)
-    public void registerClient(Decoratable decoratable) {}
 
     @Override
     public void generateStateModels(AbstractStateModelGenerator gen) {

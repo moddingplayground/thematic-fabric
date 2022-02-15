@@ -4,6 +4,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.moddingplayground.thematic.api.theme.Theme;
+import net.moddingplayground.thematic.mixin.ItemAccessor;
 
 public class ThemeItem extends Item implements Themed {
     private final Theme theme;
@@ -11,6 +12,7 @@ public class ThemeItem extends Item implements Themed {
     public ThemeItem(Theme theme, Settings settings) {
         super(settings);
         this.theme = theme;
+        ((ItemAccessor) this).setRecipeRemainder(this);
     }
 
     @Override

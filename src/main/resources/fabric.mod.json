@@ -34,14 +34,16 @@
   "entrypoints": {
     "main":     [ "net.moddingplayground.thematic.impl.ThematicImpl" ],
     "client":   [ "net.moddingplayground.thematic.impl.client.ThematicClientImpl" ],
-    "toymaker": [ "net.moddingplayground.thematic.impl.datagen.ThematicToymakerImpl" ]
+    "toymaker": [ "net.moddingplayground.thematic.impl.datagen.ThematicToymakerImpl" ],
+    "thematic": [ "net.moddingplayground.thematic.impl.ThematicMetaImpl" ]
   },
+  "mixins": [ "thematic.mixins.json" ],
 
   "depends": {
     "java": ">=17",
     "minecraft": ">=1.18",
     "fabricloader": ">=0.13",
     "fabric": ">=0.46",
-    "frame": ">=0.8.7"
+    "frame": ">=0.9.2"
   }
 }

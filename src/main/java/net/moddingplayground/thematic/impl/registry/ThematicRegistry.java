@@ -8,11 +8,12 @@ import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.Theme;
 
 public final class ThematicRegistry {
-    public static final SimpleRegistry<Theme> THEME = FabricRegistryBuilder.createSimple(Theme.class, new Identifier(Thematic.MOD_ID, "theme"))
-                                                                           .buildAndRegister();
-
-    public static final SimpleRegistry<Decoratable> DECORATABLE = FabricRegistryBuilder.createSimple(Decoratable.class, new Identifier(Thematic.MOD_ID, "decoratable"))
-                                                                                       .buildAndRegister();
+    public static final SimpleRegistry<Theme> THEME = register("theme", Theme.class);
+    public static final SimpleRegistry<Decoratable> DECORATABLE = register("decoratable", Decoratable.class);
 
     private ThematicRegistry() {}
+
+    private static <T> SimpleRegistry<T> register(String id, Class<T> clazz) {
+        return FabricRegistryBuilder.createSimple(clazz, new Identifier(Thematic.MOD_ID, id)).buildAndRegister();
+    }
 }
