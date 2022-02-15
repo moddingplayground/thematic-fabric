@@ -16,7 +16,7 @@ public class Decoratable {
 
     public Decoratable(String format) {
         this.format = format;
-        this.themes = Maps.newHashMap();
+        this.themes = Maps.newLinkedHashMap();
     }
 
     public String getFormat() {
