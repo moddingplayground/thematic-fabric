@@ -4,7 +4,7 @@ import net.moddingplayground.frame.api.toymaker.v0.generator.loot.AbstractBlockL
 import net.moddingplayground.thematic.api.Thematic;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.Theme;
-import net.moddingplayground.thematic.api.theme.data.ThemeDataToymaker;
+import net.moddingplayground.thematic.api.theme.data.DecoratableDataToymaker;
 
 public class BlockLootTableGenerator extends AbstractBlockLootTableGenerator {
     public BlockLootTableGenerator(String modId) {
@@ -15,9 +15,7 @@ public class BlockLootTableGenerator extends AbstractBlockLootTableGenerator {
     public void generate() {
         for (Theme theme : Thematic.THEME_REGISTRY) {
             for (Decoratable decoratable : Thematic.DECORATABLE_REGISTRY) {
-                if (decoratable.getData(theme) instanceof ThemeDataToymaker toymaker) {
-                    toymaker.generateBlockLootTables(this);
-                }
+                decoratable.getData(theme, DecoratableDataToymaker.class).ifPresent(t -> t.generateBlockLootTables(this));
             }
         }
     }

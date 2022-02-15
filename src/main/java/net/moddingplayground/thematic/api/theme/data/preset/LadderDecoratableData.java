@@ -1,4 +1,4 @@
-package net.moddingplayground.thematic.impl.theme.data;
+package net.moddingplayground.thematic.api.theme.data.preset;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -16,27 +16,22 @@ import net.moddingplayground.frame.api.toymaker.v0.generator.model.item.Abstract
 import net.moddingplayground.frame.api.toymaker.v0.generator.tag.AbstractTagGenerator;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.Theme;
-import net.moddingplayground.thematic.api.theme.data.BlockItemThemeData;
 import net.moddingplayground.thematic.impl.block.vanilla.PublicLadderBlock;
 
 import java.util.function.Consumer;
 
 import static net.moddingplayground.frame.api.toymaker.v0.generator.model.InheritingModelGen.*;
 
-public class LadderThemeData extends BlockItemThemeData {
+public class LadderDecoratableData extends BlockItemDecoratableData {
     private final boolean wooden;
 
-    public LadderThemeData(Theme theme, Consumer<FabricBlockSettings> modifier, boolean wooden) {
+    public LadderDecoratableData(Theme theme, Consumer<FabricBlockSettings> modifier, boolean wooden) {
         super(theme, () -> createLadder(modifier));
         this.wooden = wooden;
     }
 
-    public static LadderThemeData of(Theme theme, Consumer<FabricBlockSettings> modifier, boolean wooden) {
-        return new LadderThemeData(theme, modifier, wooden);
-    }
-
-    public static LadderThemeData of(Theme theme) {
-        return of(theme, s -> {}, true);
+    public LadderDecoratableData(Theme theme) {
+        this(theme, s -> {}, true);
     }
 
     public boolean isWooden() {

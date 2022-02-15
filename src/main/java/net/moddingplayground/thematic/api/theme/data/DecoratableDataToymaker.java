@@ -6,7 +6,7 @@ import net.moddingplayground.frame.api.toymaker.v0.generator.model.block.Abstrac
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.item.AbstractItemModelGenerator;
 import net.moddingplayground.frame.api.toymaker.v0.generator.tag.AbstractTagGenerator;
 
-public interface ThemeDataToymaker {
+public interface DecoratableDataToymaker {
     void generateItemModels(AbstractItemModelGenerator gen);
     void generateStateModels(AbstractStateModelGenerator gen);
     void generateBlockLootTables(AbstractBlockLootTableGenerator gen);

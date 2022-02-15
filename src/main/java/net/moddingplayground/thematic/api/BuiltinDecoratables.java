@@ -7,4 +7,5 @@ public interface BuiltinDecoratables {
     Decoratable LANTERN = BuiltinDecoratablesImpl.LANTERN;
     Decoratable LADDER = BuiltinDecoratablesImpl.LADDER;
     Decoratable BOOKSHELF = BuiltinDecoratablesImpl.BOOKSHELF;
+    Decoratable CHEST = BuiltinDecoratablesImpl.CHEST;
 }

@@ -1,4 +1,4 @@
-package net.moddingplayground.thematic.api.theme.data;
+package net.moddingplayground.thematic.api.theme.data.preset;
 
 import com.google.common.base.Suppliers;
 import net.fabricmc.api.EnvType;
@@ -14,30 +14,25 @@ import net.moddingplayground.frame.api.toymaker.v0.generator.model.item.Abstract
 import net.moddingplayground.thematic.api.item.ThemedBlockItem;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.Theme;
+import net.moddingplayground.thematic.api.theme.data.DecoratableData;
+import net.moddingplayground.thematic.api.theme.data.DecoratableDataToymaker;
 
+import java.util.Optional;
 import java.util.function.Supplier;
 
-public class BlockItemThemeData implements ThemeData, ThemeDataToymaker {
+public class BlockItemDecoratableData implements DecoratableData, DecoratableDataToymaker {
     private final Theme theme;
-    private final Supplier<Block> block;
-    private final Supplier<Item> item;
+    protected Supplier<Block> block;
+    protected Supplier<Item> item;
 
-    public BlockItemThemeData(Theme theme, BlockFactory block, ItemFactory item) {
+    public BlockItemDecoratableData(Theme theme, BlockFactory block, ItemFactory item) {
         this.theme = theme;
-        this.block = Suppliers.memoize(block::create);
-        this.item = Suppliers.memoize(() -> item.create(theme, this.getBlock(), new FabricItemSettings()));
+        if (block != null) this.block = Suppliers.memoize(block::create);
+        if (item != null)  this.item  = Suppliers.memoize(() -> item.create(theme, this.getBlock(), new FabricItemSettings()));
     }
 
-    public BlockItemThemeData(Theme theme, BlockFactory block) {
+    public BlockItemDecoratableData(Theme theme, BlockFactory block) {
         this(theme, block, ThemedBlockItem::new);
-    }
-
-    public static BlockItemThemeData of(Theme theme, BlockFactory block, ItemFactory item) {
-        return new BlockItemThemeData(theme, block, item);
-    }
-
-    public static BlockItemThemeData of(Theme theme, BlockFactory block) {
-        return new BlockItemThemeData(theme, block);
     }
 
     public Theme getTheme() {
@@ -45,20 +40,35 @@ public class BlockItemThemeData implements ThemeData, ThemeDataToymaker {
     }
 
     public Block getBlock() {
-        return this.block.get();
+        return Optional.ofNullable(this.block).map(Supplier::get).orElse(null);
+    }
+
+    public static Block getBlock(Theme theme, Decoratable decoratable) {
+        return decoratable.getData(theme, BlockItemDecoratableData.class)
+                          .orElseThrow()
+                          .getBlock();
     }
 
     public Item getItem() {
-        return this.item.get();
+        return Optional.ofNullable(this.item).map(Supplier::get).orElse(null);
+    }
+
+    public static Item getItem(Theme theme, Decoratable decoratable) {
+        return decoratable.getData(theme, BlockItemDecoratableData.class)
+                          .orElseThrow()
+                          .getItem();
+    }
+
+    @Override
+    public Identifier createId(Decoratable decoratable) {
+        Theme theme = this.getTheme();
+        Identifier id = theme.getId();
+        return new Identifier(id.getNamespace(), theme.format(decoratable));
     }
 
     @Override
     public void register(Decoratable decoratable) {
-        Theme theme = this.getTheme();
-        Identifier themeId = theme.getId();
-
-        String format = decoratable.getFormat();
-        Identifier id = new Identifier(themeId.getNamespace(), format.formatted(themeId.getPath()));
+        Identifier id = this.createId(decoratable);
 
         Registry.register(Registry.BLOCK, id, this.getBlock());
         Item item = this.getItem();

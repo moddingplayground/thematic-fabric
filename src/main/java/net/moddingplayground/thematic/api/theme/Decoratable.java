@@ -5,13 +5,14 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.util.Identifier;
 import net.moddingplayground.thematic.api.Thematic;
-import net.moddingplayground.thematic.api.theme.data.ThemeData;
+import net.moddingplayground.thematic.api.theme.data.DecoratableData;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class Decoratable {
-    private final Map<Theme, ThemeData> themes;
+    private final Map<Theme, DecoratableData> themes;
     private final String format;
 
     public Decoratable(String format) {
@@ -23,28 +24,32 @@ public class Decoratable {
         return this.format;
     }
 
-    public ThemeData getData(Theme theme) {
-        return this.themes.get(theme);
+    public <T> Optional<T> getData(Theme theme, Class<T> clazz) {
+        return Optional.ofNullable(this.themes.get(theme)).map(clazz::cast);
     }
 
-    public Decoratable add(Theme theme, Function<Theme, ThemeData> data) {
+    public Optional<DecoratableData> getData(Theme theme) {
+        return this.getData(theme, DecoratableData.class);
+    }
+
+    public Decoratable add(Theme theme, Function<Theme, DecoratableData> data) {
         if (this.themes.containsKey(theme)) throw new IllegalArgumentException("Theme " + theme + "already registered to " + this);
         this.themes.put(theme, data.apply(theme));
         return this;
     }
 
     public void register() {
-        for (ThemeData data : this.themes.values()) data.register(this);
+        for (DecoratableData data : this.themes.values()) data.register(this);
     }
 
     @Environment(EnvType.CLIENT)
     public void registerClient() {
-        for (ThemeData data : this.themes.values()) data.registerClient(this);
+        for (DecoratableData data : this.themes.values()) data.registerClient(this);
     }
 
     @Override
     public String toString() {
         Identifier id = Thematic.DECORATABLE_REGISTRY.getId(this);
-        return id == null ? "Unregistered Decoratable" : id.toString();
+        return Optional.ofNullable(id).map(Identifier::toString).orElse("Unregistered Decoratable");
     }
 }

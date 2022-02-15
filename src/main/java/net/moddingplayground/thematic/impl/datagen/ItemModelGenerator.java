@@ -4,7 +4,7 @@ import net.moddingplayground.frame.api.toymaker.v0.generator.model.item.Abstract
 import net.moddingplayground.thematic.api.Thematic;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.Theme;
-import net.moddingplayground.thematic.api.theme.data.ThemeDataToymaker;
+import net.moddingplayground.thematic.api.theme.data.DecoratableDataToymaker;
 
 import static net.moddingplayground.thematic.impl.item.ThematicItems.*;
 
@@ -19,9 +19,7 @@ public class ItemModelGenerator extends AbstractItemModelGenerator {
 
         for (Theme theme : Thematic.THEME_REGISTRY) {
             for (Decoratable decoratable : Thematic.DECORATABLE_REGISTRY) {
-                if (decoratable.getData(theme) instanceof ThemeDataToymaker toymaker) {
-                    toymaker.generateItemModels(this);
-                }
+                decoratable.getData(theme, DecoratableDataToymaker.class).ifPresent(t -> t.generateItemModels(this));
             }
         }
     }

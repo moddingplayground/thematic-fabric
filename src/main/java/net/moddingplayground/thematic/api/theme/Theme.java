@@ -6,6 +6,7 @@ import net.minecraft.util.Identifier;
 import net.moddingplayground.thematic.api.Thematic;
 import net.moddingplayground.thematic.api.item.Themed;
 
+import java.util.Optional;
 import java.util.function.Supplier;
 
 public class Theme {
@@ -39,6 +40,21 @@ public class Theme {
         return this.translationKey.get();
     }
 
+    public String format(String format) {
+        Identifier id =  this.getId();
+        return format.formatted(id.getPath(), id.getNamespace());
+    }
+
+    public String format(Decoratable decoratable) {
+        String format = decoratable.getFormat();
+        return this.format(format);
+    }
+
+    public Identifier formatId(String format) {
+        Identifier id =  this.getId();
+        return new Identifier(id.getNamespace(), this.format(format));
+    }
+
     public static boolean tabPredicate(Theme theme, Item item) {
         return item instanceof Themed themed && themed.getTheme() == theme && item != theme.getItem();
     }
@@ -46,6 +62,6 @@ public class Theme {
     @Override
     public String toString() {
         Identifier id = Thematic.THEME_REGISTRY.getId(this);
-        return id == null ? "Unregistered Theme" : id.toString();
+        return Optional.ofNullable(id).map(Identifier::toString).orElse("Unregistered Theme");
     }
 }

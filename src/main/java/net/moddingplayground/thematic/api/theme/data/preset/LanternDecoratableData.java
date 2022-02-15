@@ -1,4 +1,4 @@
-package net.moddingplayground.thematic.impl.theme.data;
+package net.moddingplayground.thematic.api.theme.data.preset;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -15,17 +15,12 @@ import net.moddingplayground.frame.api.toymaker.v0.generator.model.item.Abstract
 import net.moddingplayground.frame.api.toymaker.v0.generator.tag.AbstractTagGenerator;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.Theme;
-import net.moddingplayground.thematic.api.theme.data.BlockItemThemeData;
 
 import static net.moddingplayground.frame.api.toymaker.v0.generator.model.block.BuildingBlocks.*;
 
-public class LanternThemeData extends BlockItemThemeData {
-    public LanternThemeData(Theme theme, BlockFactory block) {
+public class LanternDecoratableData extends BlockItemDecoratableData {
+    public LanternDecoratableData(Theme theme, BlockFactory block) {
         super(theme, () -> block.create(FabricBlockSettings.copyOf(Blocks.LANTERN)));
-    }
-
-    public static LanternThemeData of(Theme theme, BlockFactory block) {
-        return new LanternThemeData(theme, block);
     }
 
     @Override

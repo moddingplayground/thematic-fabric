@@ -6,7 +6,7 @@ import net.moddingplayground.frame.api.toymaker.v0.generator.tag.AbstractTagGene
 import net.moddingplayground.thematic.api.Thematic;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.Theme;
-import net.moddingplayground.thematic.api.theme.data.ThemeDataToymaker;
+import net.moddingplayground.thematic.api.theme.data.DecoratableDataToymaker;
 
 public class BlockTagGenerator extends AbstractTagGenerator<Block> {
     public BlockTagGenerator(String modId) {
@@ -17,9 +17,7 @@ public class BlockTagGenerator extends AbstractTagGenerator<Block> {
     public void generate() {
         for (Theme theme : Thematic.THEME_REGISTRY) {
             for (Decoratable decoratable : Thematic.DECORATABLE_REGISTRY) {
-                if (decoratable.getData(theme) instanceof ThemeDataToymaker toymaker) {
-                    toymaker.generateBlockTags(this);
-                }
+                decoratable.getData(theme, DecoratableDataToymaker.class).ifPresent(t -> t.generateBlockTags(this));
             }
         }
     }

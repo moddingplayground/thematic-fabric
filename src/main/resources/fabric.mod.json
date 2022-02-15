@@ -34,9 +34,7 @@
   "entrypoints": {
     "main":     [ "net.moddingplayground.thematic.impl.ThematicImpl" ],
     "client":   [ "net.moddingplayground.thematic.impl.client.ThematicClientImpl" ],
-    "toymaker": [
-      "net.moddingplayground.thematic.impl.datagen.ThematicToymakerImpl"
-    ]
+    "toymaker": [ "net.moddingplayground.thematic.impl.datagen.ThematicToymakerImpl" ]
   },
 
   "depends": {
@@ -44,9 +42,6 @@
     "minecraft": ">=1.18",
     "fabricloader": ">=0.13",
     "fabric": ">=0.46",
-
-    "frame-api-base": ">=0.1.1",
-    "frame-tabbed-item-groups-v0": ">=0.1.2",
-    "frame-toymaker-v0": ">=0.1.4"
+    "frame": ">=0.8.7"
   }
 }

@@ -5,8 +5,10 @@
     "thematic:sunken_lantern",
     "thematic:sunken_ladder",
     "thematic:sunken_bookshelf",
+    "thematic:sunken_chest",
     "thematic:mechanical_lantern",
     "thematic:mechanical_ladder",
-    "thematic:mechanical_bookshelf"
+    "thematic:mechanical_bookshelf",
+    "thematic:mechanical_chest"
   ]
 }

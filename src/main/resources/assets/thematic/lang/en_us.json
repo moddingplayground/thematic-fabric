@@ -27,5 +27,9 @@
 
   "block.thematic.rustic_bookshelf": "Rickety Bookshelf",
   "block.thematic.sunken_bookshelf": "Captain's Cabinet",
-  "block.thematic.mechanical_bookshelf": "Copper Bookshelf"
+  "block.thematic.mechanical_bookshelf": "Copper Bookshelf",
+
+  "block.thematic.rustic_chest": "Coffer",
+  "block.thematic.sunken_chest": "Treasure Chest",
+  "block.thematic.mechanical_chest": "Copper Chest"
 }

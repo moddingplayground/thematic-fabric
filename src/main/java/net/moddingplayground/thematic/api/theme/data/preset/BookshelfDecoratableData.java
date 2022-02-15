@@ -1,4 +1,4 @@
-package net.moddingplayground.thematic.impl.theme.data;
+package net.moddingplayground.thematic.api.theme.data.preset;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
@@ -12,26 +12,21 @@ import net.moddingplayground.frame.api.toymaker.v0.generator.model.block.Abstrac
 import net.moddingplayground.frame.api.toymaker.v0.generator.tag.AbstractTagGenerator;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.Theme;
-import net.moddingplayground.thematic.api.theme.data.BlockItemThemeData;
 
 import java.util.function.Consumer;
 
 import static net.moddingplayground.frame.api.toymaker.v0.generator.model.InheritingModelGen.*;
 
-public class BookshelfThemeData extends BlockItemThemeData {
+public class BookshelfDecoratableData extends BlockItemDecoratableData {
     private final boolean wooden;
 
-    public BookshelfThemeData(Theme theme, Consumer<FabricBlockSettings> modifier, boolean wooden) {
+    public BookshelfDecoratableData(Theme theme, Consumer<FabricBlockSettings> modifier, boolean wooden) {
         super(theme, () -> createBookshelf(modifier));
         this.wooden = wooden;
     }
 
-    public static BookshelfThemeData of(Theme theme, Consumer<FabricBlockSettings> modifier, boolean wooden) {
-        return new BookshelfThemeData(theme, modifier, wooden);
-    }
-
-    public static BookshelfThemeData of(Theme theme, Consumer<FabricBlockSettings> modifier) {
-        return of(theme, modifier, true);
+    public BookshelfDecoratableData(Theme theme, Consumer<FabricBlockSettings> modifier) {
+        this(theme, modifier, true);
     }
 
     public boolean isWooden() {
