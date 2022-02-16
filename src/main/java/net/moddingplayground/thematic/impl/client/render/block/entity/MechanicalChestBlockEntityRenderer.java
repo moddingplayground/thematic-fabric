@@ -33,11 +33,17 @@ public class MechanicalChestBlockEntityRenderer extends ThematicChestBlockEntity
         ModelPartData lid = root.addChild(
             LID,
             ModelPartBuilder.create()
-                            .uv(0, 19)
-                            .cuboid(-7.0F, -4.0F, -14.0F, 14.0F, 4.0F, 14.0F)
                             .uv(0, 0)
-                            .cuboid(-7.0F, -9.0F, -14.0F, 14.0F, 5.0F, 14.0F),
-            ModelTransform.pivot(0.0F, 19.0F, 7.0F)
+                            .cuboid(-7.0F, -9.0F, -14.0F, 14.0F, 5.0F, 14.0F)
+                            .uv(0, 7)
+                            .cuboid(-7.0F, -4.0F, -14.0F, 0.0F, 4.0F, 14.0F)
+                            .uv(0, 15)
+                            .cuboid(7.0F, -4.0F, -14.0F, 0.0F, 4.0F, 14.0F)
+                            .uv(0, 25)
+                            .cuboid(-7.0F, -4.0F, -14.0F, 14.0F, 4.0F, 0.0F)
+                            .uv(0, 33)
+                            .cuboid(-7.0F, -4.0F, 0.0F, 14.0F, 4.0F, 0.0F),
+            ModelTransform.of(0.0F, 19.0F, 7.0F, -1.0036F, 0.0F, 0.0F)
         );
 
         ModelPartData latch = lid.addChild(
@@ -45,7 +51,7 @@ public class MechanicalChestBlockEntityRenderer extends ThematicChestBlockEntity
             ModelPartBuilder.create()
                             .uv(0, 0)
                             .cuboid(-2.0F, -3.0F, -15.0F, 4.0F, 4.0F, 1.0F),
-            ModelTransform.pivot(0.0F, 0.0F, 0.0F)
+            ModelTransform.NONE
         );
 
         return TexturedModelData.of(data, 64, 64);
