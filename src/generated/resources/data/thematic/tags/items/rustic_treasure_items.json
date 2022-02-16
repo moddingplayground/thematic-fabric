@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:dragon_egg",
+    "minecraft:golden_apple",
+    "minecraft:enchanted_golden_apple",
+    "minecraft:end_crystal",
+    "minecraft:nether_star",
+    "minecraft:beacon",
+    "minecraft:totem_of_undying",
+    "minecraft:trident",
+    "minecraft:heart_of_the_sea",
+    "minecraft:elytra",
+    "minecraft:netherite_ingot",
+    "minecraft:emerald",
+    "minecraft:diamond",
+    "minecraft:gold_ingot",
+    "minecraft:iron_ingot",
+    "minecraft:amethyst_shard",
+    "minecraft:netherite_scrap",
+    "minecraft:gold_nugget",
+    "minecraft:iron_nugget",
+    "#minecraft:music_discs"
+  ]
+}

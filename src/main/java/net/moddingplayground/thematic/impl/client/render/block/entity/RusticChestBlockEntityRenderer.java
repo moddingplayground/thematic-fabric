@@ -2,6 +2,8 @@ package net.moddingplayground.thematic.impl.client.render.block.entity;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.DoubleBlockProperties;
 import net.minecraft.block.entity.ChestBlockEntity;
 import net.minecraft.client.model.ModelData;
 import net.minecraft.client.model.ModelPartBuilder;
@@ -10,12 +12,20 @@ import net.minecraft.client.model.ModelTransform;
 import net.minecraft.client.model.TexturedModelData;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.moddingplayground.thematic.api.client.render.block.entity.ThematicChestBlockEntityRenderer;
+import net.moddingplayground.thematic.impl.block.ThematicProperties;
 import net.moddingplayground.thematic.impl.client.model.ThematicEntityModelLayers;
 
 @Environment(EnvType.CLIENT)
 public class RusticChestBlockEntityRenderer extends ThematicChestBlockEntityRenderer<ChestBlockEntity> {
     public RusticChestBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {
         super(ctx, ThematicEntityModelLayers.RUSTIC_CHEST, ThematicEntityModelLayers.RUSTIC_DOUBLE_CHEST_LEFT, ThematicEntityModelLayers.RUSTIC_DOUBLE_CHEST_RIGHT);
+    }
+
+    @Override
+    public float getOpenFactor(DoubleBlockProperties.PropertySource<? extends ChestBlockEntity> property, ChestBlockEntity entity, float tickDelta) {
+        BlockState state = entity.getCachedState();
+        float ret = super.getOpenFactor(property, entity, tickDelta);
+        return state.get(ThematicProperties.TREASURE) ? ret + 0.1F : ret;
     }
 
     public static TexturedModelData getSingleTexturedModelData() {

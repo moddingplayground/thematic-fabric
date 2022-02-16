@@ -19,6 +19,8 @@ import net.moddingplayground.thematic.api.BuiltinDecoratables;
 import net.moddingplayground.thematic.api.item.Themed;
 import net.moddingplayground.thematic.api.theme.Theme;
 import net.moddingplayground.thematic.api.theme.data.preset.block.entity.BlockEntityDecoratableData;
+import net.moddingplayground.thematic.api.theme.data.preset.block.entity.chest.ChestDecoratableData;
+import net.moddingplayground.thematic.api.theme.data.preset.block.entity.chest.TrappedChestDecoratableData;
 
 import java.util.function.BiPredicate;
 
@@ -57,6 +59,14 @@ public class TrappedThemedChestBlock extends TrappedChestBlock implements Themed
     @Override
     @Environment(EnvType.CLIENT)
     public SpriteIdentifier getSpriteIdentifier(BlockEntity blockEntity, ChestType type, boolean christmas) {
-        return ThemedChestBlock.TextureStore.SPRITE.apply(this, type, true);
+        Theme theme = this.getTheme();
+        TrappedChestDecoratableData<?> data = BuiltinDecoratables.TRAPPED_CHEST.getData(theme, TrappedChestDecoratableData.class).orElseThrow();
+        ChestDecoratableData.ChestTextureStore provider = data.getTextureProvider();
+        return provider.getSpriteIdentifier(this.createTextureContext(theme, blockEntity, type, christmas));
+    }
+
+    @Environment(EnvType.CLIENT)
+    protected ChestDecoratableData.ChestTextureContext createTextureContext(Theme theme, BlockEntity blockEntity, ChestType type, boolean christmas) {
+        return new ChestDecoratableData.ChestTextureContext(theme, type, true);
     }
 }

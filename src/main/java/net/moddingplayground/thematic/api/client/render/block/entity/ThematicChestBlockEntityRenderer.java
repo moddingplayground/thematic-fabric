@@ -110,12 +110,9 @@ public class ThematicChestBlockEntityRenderer<T extends ChestBlockEntity> implem
         DoubleBlockProperties.PropertySource<? extends ChestBlockEntity> property = world != null
             ? chest.getBlockEntitySource(state, world, entity.getPos(), true)
             : DoubleBlockProperties.PropertyRetriever::getFallback;
-
-        float open = property.apply(ChestBlock.getAnimationProgressRetriever(entity)).get(tickDelta);
-        open = 1.0f - open;
-        open = 1.0f - open * open * open;
-
+        float open = this.getOpenFactor(property, entity, tickDelta);
         int l = property.apply(new LightmapCoordinatesRetriever<>()).applyAsInt(light);
+
         SpriteIdentifier sprite = this.getTexture(entity, type, this.isChristmas());
         VertexConsumer vertex = sprite.getVertexConsumer(vertexConsumers, RenderLayer::getEntityCutout);
 
@@ -126,6 +123,13 @@ public class ThematicChestBlockEntityRenderer<T extends ChestBlockEntity> implem
         } else this.render(matrices, vertex, this.singleLid, this.singleBase, open, l, overlay);
 
         matrices.pop();
+    }
+
+    public float getOpenFactor(DoubleBlockProperties.PropertySource<? extends ChestBlockEntity> property, T entity, float tickDelta) {
+        float open = property.apply(ChestBlock.getAnimationProgressRetriever(entity)).get(tickDelta);
+        open = 1.0f - open;
+        open = 1.0f - (open * open * open);
+        return open;
     }
 
     public void render(MatrixStack matrices, VertexConsumer vertices, ModelPart lid, ModelPart base, float openFactor, int light, int overlay) {
