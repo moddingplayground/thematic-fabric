@@ -12,12 +12,12 @@ import net.moddingplayground.thematic.api.theme.data.preset.block.BookshelfDecor
 import net.moddingplayground.thematic.api.theme.data.preset.block.LadderDecoratableData;
 import net.moddingplayground.thematic.api.theme.data.preset.block.LadderVaryingDecoratableData;
 import net.moddingplayground.thematic.api.theme.data.preset.block.LanternDecoratableData;
-import net.moddingplayground.thematic.api.theme.data.preset.block.entity.chest.ThemedChestDecoratableData;
-import net.moddingplayground.thematic.api.theme.data.preset.block.entity.chest.TrappedThemedChestDecoratableData;
 import net.moddingplayground.thematic.impl.block.theme.lantern.MechanicalLanternBlock;
 import net.moddingplayground.thematic.impl.block.theme.lantern.RusticLanternBlock;
 import net.moddingplayground.thematic.impl.block.theme.lantern.SunkenLanternBlock;
+import net.moddingplayground.thematic.impl.theme.data.block.entity.chest.MetalChestDecoratableData;
 import net.moddingplayground.thematic.impl.theme.data.block.entity.chest.RusticChestDecoratableData;
+import net.moddingplayground.thematic.impl.theme.data.block.entity.chest.TrappedMetalChestDecoratableData;
 import net.moddingplayground.thematic.impl.theme.data.block.entity.chest.TrappedRusticChestDecoratableData;
 
 import static net.moddingplayground.thematic.impl.theme.BuiltinThemesImpl.*;
@@ -45,13 +45,13 @@ public final class BuiltinDecoratablesImpl {
 
     public static final Decoratable CHEST = register("chest", "%s_chest")
         .add(RUSTIC, t -> new RusticChestDecoratableData(t, Blocks.SPRUCE_PLANKS))
-        .add(SUNKEN, t -> new ThemedChestDecoratableData(t, Blocks.CHAIN, s -> s.sounds(BlockSoundGroup.NETHERITE).requiresTool(), false))
-        .add(MECHANICAL, t -> new ThemedChestDecoratableData(t, Blocks.OXIDIZED_COPPER, s -> s.sounds(BlockSoundGroup.COPPER).requiresTool(), false));
+        .add(SUNKEN, t -> new MetalChestDecoratableData(t, Blocks.CHAIN, s -> s.sounds(BlockSoundGroup.NETHERITE).requiresTool(), false))
+        .add(MECHANICAL, t -> new MetalChestDecoratableData(t, Blocks.OXIDIZED_COPPER, s -> s.sounds(BlockSoundGroup.COPPER).requiresTool(), false));
 
     public static final Decoratable TRAPPED_CHEST = register("trapped_chest", "trapped_%s_chest")
         .add(RUSTIC, t -> new TrappedRusticChestDecoratableData(t, Blocks.SPRUCE_PLANKS))
-        .add(SUNKEN, t -> new TrappedThemedChestDecoratableData(t, Blocks.CHAIN, s -> s.sounds(BlockSoundGroup.NETHERITE).requiresTool(), false))
-        .add(MECHANICAL, t -> new TrappedThemedChestDecoratableData(t, Blocks.OXIDIZED_COPPER, s -> s.sounds(BlockSoundGroup.COPPER).requiresTool(), false));
+        .add(SUNKEN, t -> new TrappedMetalChestDecoratableData(t, Blocks.CHAIN, s -> s.sounds(BlockSoundGroup.NETHERITE).requiresTool(), false))
+        .add(MECHANICAL, t -> new TrappedMetalChestDecoratableData(t, Blocks.OXIDIZED_COPPER, s -> s.sounds(BlockSoundGroup.COPPER).requiresTool(), false));
 
     private BuiltinDecoratablesImpl() {}
 

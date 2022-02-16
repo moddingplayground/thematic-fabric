@@ -6,19 +6,31 @@ import net.minecraft.block.entity.ChestBlockEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.moddingplayground.thematic.api.BuiltinThemes;
-import net.moddingplayground.thematic.api.block.entity.theme.chest.ThemedChestBlockEntity;
 import net.moddingplayground.thematic.api.tag.ThematicItemTags;
 import net.moddingplayground.thematic.api.theme.Theme;
+import net.moddingplayground.thematic.api.util.ChestSoundViewerCountManager;
 import net.moddingplayground.thematic.impl.block.ThematicProperties;
+import net.moddingplayground.thematic.impl.sound.ThematicSoundEvents;
 
 import java.util.Set;
 
-public class RusticChestBlockEntity extends ThemedChestBlockEntity {
+public class RusticChestBlockEntity extends MetalChestBlockEntity {
     public RusticChestBlockEntity(BlockPos pos, BlockState state) {
         super(pos, state);
+        ChestSoundViewerCountManager.replace(this, RusticChestBlockEntity::getOpenSound, RusticChestBlockEntity::getCloseSound);
+    }
+
+    public static SoundEvent getOpenSound(World world, BlockPos pos, BlockState state) {
+        return state.get(ThematicProperties.TREASURE) ? ThematicSoundEvents.BLOCK_RUSTIC_CHEST_TREASURE_OPEN : SoundEvents.BLOCK_CHEST_OPEN;
+    }
+
+    public static SoundEvent getCloseSound(World world, BlockPos pos, BlockState state) {
+        return state.get(ThematicProperties.TREASURE) ? ThematicSoundEvents.BLOCK_RUSTIC_CHEST_TREASURE_CLOSE : SoundEvents.BLOCK_CHEST_CLOSE;
     }
 
     @Override

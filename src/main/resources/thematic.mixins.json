@@ -3,7 +3,10 @@
   "package": "net.moddingplayground.thematic.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "ItemAccessor"
+    "ChestBlockEntityAccessor",
+    "ChestBlockEntityInvoker",
+    "ItemAccessor",
+    "ViewerCountManagerInvoker"
   ],
   "client": [],
   "injectors": {

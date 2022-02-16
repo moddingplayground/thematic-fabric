@@ -1,4 +1,4 @@
-package net.moddingplayground.thematic.api.block.entity.theme.chest;
+package net.moddingplayground.thematic.impl.block.entity.theme.chest;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntityType;
@@ -8,10 +8,12 @@ import net.moddingplayground.thematic.api.BuiltinDecoratables;
 import net.moddingplayground.thematic.api.item.Themed;
 import net.moddingplayground.thematic.api.theme.Theme;
 import net.moddingplayground.thematic.api.theme.data.preset.block.entity.BlockEntityDecoratableData;
+import net.moddingplayground.thematic.api.util.ChestSoundViewerCountManager;
 
-public abstract class TrappedThemedChestBlockEntity extends TrappedChestBlockEntity implements Themed {
-    public TrappedThemedChestBlockEntity(BlockPos blockPos, BlockState blockState) {
+public abstract class TrappedMetalChestBlockEntity extends TrappedChestBlockEntity implements Themed {
+    public TrappedMetalChestBlockEntity(BlockPos blockPos, BlockState blockState) {
         super(blockPos, blockState);
+        ChestSoundViewerCountManager.replace(this, MetalChestBlockEntity::getOpenSound, MetalChestBlockEntity::getCloseSound);
     }
 
     @Override

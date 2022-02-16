@@ -1,0 +1,23 @@
+{
+  "block.rustic_chest.treasure_close": {
+    "sounds": [
+      "thematic:block/rustic_chest/treasure_close",
+      "thematic:block/rustic_chest/treasure_close2",
+      "thematic:block/rustic_chest/treasure_close3"
+    ],
+    "subtitle": "subtitles.block.chest.close"
+  },
+  "block.rustic_chest.treasure_open": {
+    "sounds": [ "thematic:block/rustic_chest/treasure_open" ],
+    "subtitle": "subtitles.block.chest.open"
+  },
+
+  "block.chest_metal.close": {
+    "sounds": [ "thematic:block/chest_metal/close" ],
+    "subtitle": "subtitles.block.chest.close"
+  },
+  "block.chest_metal.open": {
+    "sounds": [ "thematic:block/chest_metal/open" ],
+    "subtitle": "subtitles.block.chest.open"
+  }
+}
