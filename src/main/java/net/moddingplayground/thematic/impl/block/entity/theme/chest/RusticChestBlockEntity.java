@@ -1,4 +1,4 @@
-package net.moddingplayground.thematic.impl.block.entity.theme;
+package net.moddingplayground.thematic.impl.block.entity.theme.chest;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ChestBlock;
@@ -9,7 +9,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.moddingplayground.thematic.api.BuiltinThemes;
-import net.moddingplayground.thematic.api.block.entity.theme.ThemedChestBlockEntity;
+import net.moddingplayground.thematic.api.block.entity.theme.chest.ThemedChestBlockEntity;
 import net.moddingplayground.thematic.api.tag.ThematicItemTags;
 import net.moddingplayground.thematic.api.theme.Theme;
 import net.moddingplayground.thematic.impl.block.ThematicProperties;

@@ -10,7 +10,7 @@ import net.minecraft.block.enums.ChestType;
 import net.minecraft.util.Identifier;
 import net.moddingplayground.thematic.api.theme.Theme;
 import net.moddingplayground.thematic.api.theme.data.preset.block.entity.chest.ChestDecoratableData;
-import net.moddingplayground.thematic.impl.block.entity.theme.RusticChestBlockEntity;
+import net.moddingplayground.thematic.impl.block.entity.theme.chest.RusticChestBlockEntity;
 import net.moddingplayground.thematic.impl.block.theme.chest.RusticChestBlock;
 import org.apache.commons.compress.utils.Lists;
 

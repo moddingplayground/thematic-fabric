@@ -11,7 +11,7 @@ import net.minecraft.util.Identifier;
 import net.moddingplayground.thematic.api.theme.Theme;
 import net.moddingplayground.thematic.api.theme.data.preset.block.entity.chest.ChestDecoratableData;
 import net.moddingplayground.thematic.api.theme.data.preset.block.entity.chest.TrappedChestDecoratableData;
-import net.moddingplayground.thematic.impl.block.entity.theme.TrappedRusticChestBlockEntity;
+import net.moddingplayground.thematic.impl.block.entity.theme.chest.TrappedRusticChestBlockEntity;
 import net.moddingplayground.thematic.impl.block.theme.chest.TrappedRusticChestBlock;
 import org.apache.commons.compress.utils.Lists;
 
