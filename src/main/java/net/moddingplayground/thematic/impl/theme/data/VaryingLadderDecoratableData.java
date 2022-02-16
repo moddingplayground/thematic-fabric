@@ -4,7 +4,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.block.AbstractStateModelGenerator;
 import net.moddingplayground.thematic.api.theme.Theme;
-import net.moddingplayground.thematic.api.theme.data.preset.LadderDecoratableData;
+import net.moddingplayground.thematic.api.theme.data.preset.block.LadderDecoratableData;
 
 import java.util.function.Consumer;
 

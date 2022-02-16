@@ -4,16 +4,11 @@ import com.google.common.reflect.Reflection;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
-import net.minecraft.block.entity.ChestBlockEntity;
-import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.moddingplayground.frame.api.util.InitializationLogger;
-import net.moddingplayground.thematic.api.BuiltinDecoratables;
 import net.moddingplayground.thematic.api.BuiltinThemes;
 import net.moddingplayground.thematic.api.Thematic;
+import net.moddingplayground.thematic.api.client.util.ThematicClientUtil;
 import net.moddingplayground.thematic.api.theme.Decoratable;
-import net.moddingplayground.thematic.api.theme.Theme;
-import net.moddingplayground.thematic.api.theme.data.preset.BlockEntityDecoratableData;
 import net.moddingplayground.thematic.impl.client.model.ThematicEntityModelLayers;
 import net.moddingplayground.thematic.impl.client.render.block.entity.MechanicalChestBlockEntityRenderer;
 import net.moddingplayground.thematic.impl.client.render.block.entity.RusticChestBlockEntityRenderer;
@@ -37,15 +32,11 @@ public class ThematicClientImpl implements Thematic, ClientModInitializer {
         Thematic.DECORATABLE_REGISTRY.forEach(Decoratable::registerClient);
 
         Reflection.initialize(ThematicEntityModelLayers.class);
-        this.registerChestRenderer(BuiltinThemes.RUSTIC, RusticChestBlockEntityRenderer::new);
-        this.registerChestRenderer(BuiltinThemes.SUNKEN, SunkenChestBlockEntityRenderer::new);
-        this.registerChestRenderer(BuiltinThemes.MECHANICAL, MechanicalChestBlockEntityRenderer::new);
+        ThematicClientUtil.registerChestRenderer(BuiltinThemes.RUSTIC, RusticChestBlockEntityRenderer::new);
+        ThematicClientUtil.registerChestRenderer(BuiltinThemes.SUNKEN, SunkenChestBlockEntityRenderer::new);
+        ThematicClientUtil.registerChestRenderer(BuiltinThemes.MECHANICAL, MechanicalChestBlockEntityRenderer::new);
 
         this.initializer.finish();
-    }
-
-    public void registerChestRenderer(Theme theme, BlockEntityRendererFactory<ChestBlockEntity> renderer) {
-        BlockEntityRendererRegistry.register(BlockEntityDecoratableData.getBlockEntityType(theme, BuiltinDecoratables.CHEST), renderer);
     }
 
     public static ThematicClientImpl getInstance() {

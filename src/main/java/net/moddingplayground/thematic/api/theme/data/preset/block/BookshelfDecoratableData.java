@@ -1,4 +1,4 @@
-package net.moddingplayground.thematic.api.theme.data.preset;
+package net.moddingplayground.thematic.api.theme.data.preset.block;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;

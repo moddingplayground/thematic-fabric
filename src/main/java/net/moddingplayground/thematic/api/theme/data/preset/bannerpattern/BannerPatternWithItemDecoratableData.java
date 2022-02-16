@@ -1,4 +1,4 @@
-package net.moddingplayground.thematic.api.theme.data.preset;
+package net.moddingplayground.thematic.api.theme.data.preset.bannerpattern;
 
 import com.google.common.base.Suppliers;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;

@@ -6,9 +6,11 @@
     "thematic:sunken_ladder",
     "thematic:sunken_bookshelf",
     "thematic:sunken_chest",
+    "thematic:trapped_sunken_chest",
     "thematic:mechanical_lantern",
     "thematic:mechanical_ladder",
     "thematic:mechanical_bookshelf",
-    "thematic:mechanical_chest"
+    "thematic:mechanical_chest",
+    "thematic:trapped_mechanical_chest"
   ]
 }

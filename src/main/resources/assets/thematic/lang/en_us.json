@@ -33,6 +33,10 @@
   "block.thematic.sunken_chest": "Treasure Chest",
   "block.thematic.mechanical_chest": "Copper Chest",
 
+  "block.thematic.trapped_rustic_chest": "Trapped Coffer",
+  "block.thematic.trapped_sunken_chest": "Trapped Treasure Chest",
+  "block.thematic.trapped_mechanical_chest": "Trapped Copper Chest",
+
   "item.thematic.rope_banner_pattern": "Banner Pattern",
   "item.thematic.rope_banner_pattern.desc": "Rope",
   "item.thematic.anchor_banner_pattern": "Banner Pattern",

@@ -1,4 +1,4 @@
-package net.moddingplayground.thematic.api.theme.data.preset;
+package net.moddingplayground.thematic.api.theme.data.preset.block;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

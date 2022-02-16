@@ -1,4 +1,4 @@
-package net.moddingplayground.thematic.api.theme.data.preset;
+package net.moddingplayground.thematic.api.theme.data.preset.block.entity;
 
 import com.google.common.base.Suppliers;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
@@ -10,6 +10,7 @@ import net.minecraft.util.registry.Registry;
 import net.moddingplayground.thematic.api.item.ThemedBlockItem;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.Theme;
+import net.moddingplayground.thematic.api.theme.data.preset.block.BlockItemDecoratableData;
 
 import java.util.function.Supplier;
 

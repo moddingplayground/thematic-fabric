@@ -1,4 +1,4 @@
-package net.moddingplayground.thematic.api.theme.data.preset;
+package net.moddingplayground.thematic.api.theme.data.preset.block.entity;
 
 import com.google.common.base.Suppliers;
 import net.fabricmc.api.EnvType;
@@ -34,8 +34,8 @@ import static net.moddingplayground.frame.api.toymaker.v0.generator.model.block.
 
 public class ChestDecoratableData extends BlockEntityDecoratableData<ChestBlockEntity> {
     private final Supplier<ChestBlockEntity> blockEntityForRender;
-    private final Block particle;
     private final Consumer<FabricBlockSettings> modifier;
+    private final Block particle;
     private final boolean wooden;
 
     public ChestDecoratableData(Theme theme, Block particle, Consumer<FabricBlockSettings> modifier, boolean wooden) {
@@ -94,7 +94,7 @@ public class ChestDecoratableData extends BlockEntityDecoratableData<ChestBlockE
         Theme theme = this.getTheme();
 
         ClientSpriteRegistryCallback.event(TexturedRenderLayers.CHEST_ATLAS_TEXTURE).register((texture, registry) -> {
-            for (ChestType type : ChestType.values()) registry.register(ThemedChestBlock.TextureStore.createTexture(theme, type));
+            for (ChestType type : ChestType.values()) registry.register(ThemedChestBlock.TextureStore.createTexture(theme, type, false));
         });
 
         BuiltinItemRendererRegistry.INSTANCE.register(block, (stack, mode, matrices, vertices, light, overlay) -> {
