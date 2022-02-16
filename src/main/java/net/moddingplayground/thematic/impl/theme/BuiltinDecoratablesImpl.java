@@ -9,14 +9,14 @@ import net.moddingplayground.thematic.api.Thematic;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.data.preset.bannerpattern.BannerPatternWithItemDecoratableData;
 import net.moddingplayground.thematic.api.theme.data.preset.block.BookshelfDecoratableData;
-import net.moddingplayground.thematic.api.theme.data.preset.block.entity.ChestDecoratableData;
 import net.moddingplayground.thematic.api.theme.data.preset.block.LadderDecoratableData;
+import net.moddingplayground.thematic.api.theme.data.preset.block.LadderVaryingDecoratableData;
 import net.moddingplayground.thematic.api.theme.data.preset.block.LanternDecoratableData;
+import net.moddingplayground.thematic.api.theme.data.preset.block.entity.ChestDecoratableData;
 import net.moddingplayground.thematic.api.theme.data.preset.block.entity.TrappedChestDecoratableData;
 import net.moddingplayground.thematic.impl.block.theme.lantern.MechanicalLanternBlock;
 import net.moddingplayground.thematic.impl.block.theme.lantern.RusticLanternBlock;
 import net.moddingplayground.thematic.impl.block.theme.lantern.SunkenLanternBlock;
-import net.moddingplayground.thematic.impl.theme.data.VaryingLadderDecoratableData;
 
 import static net.moddingplayground.thematic.impl.theme.BuiltinThemesImpl.*;
 
@@ -33,7 +33,7 @@ public final class BuiltinDecoratablesImpl {
 
     public static final Decoratable LADDER = register("ladder", "%s_ladder")
         .add(RUSTIC, LadderDecoratableData::new)
-        .add(SUNKEN, t -> new VaryingLadderDecoratableData(t, 3, s -> s.sounds(BlockSoundGroup.CHAIN).strength(3.5f).requiresTool(), false))
+        .add(SUNKEN, t -> new LadderVaryingDecoratableData(t, 3, s -> s.sounds(BlockSoundGroup.CHAIN).strength(3.5f).requiresTool(), false))
         .add(MECHANICAL, t -> new LadderDecoratableData(t, s -> s.sounds(BlockSoundGroup.COPPER).strength(3.5f).requiresTool(), false));
 
     public static final Decoratable BOOKSHELF = register("bookshelf", "%s_bookshelf")
