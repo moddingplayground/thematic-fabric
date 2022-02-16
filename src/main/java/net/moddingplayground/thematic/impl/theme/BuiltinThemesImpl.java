@@ -8,9 +8,9 @@ import net.moddingplayground.thematic.api.theme.ThemeColors;
 import net.moddingplayground.thematic.impl.item.ThematicItems;
 
 public final class BuiltinThemesImpl {
-    public static final Theme RUSTIC = register("rustic", new Theme(() -> ThematicItems.ANCIENT_ROPE, ThemeColors.of(0xA48365, 0x8B6C52)));
-    public static final Theme SUNKEN = register("sunken", new Theme(() -> ThematicItems.OVERGROWN_ANCHOR, ThemeColors.of(0x737E96, 0x575F71)));
-    public static final Theme MECHANICAL = register("mechanical", new Theme(() -> ThematicItems.OXIDIZED_COG, ThemeColors.of(0x6EC59F, 0x4C9484)));
+    public static final Theme RUSTIC = register("rustic", new Theme(() -> ThematicItems.ANCIENT_ROPE, new ThemeColors(0xA48365, 0x8B6C52)));
+    public static final Theme SUNKEN = register("sunken", new Theme(() -> ThematicItems.OVERGROWN_ANCHOR, new ThemeColors(0x737E96, 0x575F71)));
+    public static final Theme MECHANICAL = register("mechanical", new Theme(() -> ThematicItems.OXIDIZED_COG, new ThemeColors(0x6EC59F, 0x4C9484)));
 
     private BuiltinThemesImpl() {}
 
