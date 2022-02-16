@@ -25,7 +25,7 @@ public class RusticChestBlockEntityRenderer extends ThematicChestBlockEntityRend
     public float getOpenFactor(DoubleBlockProperties.PropertySource<? extends ChestBlockEntity> property, ChestBlockEntity entity, float tickDelta) {
         BlockState state = entity.getCachedState();
         float ret = super.getOpenFactor(property, entity, tickDelta);
-        return state.get(ThematicProperties.TREASURE) ? ret + 0.1F : ret;
+        return state.get(ThematicProperties.TREASURE) ? Math.max(0.1F, ret) : ret;
     }
 
     public static TexturedModelData getSingleTexturedModelData() {
