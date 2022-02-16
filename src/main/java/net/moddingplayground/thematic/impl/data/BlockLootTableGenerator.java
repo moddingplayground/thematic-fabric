@@ -1,13 +1,13 @@
-package net.moddingplayground.thematic.impl.datagen;
+package net.moddingplayground.thematic.impl.data;
 
-import net.moddingplayground.frame.api.toymaker.v0.generator.recipe.AbstractRecipeGenerator;
+import net.moddingplayground.frame.api.toymaker.v0.generator.loot.AbstractBlockLootTableGenerator;
 import net.moddingplayground.thematic.api.Thematic;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.Theme;
 import net.moddingplayground.thematic.api.theme.data.DecoratableDataToymaker;
 
-public class RecipeGenerator extends AbstractRecipeGenerator {
-    public RecipeGenerator(String modId) {
+public class BlockLootTableGenerator extends AbstractBlockLootTableGenerator {
+    public BlockLootTableGenerator(String modId) {
         super(modId);
     }
 
@@ -15,7 +15,7 @@ public class RecipeGenerator extends AbstractRecipeGenerator {
     public void generate() {
         for (Theme theme : Thematic.THEME_REGISTRY) {
             for (Decoratable decoratable : Thematic.DECORATABLE_REGISTRY) {
-                decoratable.getData(theme, DecoratableDataToymaker.class).ifPresent(t -> t.generateRecipes(this));
+                decoratable.getData(theme, DecoratableDataToymaker.class).ifPresent(t -> t.generateBlockLootTables(this));
             }
         }
     }

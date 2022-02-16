@@ -1,4 +1,4 @@
-package net.moddingplayground.thematic.impl.datagen;
+package net.moddingplayground.thematic.impl.data;
 
 import net.minecraft.loot.context.LootContextTypes;
 import net.moddingplayground.frame.api.toymaker.v0.ToymakerEntrypoint;

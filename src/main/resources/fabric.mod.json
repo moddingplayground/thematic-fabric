@@ -34,7 +34,7 @@
   "entrypoints": {
     "main":     [ "net.moddingplayground.thematic.impl.ThematicImpl" ],
     "client":   [ "net.moddingplayground.thematic.impl.client.ThematicClientImpl" ],
-    "toymaker": [ "net.moddingplayground.thematic.impl.datagen.ThematicToymakerImpl" ],
+    "toymaker": [ "net.moddingplayground.thematic.impl.data.ThematicToymakerImpl" ],
     "thematic": [ "net.moddingplayground.thematic.impl.ThematicMetaImpl" ]
   },
   "mixins": [ "thematic.mixins.json" ],

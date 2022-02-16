@@ -1,4 +1,4 @@
-package net.moddingplayground.thematic.impl.datagen;
+package net.moddingplayground.thematic.impl.data;
 
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.item.AbstractItemModelGenerator;
 import net.moddingplayground.thematic.api.Thematic;
