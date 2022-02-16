@@ -34,16 +34,8 @@ public class MechanicalChestBlockEntityRenderer extends ThematicChestBlockEntity
             LID,
             ModelPartBuilder.create()
                             .uv(0, 0)
-                            .cuboid(-7.0F, -9.0F, -14.0F, 14.0F, 5.0F, 14.0F)
-                            .uv(0, 7)
-                            .cuboid(-7.0F, -4.0F, -14.0F, 0.0F, 4.0F, 14.0F)
-                            .uv(0, 15)
-                            .cuboid(7.0F, -4.0F, -14.0F, 0.0F, 4.0F, 14.0F)
-                            .uv(0, 25)
-                            .cuboid(-7.0F, -4.0F, -14.0F, 14.0F, 4.0F, 0.0F)
-                            .uv(0, 33)
-                            .cuboid(-7.0F, -4.0F, 0.0F, 14.0F, 4.0F, 0.0F),
-            ModelTransform.of(0.0F, 19.0F, 7.0F, -1.0036F, 0.0F, 0.0F)
+                            .cuboid(-7.0F, -9.0F, -14.0F, 14.0F, 9.0F, 14.0F),
+            ModelTransform.pivot(0.0F, 19.0F, 7.0F)
         );
 
         ModelPartData latch = lid.addChild(
@@ -57,7 +49,7 @@ public class MechanicalChestBlockEntityRenderer extends ThematicChestBlockEntity
         return TexturedModelData.of(data, 64, 64);
     }
 
-    public static TexturedModelData getDoubleLeftTexturedModelData() {
+    public static TexturedModelData getLeftTexturedModelData() {
         ModelData data = new ModelData();
         ModelPartData root = data.getRoot();
 
@@ -73,9 +65,7 @@ public class MechanicalChestBlockEntityRenderer extends ThematicChestBlockEntity
             LID,
             ModelPartBuilder.create()
                             .uv(0, 0)
-                            .cuboid(0.0F, -9.0F, -14.0F, 15.0F, 5.0F, 14.0F)
-                            .uv(0, 19)
-                            .cuboid(0.0F, -4.0F, -14.0F, 15.0F, 4.0F, 14.0F),
+                            .cuboid(0.0F, -9.0F, -14.0F, 15.0F, 9.0F, 14.0F),
             ModelTransform.pivot(-8.0F, 19.0F, 7.0F)
         );
 
@@ -90,7 +80,7 @@ public class MechanicalChestBlockEntityRenderer extends ThematicChestBlockEntity
         return TexturedModelData.of(data, 64, 64);
     }
 
-    public static TexturedModelData getDoubleRightTexturedModelData() {
+    public static TexturedModelData getRightTexturedModelData() {
         ModelData data = new ModelData();
         ModelPartData root = data.getRoot();
 
@@ -106,9 +96,7 @@ public class MechanicalChestBlockEntityRenderer extends ThematicChestBlockEntity
             LID,
             ModelPartBuilder.create()
                             .uv(0, 0)
-                            .cuboid(-15.0F, -9.0F, -14.0F, 15.0F, 5.0F, 14.0F)
-                            .uv(0, 19)
-                            .cuboid(-15.0F, -4.0F, -14.0F, 15.0F, 4.0F, 14.0F),
+                            .cuboid(-15.0F, -9.0F, -14.0F, 15.0F, 9.0F, 14.0F),
             ModelTransform.pivot(8.0F, 19.0F, 7.0F)
         );
 
@@ -117,7 +105,7 @@ public class MechanicalChestBlockEntityRenderer extends ThematicChestBlockEntity
             ModelPartBuilder.create()
                             .uv(0, 0)
                             .cuboid(-10.0F, -3.0F, -15.0F, 4.0F, 4.0F, 1.0F),
-            ModelTransform.pivot(0.0F, 0.0F, 0.0F)
+            ModelTransform.NONE
         );
 
         return TexturedModelData.of(data, 64, 64);

@@ -64,16 +64,16 @@ public class ThematicChestBlockEntityRenderer<T extends ChestBlockEntity> implem
 
     private boolean christmas = false;
 
-    public ThematicChestBlockEntityRenderer(BlockEntityRendererFactory.Context ctx, EntityModelLayer single, EntityModelLayer doubleLeft, EntityModelLayer doubleRight) {
+    public ThematicChestBlockEntityRenderer(BlockEntityRendererFactory.Context ctx, EntityModelLayer single, EntityModelLayer left, EntityModelLayer right) {
         ModelPart rootSingle = ctx.getLayerModelPart(single);
         this.singleBase = rootSingle.getChild(BASE);
         this.singleLid = rootSingle.getChild(LID);
         this.singleLatch = this.singleLid.getChild(LATCH);
-        ModelPart rootDoubleLeft = ctx.getLayerModelPart(doubleLeft);
+        ModelPart rootDoubleLeft = ctx.getLayerModelPart(left);
         this.doubleLeftBase = rootDoubleLeft.getChild(BASE);
         this.doubleLeftLid = rootDoubleLeft.getChild(LID);
         this.doubleLeftLatch = this.doubleLeftLid.getChild(LATCH);
-        ModelPart rootDoubleRight = ctx.getLayerModelPart(doubleRight);
+        ModelPart rootDoubleRight = ctx.getLayerModelPart(right);
         this.doubleRightBase = rootDoubleRight.getChild(BASE);
         this.doubleRightLid = rootDoubleRight.getChild(LID);
         this.doubleRightLatch = this.doubleRightLid.getChild(LATCH);

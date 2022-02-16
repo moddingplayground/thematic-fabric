@@ -61,7 +61,7 @@ public class RusticChestBlockEntityRenderer extends ThematicChestBlockEntityRend
         return TexturedModelData.of(data, 64, 48);
     }
 
-    public static TexturedModelData getDoubleLeftTexturedModelData() {
+    public static TexturedModelData getLeftTexturedModelData() {
         ModelData data = new ModelData();
         ModelPartData root = data.getRoot();
 
@@ -94,7 +94,7 @@ public class RusticChestBlockEntityRenderer extends ThematicChestBlockEntityRend
         return TexturedModelData.of(data, 64, 48);
     }
 
-    public static TexturedModelData getDoubleRightTexturedModelData() {
+    public static TexturedModelData getRightTexturedModelData() {
         ModelData data = new ModelData();
         ModelPartData root = data.getRoot();
 

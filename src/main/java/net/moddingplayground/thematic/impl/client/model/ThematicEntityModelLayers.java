@@ -13,16 +13,16 @@ import net.moddingplayground.thematic.impl.client.render.block.entity.SunkenChes
 @Environment(EnvType.CLIENT)
 public class ThematicEntityModelLayers {
     public static final EntityModelLayer RUSTIC_CHEST = main("rustic_chest", RusticChestBlockEntityRenderer::getSingleTexturedModelData);
-    public static final EntityModelLayer RUSTIC_DOUBLE_CHEST_LEFT = main("rustic_double_chest_left", RusticChestBlockEntityRenderer::getDoubleLeftTexturedModelData);
-    public static final EntityModelLayer RUSTIC_DOUBLE_CHEST_RIGHT = main("rustic_double_chest_right", RusticChestBlockEntityRenderer::getDoubleRightTexturedModelData);
+    public static final EntityModelLayer RUSTIC_DOUBLE_CHEST_LEFT = main("rustic_double_chest_left", RusticChestBlockEntityRenderer::getLeftTexturedModelData);
+    public static final EntityModelLayer RUSTIC_DOUBLE_CHEST_RIGHT = main("rustic_double_chest_right", RusticChestBlockEntityRenderer::getRightTexturedModelData);
 
     public static final EntityModelLayer SUNKEN_CHEST = main("sunken_chest", SunkenChestBlockEntityRenderer::getSingleTexturedModelData);
-    public static final EntityModelLayer SUNKEN_DOUBLE_CHEST_LEFT = main("sunken_double_chest_left", SunkenChestBlockEntityRenderer::getDoubleLeftTexturedModelData);
-    public static final EntityModelLayer SUNKEN_DOUBLE_CHEST_RIGHT = main("sunken_double_chest_right", SunkenChestBlockEntityRenderer::getDoubleRightTexturedModelData);
+    public static final EntityModelLayer SUNKEN_DOUBLE_CHEST_LEFT = main("sunken_double_chest_left", SunkenChestBlockEntityRenderer::getLeftTexturedModelData);
+    public static final EntityModelLayer SUNKEN_DOUBLE_CHEST_RIGHT = main("sunken_double_chest_right", SunkenChestBlockEntityRenderer::getRightTexturedModelData);
 
     public static final EntityModelLayer MECHANICAL_CHEST = main("mechanical_chest", MechanicalChestBlockEntityRenderer::getSingleTexturedModelData);
-    public static final EntityModelLayer MECHANICAL_DOUBLE_CHEST_LEFT = main("mechanical_double_chest_left", MechanicalChestBlockEntityRenderer::getDoubleLeftTexturedModelData);
-    public static final EntityModelLayer MECHANICAL_DOUBLE_CHEST_RIGHT = main("mechanical_double_chest_right", MechanicalChestBlockEntityRenderer::getDoubleRightTexturedModelData);
+    public static final EntityModelLayer MECHANICAL_DOUBLE_CHEST_LEFT = main("mechanical_double_chest_left", MechanicalChestBlockEntityRenderer::getLeftTexturedModelData);
+    public static final EntityModelLayer MECHANICAL_DOUBLE_CHEST_RIGHT = main("mechanical_double_chest_right", MechanicalChestBlockEntityRenderer::getRightTexturedModelData);
 
     private static EntityModelLayer register(String id, String layer, EntityModelLayerRegistry.TexturedModelDataProvider provider) {
         EntityModelLayer ret = new EntityModelLayer(new Identifier(Thematic.MOD_ID, id), layer);
