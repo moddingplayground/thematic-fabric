@@ -1,0 +1,9 @@
+{
+  "type": "thematic:theming",
+  "theme": "thematic:sunken",
+  "ingredient": {
+    "item": "minecraft:ladder"
+  },
+  "result": "thematic:sunken_ladder",
+  "count": 1
+}

@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.recipe.Ingredient;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.Identifier;
 import net.moddingplayground.frame.api.contentregistries.v0.StateRegistry;
@@ -61,6 +62,11 @@ public class BookshelfDecoratableData extends BlockItemDecoratableData {
     public void generateBlockTags(AbstractTagGenerator<Block> gen) {
         Block block = this.getBlock();
         gen.add(this.isWooden() ? BlockTags.AXE_MINEABLE : BlockTags.PICKAXE_MINEABLE, block);
+    }
+
+    @Override
+    protected Ingredient getIngredient() {
+        return Ingredient.ofItems(Blocks.BOOKSHELF);
     }
 
     public static Block createBookshelf(Consumer<FabricBlockSettings> modifier) {

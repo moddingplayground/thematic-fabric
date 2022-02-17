@@ -1,0 +1,43 @@
+{
+  "parent": "thematic:recipes/root",
+  "rewards": {
+    "recipes": [
+      "thematic:decorators_table"
+    ]
+  },
+  "criteria": {
+    "has_plank": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "minecraft:planks"
+          }
+        ]
+      }
+    },
+    "has_dye": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "thematic:dyes"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "thematic:decorators_table"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_plank",
+      "has_dye",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -21,6 +21,7 @@ import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.recipe.Ingredient;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
@@ -152,6 +153,11 @@ public class ChestDecoratableData<C extends ChestBlockEntity> extends BlockEntit
     public void generateBlockTags(AbstractTagGenerator<Block> gen) {
         Block block = this.getBlock();
         gen.add(this.isWooden() ? BlockTags.AXE_MINEABLE : BlockTags.PICKAXE_MINEABLE, block);
+    }
+
+    @Override
+    protected Ingredient getIngredient() {
+        return Ingredient.ofItems(Blocks.CHEST);
     }
 
     public static class ChestTextureContext {

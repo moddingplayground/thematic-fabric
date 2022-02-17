@@ -3,7 +3,6 @@ package net.moddingplayground.thematic.api.theme;
 import com.google.common.collect.Maps;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.util.Identifier;
 import net.moddingplayground.thematic.api.Thematic;
 import net.moddingplayground.thematic.api.theme.data.DecoratableData;
 
@@ -49,7 +48,6 @@ public class Decoratable {
 
     @Override
     public String toString() {
-        Identifier id = Thematic.DECORATABLE_REGISTRY.getId(this);
-        return Optional.ofNullable(id).map(Identifier::toString).orElse("Unregistered Decoratable");
+        return Thematic.DECORATABLE_REGISTRY.getId(this).toString();
     }
 }

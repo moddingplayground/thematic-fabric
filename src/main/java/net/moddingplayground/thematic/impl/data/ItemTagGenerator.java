@@ -1,5 +1,6 @@
 package net.moddingplayground.thematic.impl.data;
 
+import net.minecraft.item.DyeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.tag.ItemTags;
@@ -41,6 +42,10 @@ public class ItemTagGenerator extends AbstractTagGenerator<Item> {
             Items.GOLD_NUGGET,
             Items.IRON_NUGGET
         ).add(ItemTags.MUSIC_DISCS);
+
+        for (Item item : Registry.ITEM) {
+            if (item instanceof DyeItem) this.add(ThematicItemTags.DYES, item);
+        }
 
         for (Theme theme : Thematic.THEME_REGISTRY) {
             for (Decoratable decoratable : Thematic.DECORATABLE_REGISTRY) {

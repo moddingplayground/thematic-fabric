@@ -2,7 +2,7 @@
   "parent": "thematic:recipes/root",
   "rewards": {
     "recipes": [
-      "thematic:banner_pattern/cog_banner_pattern"
+      "thematic:mechanical/cog_banner_pattern"
     ]
   },
   "criteria": {
@@ -33,7 +33,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "thematic:banner_pattern/cog_banner_pattern"
+        "recipe": "thematic:mechanical/cog_banner_pattern"
       }
     }
   },

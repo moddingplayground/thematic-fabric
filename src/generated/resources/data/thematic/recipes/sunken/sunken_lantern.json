@@ -1,0 +1,9 @@
+{
+  "type": "thematic:theming",
+  "theme": "thematic:sunken",
+  "ingredient": {
+    "item": "minecraft:lantern"
+  },
+  "result": "thematic:sunken_lantern",
+  "count": 1
+}

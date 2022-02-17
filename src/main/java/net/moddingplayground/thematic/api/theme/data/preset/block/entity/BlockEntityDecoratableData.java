@@ -14,7 +14,7 @@ import net.moddingplayground.thematic.api.theme.data.preset.block.BlockItemDecor
 
 import java.util.function.Supplier;
 
-public class BlockEntityDecoratableData<T extends BlockEntity> extends BlockItemDecoratableData {
+public abstract class BlockEntityDecoratableData<T extends BlockEntity> extends BlockItemDecoratableData {
     protected Supplier<BlockEntityType<T>> blockEntityType;
 
     public BlockEntityDecoratableData(Theme theme, BlockEntityFactory<T> type, BlockFactory<T> block, ItemFactory item) {

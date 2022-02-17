@@ -1,12 +1,12 @@
 {
-  "parent": "thematic:recipes/root",
+  "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "thematic:banner_pattern/anchor_banner_pattern"
+      "thematic:sunken/sunken_bookshelf"
     ]
   },
   "criteria": {
-    "has_one": {
+    "has_theme": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -18,29 +18,16 @@
         ]
       }
     },
-    "has_two": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "minecraft:paper"
-            ]
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "thematic:banner_pattern/anchor_banner_pattern"
+        "recipe": "thematic:sunken/sunken_bookshelf"
       }
     }
   },
   "requirements": [
     [
-      "has_one",
-      "has_two",
+      "has_theme",
       "has_the_recipe"
     ]
   ]

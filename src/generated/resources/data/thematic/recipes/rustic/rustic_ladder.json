@@ -1,0 +1,9 @@
+{
+  "type": "thematic:theming",
+  "theme": "thematic:rustic",
+  "ingredient": {
+    "item": "minecraft:ladder"
+  },
+  "result": "thematic:rustic_ladder",
+  "count": 1
+}

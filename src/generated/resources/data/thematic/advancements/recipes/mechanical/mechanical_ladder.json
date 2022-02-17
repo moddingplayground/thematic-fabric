@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "thematic:mechanical/mechanical_ladder"
+    ]
+  },
+  "criteria": {
+    "has_theme": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "thematic:oxidized_cog"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "thematic:mechanical/mechanical_ladder"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_theme",
+      "has_the_recipe"
+    ]
+  ]
+}

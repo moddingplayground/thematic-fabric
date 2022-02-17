@@ -1,0 +1,9 @@
+{
+  "type": "thematic:theming",
+  "theme": "thematic:mechanical",
+  "ingredient": {
+    "item": "minecraft:lantern"
+  },
+  "result": "thematic:mechanical_lantern",
+  "count": 1
+}

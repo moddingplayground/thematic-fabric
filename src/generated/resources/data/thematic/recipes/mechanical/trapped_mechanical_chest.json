@@ -1,0 +1,9 @@
+{
+  "type": "thematic:theming",
+  "theme": "thematic:mechanical",
+  "ingredient": {
+    "item": "minecraft:trapped_chest"
+  },
+  "result": "thematic:trapped_mechanical_chest",
+  "count": 1
+}

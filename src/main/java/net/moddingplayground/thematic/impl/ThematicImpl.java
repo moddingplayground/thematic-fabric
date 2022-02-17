@@ -16,11 +16,16 @@ import net.moddingplayground.frame.api.util.GUIIcon;
 import net.moddingplayground.frame.api.util.InitializationLogger;
 import net.moddingplayground.thematic.api.Thematic;
 import net.moddingplayground.thematic.api.ThematicEntrypoint;
-import net.moddingplayground.thematic.api.item.Themed;
+import net.moddingplayground.thematic.api.item.ThemeItem;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.Theme;
 import net.moddingplayground.thematic.api.theme.ThemeColors;
+import net.moddingplayground.thematic.impl.block.ThematicBlocks;
 import net.moddingplayground.thematic.impl.item.ThematicItems;
+import net.moddingplayground.thematic.impl.recipe.ThematicRecipeSerializer;
+import net.moddingplayground.thematic.impl.recipe.ThematicRecipeType;
+import net.moddingplayground.thematic.impl.screen.ThematicScreenHandlerType;
+import net.moddingplayground.thematic.impl.stat.ThematicStats;
 
 import java.util.List;
 
@@ -78,11 +83,19 @@ public class ThematicImpl implements ModInitializer, Thematic {
                                      );
                                  }
                              })
-                             .defaultPredicate((group, item) -> item instanceof Themed)
+                             .defaultPredicate((group, item) -> item == ThematicBlocks.DECORATORS_TABLE.asItem() || item instanceof ThemeItem)
                              .build(new Identifier(MOD_ID, "themes"), g -> GUIIcon.of(() -> new Identifier(MOD_ID, "icon.png")));
 
-        // register all objects
-        Reflection.initialize(ThematicItems.class);
+        // register base objects
+        Reflection.initialize(
+            ThematicStats.class,
+            ThematicRecipeType.class, ThematicRecipeSerializer.class,
+            ThematicScreenHandlerType.class,
+            ThematicBlocks.class,
+            ThematicItems.class
+        );
+
+        // register all decoratables
         Thematic.DECORATABLE_REGISTRY.forEach(Decoratable::register);
 
         this.initializer.finish();

@@ -6,6 +6,7 @@ import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.Theme;
 import net.moddingplayground.thematic.api.theme.data.DecoratableDataToymaker;
 
+import static net.moddingplayground.thematic.impl.block.ThematicBlocks.*;
 import static net.moddingplayground.thematic.impl.item.ThematicItems.*;
 
 public class ItemModelGenerator extends AbstractItemModelGenerator {
@@ -15,6 +16,7 @@ public class ItemModelGenerator extends AbstractItemModelGenerator {
 
     @Override
     public void generate() {
+        this.block(DECORATORS_TABLE);
         this.add(ANCIENT_ROPE, OVERGROWN_ANCHOR, OXIDIZED_COG);
 
         for (Theme theme : Thematic.THEME_REGISTRY) {

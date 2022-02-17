@@ -1,6 +1,7 @@
 package net.moddingplayground.thematic.api;
 
 import net.minecraft.item.ItemGroup;
+import net.minecraft.util.registry.DefaultedRegistry;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.moddingplayground.thematic.api.theme.Decoratable;
@@ -15,8 +16,8 @@ public interface Thematic {
     String MOD_NAME = "Thematic";
     Logger LOGGER   = LoggerFactory.getLogger(MOD_ID);
 
-    Registry<Theme>       THEME_REGISTRY       = ThematicRegistry.THEME;
-    Registry<Decoratable> DECORATABLE_REGISTRY = ThematicRegistry.DECORATABLE;
+    DefaultedRegistry<Theme>       THEME_REGISTRY       = ThematicRegistry.THEME;
+    DefaultedRegistry<Decoratable> DECORATABLE_REGISTRY = ThematicRegistry.DECORATABLE;
 
     RegistryKey<? extends Registry<Theme>>       THEME_REGISTRY_KEY       = THEME_REGISTRY.getKey();
     RegistryKey<? extends Registry<Decoratable>> DECORATABLE_REGISTRY_KEY = DECORATABLE_REGISTRY.getKey();

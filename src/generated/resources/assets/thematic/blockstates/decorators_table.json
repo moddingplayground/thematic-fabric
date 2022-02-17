@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "thematic:block/decorators_table"
+    }
+  }
+}

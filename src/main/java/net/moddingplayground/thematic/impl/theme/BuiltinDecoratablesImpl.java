@@ -23,11 +23,6 @@ import net.moddingplayground.thematic.impl.theme.data.block.entity.chest.Trapped
 import static net.moddingplayground.thematic.impl.theme.BuiltinThemesImpl.*;
 
 public final class BuiltinDecoratablesImpl {
-    public static final Decoratable BANNER_PATTERN = register("banner_pattern", "%s")
-        .add(RUSTIC, t -> new BannerPatternWithItemDecoratableData(t, "rope_banner_pattern"))
-        .add(SUNKEN, t -> new BannerPatternWithItemDecoratableData(t, "anchor_banner_pattern"))
-        .add(MECHANICAL, t -> new BannerPatternWithItemDecoratableData(t, "cog_banner_pattern"));
-
     public static final Decoratable LANTERN = register("lantern", "%s_lantern")
         .add(RUSTIC, t -> new LanternDecoratableData(t, RusticLanternBlock::new))
         .add(SUNKEN, t -> new LanternDecoratableData(t, SunkenLanternBlock::new))
@@ -52,6 +47,11 @@ public final class BuiltinDecoratablesImpl {
         .add(RUSTIC, t -> new TrappedRusticChestDecoratableData(t, Blocks.SPRUCE_PLANKS))
         .add(SUNKEN, t -> new TrappedMetalChestDecoratableData(t, Blocks.CHAIN, s -> s.sounds(BlockSoundGroup.NETHERITE).requiresTool(), false))
         .add(MECHANICAL, t -> new TrappedMetalChestDecoratableData(t, Blocks.OXIDIZED_COPPER, s -> s.sounds(BlockSoundGroup.COPPER).requiresTool(), false));
+
+    public static final Decoratable BANNER_PATTERN = register("banner_pattern", "%s")
+        .add(RUSTIC, t -> new BannerPatternWithItemDecoratableData(t, "rope_banner_pattern"))
+        .add(SUNKEN, t -> new BannerPatternWithItemDecoratableData(t, "anchor_banner_pattern"))
+        .add(MECHANICAL, t -> new BannerPatternWithItemDecoratableData(t, "cog_banner_pattern"));
 
     private BuiltinDecoratablesImpl() {}
 

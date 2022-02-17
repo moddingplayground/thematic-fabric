@@ -1,0 +1,9 @@
+{
+  "type": "thematic:theming",
+  "theme": "thematic:sunken",
+  "ingredient": {
+    "item": "minecraft:bookshelf"
+  },
+  "result": "thematic:sunken_bookshelf",
+  "count": 1
+}

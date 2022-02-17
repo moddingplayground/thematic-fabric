@@ -1,0 +1,9 @@
+{
+  "type": "thematic:theming",
+  "theme": "thematic:sunken",
+  "ingredient": {
+    "item": "minecraft:chest"
+  },
+  "result": "thematic:sunken_chest",
+  "count": 1
+}

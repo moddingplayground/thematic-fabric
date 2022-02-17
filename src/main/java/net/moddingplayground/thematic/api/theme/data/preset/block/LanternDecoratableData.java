@@ -9,6 +9,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.item.Item;
+import net.minecraft.recipe.Ingredient;
 import net.minecraft.tag.BlockTags;
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.block.AbstractStateModelGenerator;
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.item.AbstractItemModelGenerator;
@@ -46,6 +47,11 @@ public class LanternDecoratableData extends BlockItemDecoratableData {
     @Override
     public void generateBlockTags(AbstractTagGenerator<Block> gen) {
         gen.add(BlockTags.PICKAXE_MINEABLE, this.getBlock());
+    }
+
+    @Override
+    protected Ingredient getIngredient() {
+        return Ingredient.ofItems(Blocks.LANTERN);
     }
 
     @FunctionalInterface public interface BlockFactory { Block create(AbstractBlock.Settings settings); }

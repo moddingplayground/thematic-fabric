@@ -4,12 +4,15 @@ import com.google.common.base.Suppliers;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.recipe.Ingredient;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.moddingplayground.frame.api.toymaker.v0.generator.loot.AbstractBlockLootTableGenerator;
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.block.AbstractStateModelGenerator;
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.item.AbstractItemModelGenerator;
+import net.moddingplayground.frame.api.toymaker.v0.generator.recipe.AbstractRecipeGenerator;
 import net.moddingplayground.thematic.api.Thematic;
+import net.moddingplayground.thematic.api.data.ThemingRecipeJsonFactory;
 import net.moddingplayground.thematic.api.item.ThemedBlockItem;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.Theme;
@@ -19,7 +22,7 @@ import net.moddingplayground.thematic.api.theme.data.DecoratableDataToymaker;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-public class BlockItemDecoratableData implements DecoratableData, DecoratableDataToymaker {
+public abstract class BlockItemDecoratableData implements DecoratableData, DecoratableDataToymaker {
     private final Theme theme;
     protected Supplier<Block> block;
     protected Supplier<Item> item;
@@ -91,6 +94,17 @@ public class BlockItemDecoratableData implements DecoratableData, DecoratableDat
     public void generateBlockLootTables(AbstractBlockLootTableGenerator gen) {
         gen.add(this.getBlock());
     }
+
+    @Override
+    public void generateRecipes(AbstractRecipeGenerator gen) {
+        Theme theme = this.getTheme();
+        Identifier id = theme.getId();
+        Item themeItem = theme.getItem();
+        Item item = this.getItem();
+        gen.add("%s/%s".formatted(id.getPath(), item), new ThemingRecipeJsonFactory(theme, this.getIngredient(), item).criterion("has_theme", gen.hasItem(themeItem)));
+    }
+
+    protected abstract Ingredient getIngredient();
 
     public static final BlockFactory NO_ITEM = () -> null;
 

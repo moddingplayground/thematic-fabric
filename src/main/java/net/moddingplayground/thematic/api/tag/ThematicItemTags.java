@@ -10,6 +10,7 @@ import net.moddingplayground.thematic.api.Thematic;
  * Item tags provided by Thematic.
  */
 public final class ThematicItemTags {
+    public static final Tag.Identified<Item> DYES = register("dyes");
     public static final Tag.Identified<Item> RUSTIC_TREASURE_ITEMS = register("rustic_treasure_items");
 
     private ThematicItemTags() {}

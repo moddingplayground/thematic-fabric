@@ -13,6 +13,7 @@ import net.moddingplayground.thematic.impl.client.model.ThematicEntityModelLayer
 import net.moddingplayground.thematic.impl.client.render.block.entity.MechanicalChestBlockEntityRenderer;
 import net.moddingplayground.thematic.impl.client.render.block.entity.RusticChestBlockEntityRenderer;
 import net.moddingplayground.thematic.impl.client.render.block.entity.SunkenChestBlockEntityRenderer;
+import net.moddingplayground.thematic.impl.screen.ThematicScreenHandlerType;
 
 @Environment(EnvType.CLIENT)
 public class ThematicClientImpl implements Thematic, ClientModInitializer {
@@ -32,6 +33,8 @@ public class ThematicClientImpl implements Thematic, ClientModInitializer {
         Thematic.DECORATABLE_REGISTRY.forEach(Decoratable::registerClient);
 
         Reflection.initialize(ThematicEntityModelLayers.class);
+        ThematicScreenHandlerType.onInitializeClient();
+
         ThematicClientUtil.registerChestRenderer(BuiltinThemes.RUSTIC, RusticChestBlockEntityRenderer::new);
         ThematicClientUtil.registerChestRenderer(BuiltinThemes.SUNKEN, SunkenChestBlockEntityRenderer::new);
         ThematicClientUtil.registerChestRenderer(BuiltinThemes.MECHANICAL, MechanicalChestBlockEntityRenderer::new);

@@ -66,10 +66,11 @@ public class BannerPatternWithItemDecoratableData extends BannerPatternDecoratab
     @Override
     public void generateRecipes(AbstractRecipeGenerator gen) {
         Theme theme = this.getTheme();
+        Identifier id = theme.getId();
         Item themeItem = theme.getItem();
-        Identifier id = this.createItemId();
         Item item = this.getItem();
-        gen.add("banner_pattern/%s".formatted(id.getPath()), gen.shapeless(themeItem, Items.PAPER, item, 1));
+        Identifier itemId = this.createItemId();
+        gen.add("%s/%s".formatted(id.getPath(), itemId.getPath()), gen.shapeless(themeItem, Items.PAPER, item, 1));
     }
 
     @FunctionalInterface public interface ItemFactory { Item create(Theme theme, FrameBannerPattern pattern, Item.Settings settings); }

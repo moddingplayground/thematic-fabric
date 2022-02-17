@@ -8,7 +8,10 @@
     "ItemAccessor",
     "ViewerCountManagerInvoker"
   ],
-  "client": [],
+  "client": [
+    "client.ClientRecipeBookMixin",
+    "client.ItemRendererInvoker"
+  ],
   "injectors": {
     "defaultRequire": 1
   }

@@ -1,0 +1,9 @@
+{
+  "type": "thematic:theming",
+  "theme": "thematic:mechanical",
+  "ingredient": {
+    "item": "minecraft:bookshelf"
+  },
+  "result": "thematic:mechanical_bookshelf",
+  "count": 1
+}

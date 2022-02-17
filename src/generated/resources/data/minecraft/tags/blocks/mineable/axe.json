@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "thematic:decorators_table",
     "thematic:rustic_ladder",
     "thematic:rustic_bookshelf",
     "thematic:rustic_chest",

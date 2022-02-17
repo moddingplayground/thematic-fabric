@@ -1,12 +1,15 @@
 package net.moddingplayground.thematic.api.theme;
 
 import com.google.common.base.Suppliers;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonPrimitive;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.util.Identifier;
 import net.moddingplayground.thematic.api.Thematic;
 import net.moddingplayground.thematic.api.item.Themed;
 
-import java.util.Optional;
 import java.util.function.Supplier;
 
 public class Theme {
@@ -56,12 +59,28 @@ public class Theme {
     }
 
     public static boolean tabPredicate(Theme theme, Item item) {
-        return item instanceof Themed themed && themed.getTheme() == theme && item != theme.getItem();
+        return item instanceof Themed themed && themed.getTheme() == theme;
+    }
+
+    public void toPacket(PacketByteBuf buf) {
+        buf.writeString(this.toString());
+    }
+
+    public static Theme fromPacket(PacketByteBuf buf) {
+        String theme = buf.readString();
+        return Thematic.THEME_REGISTRY.get(new Identifier(theme));
+    }
+
+    public JsonElement toJson() {
+        return new JsonPrimitive(this.toString());
+    }
+
+    public boolean matches(ItemStack stack) {
+        return stack.getItem() instanceof Themed themed && themed.getTheme() == this;
     }
 
     @Override
     public String toString() {
-        Identifier id = Thematic.THEME_REGISTRY.getId(this);
-        return Optional.ofNullable(id).map(Identifier::toString).orElse("Unregistered Theme");
+        return Thematic.THEME_REGISTRY.getId(this).toString();
     }
 }

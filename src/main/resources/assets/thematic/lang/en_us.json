@@ -2,6 +2,10 @@
   "mod.thematic.name": "Thematic",
   "mod.thematic.contact.discord": "Discord",
 
+  "block.thematic.decorators_table": "Decorator's Table",
+  "container.thematic:decorators_table": "Decorator's Table",
+  "stat.thematic.interact_with_decorators_table": "Interactions with Decorator's Table",
+
   "itemGroup.thematic.themes": "Thematic",
   "itemGroup.thematic.themes.tab": "§7Thematic§r > %s",
   "itemGroup.thematic.themes.tab.thematic:rustic": "Rustic",

@@ -9,6 +9,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.item.Item;
+import net.minecraft.recipe.Ingredient;
 import net.minecraft.tag.BlockTags;
 import net.moddingplayground.frame.api.contentregistries.v0.StateRegistry;
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.block.AbstractStateModelGenerator;
@@ -77,6 +78,11 @@ public class LadderDecoratableData extends BlockItemDecoratableData {
         Block block = this.getBlock();
         gen.add(BlockTags.CLIMBABLE, block);
         gen.add(this.isWooden() ? BlockTags.AXE_MINEABLE : BlockTags.PICKAXE_MINEABLE, block);
+    }
+
+    @Override
+    protected Ingredient getIngredient() {
+        return Ingredient.ofItems(Blocks.LADDER);
     }
 
     public static Block createLadder(Consumer<FabricBlockSettings> modifier) {

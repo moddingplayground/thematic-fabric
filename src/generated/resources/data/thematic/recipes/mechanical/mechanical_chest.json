@@ -1,0 +1,9 @@
+{
+  "type": "thematic:theming",
+  "theme": "thematic:mechanical",
+  "ingredient": {
+    "item": "minecraft:chest"
+  },
+  "result": "thematic:mechanical_chest",
+  "count": 1
+}

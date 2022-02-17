@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "north": "thematic:block/decorators_table_front",
+    "east": "thematic:block/decorators_table_east",
+    "south": "thematic:block/decorators_table_front",
+    "west": "thematic:block/decorators_table_west",
+    "up": "thematic:block/decorators_table_top",
+    "down": "thematic:block/decorators_table_bottom",
+    "particle": "thematic:block/decorators_table_bottom"
+  }
+}
