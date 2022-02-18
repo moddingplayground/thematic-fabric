@@ -25,6 +25,7 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.moddingplayground.frame.api.tags.v0.CommonTag;
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.InheritingModelGen;
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.block.AbstractStateModelGenerator;
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.item.AbstractItemModelGenerator;
@@ -149,7 +150,18 @@ public class TrappedChestDecoratableData<C extends TrappedChestBlockEntity> exte
     @Override
     public void generateBlockTags(AbstractTagGenerator<Block> gen) {
         Block block = this.getBlock();
-        gen.add(this.isWooden() ? BlockTags.AXE_MINEABLE : BlockTags.PICKAXE_MINEABLE, block);
+        boolean wooden = this.isWooden();
+        gen.add(wooden ? BlockTags.AXE_MINEABLE : BlockTags.PICKAXE_MINEABLE, block);
+        CommonTag.TRAPPED_CHESTS.run(tag -> gen.add(tag, block), t -> {});
+        if (wooden) CommonTag.TRAPPED_WOODEN_CHESTS.run(tag -> gen.add(tag, block), t -> {});
+    }
+
+    @Override
+    public void generateItemTags(AbstractTagGenerator<Item> gen) {
+        Item item = this.getItem();
+        boolean wooden = this.isWooden();
+        CommonTag.TRAPPED_CHESTS.run(t -> {}, tag -> gen.add(tag, item));
+        if (wooden) CommonTag.TRAPPED_WOODEN_CHESTS.run(t -> {}, tag -> gen.add(tag, item));
     }
 
     @Override

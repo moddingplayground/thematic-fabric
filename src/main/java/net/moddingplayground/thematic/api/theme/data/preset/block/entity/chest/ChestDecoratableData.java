@@ -26,6 +26,7 @@ import net.minecraft.tag.BlockTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
+import net.moddingplayground.frame.api.tags.v0.CommonTag;
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.InheritingModelGen;
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.block.AbstractStateModelGenerator;
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.item.AbstractItemModelGenerator;
@@ -152,7 +153,18 @@ public class ChestDecoratableData<C extends ChestBlockEntity> extends BlockEntit
     @Override
     public void generateBlockTags(AbstractTagGenerator<Block> gen) {
         Block block = this.getBlock();
-        gen.add(this.isWooden() ? BlockTags.AXE_MINEABLE : BlockTags.PICKAXE_MINEABLE, block);
+        boolean wooden = this.isWooden();
+        gen.add(wooden ? BlockTags.AXE_MINEABLE : BlockTags.PICKAXE_MINEABLE, block);
+        CommonTag.CHESTS.run(tag -> gen.add(tag, block), t -> {});
+        if (wooden) CommonTag.WOODEN_CHESTS.run(tag -> gen.add(tag, block), t -> {});
+    }
+
+    @Override
+    public void generateItemTags(AbstractTagGenerator<Item> gen) {
+        Item item = this.getItem();
+        boolean wooden = this.isWooden();
+        CommonTag.CHESTS.run(t -> {}, tag -> gen.add(tag, item));
+        if (wooden) CommonTag.WOODEN_CHESTS.run(t -> {}, tag -> gen.add(tag, item));
     }
 
     @Override
