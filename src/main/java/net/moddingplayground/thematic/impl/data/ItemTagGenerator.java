@@ -6,7 +6,7 @@ import net.minecraft.item.Items;
 import net.minecraft.tag.ItemTags;
 import net.minecraft.util.registry.Registry;
 import net.moddingplayground.frame.api.toymaker.v0.generator.tag.AbstractTagGenerator;
-import net.moddingplayground.thematic.api.Thematic;
+import net.moddingplayground.thematic.api.registry.ThematicRegistry;
 import net.moddingplayground.thematic.api.tag.ThematicItemTags;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.Theme;
@@ -47,8 +47,8 @@ public class ItemTagGenerator extends AbstractTagGenerator<Item> {
             if (item instanceof DyeItem) this.add(ThematicItemTags.DYES, item);
         }
 
-        for (Theme theme : Thematic.THEME_REGISTRY) {
-            for (Decoratable decoratable : Thematic.DECORATABLE_REGISTRY) {
+        for (Theme theme : ThematicRegistry.THEME) {
+            for (Decoratable decoratable : ThematicRegistry.DECORATABLE) {
                 decoratable.getData(theme, DecoratableDataToymaker.class).ifPresent(t -> t.generateItemTags(this));
             }
         }

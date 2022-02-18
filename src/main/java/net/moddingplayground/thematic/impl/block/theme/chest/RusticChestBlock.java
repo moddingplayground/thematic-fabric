@@ -6,10 +6,10 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.enums.ChestType;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.moddingplayground.thematic.api.block.ThematicProperties;
 import net.moddingplayground.thematic.api.block.theme.chest.ThemedChestBlock;
 import net.moddingplayground.thematic.api.theme.Theme;
 import net.moddingplayground.thematic.api.theme.data.preset.block.entity.chest.ChestDecoratableData;
-import net.moddingplayground.thematic.impl.block.ThematicProperties;
 import net.moddingplayground.thematic.impl.theme.data.block.entity.chest.RusticChestDecoratableData;
 
 public class RusticChestBlock extends ThemedChestBlock {

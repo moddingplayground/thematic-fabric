@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.moddingplayground.frame.api.rendering.v0.ChestTextureProvider;
 import net.moddingplayground.thematic.api.BuiltinDecoratables;
-import net.moddingplayground.thematic.api.item.Themed;
+import net.moddingplayground.thematic.api.util.Themed;
 import net.moddingplayground.thematic.api.theme.Theme;
 import net.moddingplayground.thematic.api.theme.data.preset.block.entity.BlockEntityDecoratableData;
 import net.moddingplayground.thematic.api.theme.data.preset.block.entity.chest.ChestDecoratableData;

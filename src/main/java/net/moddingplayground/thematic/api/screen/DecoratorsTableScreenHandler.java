@@ -1,4 +1,4 @@
-package net.moddingplayground.thematic.impl.screen;
+package net.moddingplayground.thematic.api.screen;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -18,9 +18,9 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.moddingplayground.thematic.api.block.ThematicBlocks;
 import net.moddingplayground.thematic.api.item.ThemeItem;
-import net.moddingplayground.thematic.impl.block.ThematicBlocks;
-import net.moddingplayground.thematic.impl.recipe.ThematicRecipeType;
+import net.moddingplayground.thematic.api.recipe.ThematicRecipeType;
 
 public class DecoratorsTableScreenHandler extends AbstractRecipeScreenHandler<CraftingInventory> {
     public final ScreenHandlerContext context;

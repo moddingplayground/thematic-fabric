@@ -1,4 +1,4 @@
-package net.moddingplayground.thematic.impl.recipe;
+package net.moddingplayground.thematic.api.recipe;
 
 import com.google.gson.JsonObject;
 import net.minecraft.inventory.Inventory;
@@ -13,9 +13,9 @@ import net.minecraft.util.JsonHelper;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
-import net.moddingplayground.thematic.api.Thematic;
+import net.moddingplayground.thematic.api.block.ThematicBlocks;
+import net.moddingplayground.thematic.api.registry.ThematicRegistry;
 import net.moddingplayground.thematic.api.theme.Theme;
-import net.moddingplayground.thematic.impl.block.ThematicBlocks;
 
 public class ThemingRecipe implements Recipe<Inventory> {
     private final RecipeType<?> type;
@@ -102,7 +102,7 @@ public class ThemingRecipe implements Recipe<Inventory> {
             String rawOutput = JsonHelper.getString(json, "result");
             int count = JsonHelper.getInt(json, "count");
 
-            Theme theme = Thematic.THEME_REGISTRY.get(new Identifier(rawTheme));
+            Theme theme = ThematicRegistry.THEME.get(new Identifier(rawTheme));
             Ingredient input = JsonHelper.hasArray(json, "ingredient")
                 ? Ingredient.fromJson(JsonHelper.getArray(json, "ingredient"))
                 : Ingredient.fromJson(JsonHelper.getObject(json, "ingredient"));

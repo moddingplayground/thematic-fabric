@@ -3,13 +3,17 @@ package net.moddingplayground.thematic.api.theme;
 import com.google.common.collect.Maps;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.moddingplayground.thematic.api.Thematic;
+import net.moddingplayground.thematic.api.registry.ThematicRegistry;
 import net.moddingplayground.thematic.api.theme.data.DecoratableData;
 
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
 
+/**
+ * A decoratable is an object that holds information regarding
+ * the registering of objects in relation to each {@link Theme}.
+ */
 public class Decoratable {
     private final Map<Theme, DecoratableData> themes;
     private final String format;
@@ -48,6 +52,6 @@ public class Decoratable {
 
     @Override
     public String toString() {
-        return Thematic.DECORATABLE_REGISTRY.getId(this).toString();
+        return ThematicRegistry.DECORATABLE.getId(this).toString();
     }
 }

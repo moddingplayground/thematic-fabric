@@ -6,6 +6,9 @@ import net.minecraft.util.Identifier;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.Theme;
 
+/**
+ * A utility to dynamically register objects in relation to a {@link Theme}.
+ */
 public interface DecoratableData {
     Theme getTheme();
 

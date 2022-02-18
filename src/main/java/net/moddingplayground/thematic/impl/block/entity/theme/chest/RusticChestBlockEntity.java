@@ -11,11 +11,11 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.moddingplayground.thematic.api.BuiltinThemes;
+import net.moddingplayground.thematic.api.block.ThematicProperties;
 import net.moddingplayground.thematic.api.tag.ThematicItemTags;
 import net.moddingplayground.thematic.api.theme.Theme;
 import net.moddingplayground.thematic.api.util.ChestSoundViewerCountManager;
-import net.moddingplayground.thematic.impl.block.ThematicProperties;
-import net.moddingplayground.thematic.impl.sound.ThematicSoundEvents;
+import net.moddingplayground.thematic.api.sound.ThematicSoundEvents;
 
 import java.util.Set;
 

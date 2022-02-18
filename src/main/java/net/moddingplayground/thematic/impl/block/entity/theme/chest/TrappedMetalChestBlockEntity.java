@@ -5,14 +5,14 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.TrappedChestBlockEntity;
 import net.minecraft.util.math.BlockPos;
 import net.moddingplayground.thematic.api.BuiltinDecoratables;
-import net.moddingplayground.thematic.api.item.Themed;
+import net.moddingplayground.thematic.api.util.Themed;
 import net.moddingplayground.thematic.api.theme.Theme;
 import net.moddingplayground.thematic.api.theme.data.preset.block.entity.BlockEntityDecoratableData;
 import net.moddingplayground.thematic.api.util.ChestSoundViewerCountManager;
 
 public abstract class TrappedMetalChestBlockEntity extends TrappedChestBlockEntity implements Themed {
-    public TrappedMetalChestBlockEntity(BlockPos blockPos, BlockState blockState) {
-        super(blockPos, blockState);
+    public TrappedMetalChestBlockEntity(BlockPos pos, BlockState state) {
+        super(pos, state);
         ChestSoundViewerCountManager.replace(this, MetalChestBlockEntity::getOpenSound, MetalChestBlockEntity::getCloseSound);
     }
 

@@ -9,11 +9,9 @@ import net.moddingplayground.thematic.api.Thematic;
 /**
  * Item tags provided by Thematic.
  */
-public final class ThematicItemTags {
-    public static final Tag.Identified<Item> DYES = register("dyes");
-    public static final Tag.Identified<Item> RUSTIC_TREASURE_ITEMS = register("rustic_treasure_items");
-
-    private ThematicItemTags() {}
+public interface ThematicItemTags {
+    Tag.Identified<Item> DYES = register("dyes");
+    Tag.Identified<Item> RUSTIC_TREASURE_ITEMS = register("rustic_treasure_items");
 
     private static Tag.Identified<Item> register(String id) {
         return TagFactory.ITEM.create(new Identifier(Thematic.MOD_ID, id));

@@ -7,6 +7,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.moddingplayground.thematic.mixin.ViewerCountManagerInvoker;
 
+/**
+ * An extension of {@link ViewerCountManager} that allows for inheritance of
+ * anonymous versions of itself, found in various block entity constructors.
+ */
 public class DeanonymizingViewerCountManager extends ViewerCountManager {
     private final ViewerCountManagerInvoker invoker;
 

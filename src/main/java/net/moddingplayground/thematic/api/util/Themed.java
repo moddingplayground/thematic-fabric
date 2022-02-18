@@ -1,4 +1,4 @@
-package net.moddingplayground.thematic.api.item;
+package net.moddingplayground.thematic.api.util;
 
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
@@ -10,6 +10,9 @@ import net.moddingplayground.thematic.api.theme.ThemeColors;
 
 import java.util.List;
 
+/**
+ * Implementations represent an object containing a {@link Theme}.
+ */
 public interface Themed {
     Theme getTheme();
 

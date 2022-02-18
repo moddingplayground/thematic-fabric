@@ -4,8 +4,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.moddingplayground.thematic.api.theme.Theme;
+import net.moddingplayground.thematic.api.util.Themed;
 import net.moddingplayground.thematic.mixin.ItemAccessor;
 
+/**
+ * An item pertaining to a particular {@link Theme}.
+ */
 public class ThemeItem extends Item implements Themed {
     private final Theme theme;
 

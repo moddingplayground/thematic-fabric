@@ -1,4 +1,4 @@
-package net.moddingplayground.thematic.impl.block;
+package net.moddingplayground.thematic.api.block;
 
 import com.google.common.base.Suppliers;
 import net.minecraft.block.Block;
@@ -15,8 +15,8 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
-import net.moddingplayground.thematic.impl.screen.DecoratorsTableScreenHandler;
-import net.moddingplayground.thematic.impl.stat.ThematicStats;
+import net.moddingplayground.thematic.api.stat.ThematicStats;
+import net.moddingplayground.thematic.api.screen.DecoratorsTableScreenHandler;
 
 import java.util.function.Supplier;
 

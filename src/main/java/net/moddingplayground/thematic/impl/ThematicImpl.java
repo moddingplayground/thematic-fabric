@@ -16,16 +16,17 @@ import net.moddingplayground.frame.api.util.GUIIcon;
 import net.moddingplayground.frame.api.util.InitializationLogger;
 import net.moddingplayground.thematic.api.Thematic;
 import net.moddingplayground.thematic.api.ThematicEntrypoint;
+import net.moddingplayground.thematic.api.block.ThematicBlocks;
+import net.moddingplayground.thematic.api.item.ThematicItems;
 import net.moddingplayground.thematic.api.item.ThemeItem;
+import net.moddingplayground.thematic.api.recipe.ThematicRecipeSerializer;
+import net.moddingplayground.thematic.api.recipe.ThematicRecipeType;
+import net.moddingplayground.thematic.api.registry.ThematicRegistry;
+import net.moddingplayground.thematic.api.screen.ThematicScreenHandlerType;
+import net.moddingplayground.thematic.api.stat.ThematicStats;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.Theme;
 import net.moddingplayground.thematic.api.theme.ThemeColors;
-import net.moddingplayground.thematic.impl.block.ThematicBlocks;
-import net.moddingplayground.thematic.impl.item.ThematicItems;
-import net.moddingplayground.thematic.impl.recipe.ThematicRecipeSerializer;
-import net.moddingplayground.thematic.impl.recipe.ThematicRecipeType;
-import net.moddingplayground.thematic.impl.screen.ThematicScreenHandlerType;
-import net.moddingplayground.thematic.impl.stat.ThematicStats;
 
 import java.util.List;
 
@@ -72,7 +73,7 @@ public class ThematicImpl implements ModInitializer, Thematic {
 
         // initialize the item group
         this.itemGroup = Util.make(TabbedItemGroup.builder(), builder -> {
-                                 for (Theme theme : Thematic.THEME_REGISTRY) {
+                                 for (Theme theme : ThematicRegistry.THEME) {
                                      Identifier id = theme.getId();
                                      ThemeColors colors = theme.getColors();
                                      Style style = Style.EMPTY.withColor(colors.getDark());
@@ -96,7 +97,7 @@ public class ThematicImpl implements ModInitializer, Thematic {
         );
 
         // register all decoratables
-        Thematic.DECORATABLE_REGISTRY.forEach(Decoratable::register);
+        ThematicRegistry.DECORATABLE.forEach(Decoratable::register);
 
         this.initializer.finish();
     }

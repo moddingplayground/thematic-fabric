@@ -1,4 +1,4 @@
-package net.moddingplayground.thematic.impl.client.screen;
+package net.moddingplayground.thematic.api.client.screen;
 
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -31,7 +31,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3f;
 import net.minecraft.world.World;
 import net.moddingplayground.thematic.api.Thematic;
-import net.moddingplayground.thematic.impl.screen.DecoratorsTableScreenHandler;
+import net.moddingplayground.thematic.api.screen.DecoratorsTableScreenHandler;
 import net.moddingplayground.thematic.mixin.client.ItemRendererInvoker;
 import org.jetbrains.annotations.Nullable;
 

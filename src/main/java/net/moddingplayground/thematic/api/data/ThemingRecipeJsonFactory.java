@@ -14,12 +14,16 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import net.moddingplayground.thematic.api.recipe.ThematicRecipeSerializer;
+import net.moddingplayground.thematic.api.recipe.ThematicRecipeType;
 import net.moddingplayground.thematic.api.theme.Theme;
-import net.moddingplayground.thematic.impl.recipe.ThematicRecipeSerializer;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 
+/**
+ * Allows for data generation of {@linkplain ThematicRecipeType#THEMING theming recipes}.
+ */
 public class ThemingRecipeJsonFactory implements CraftingRecipeJsonFactory {
     private final Theme theme;
     private final Ingredient input;

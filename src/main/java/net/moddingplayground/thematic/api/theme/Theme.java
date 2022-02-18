@@ -8,10 +8,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.util.Identifier;
 import net.moddingplayground.thematic.api.Thematic;
-import net.moddingplayground.thematic.api.item.Themed;
+import net.moddingplayground.thematic.api.util.Themed;
+import net.moddingplayground.thematic.api.registry.ThematicRegistry;
 
 import java.util.function.Supplier;
 
+/**
+ * A theme is an object representing a specific block set.
+ */
 public class Theme {
     private final Supplier<Item> item;
     private final ThemeColors colors;
@@ -23,7 +27,7 @@ public class Theme {
         this.item = item;
         this.colors = colors;
 
-        this.id = Suppliers.memoize(() -> Thematic.THEME_REGISTRY.getId(this));
+        this.id = Suppliers.memoize(() -> ThematicRegistry.THEME.getId(this));
         this.translationKey = Suppliers.memoize(() -> "%s.theme.%s".formatted(Thematic.MOD_ID, this.getId()));
     }
 
@@ -68,7 +72,7 @@ public class Theme {
 
     public static Theme fromPacket(PacketByteBuf buf) {
         String theme = buf.readString();
-        return Thematic.THEME_REGISTRY.get(new Identifier(theme));
+        return ThematicRegistry.THEME.get(new Identifier(theme));
     }
 
     public JsonElement toJson() {
@@ -81,6 +85,6 @@ public class Theme {
 
     @Override
     public String toString() {
-        return Thematic.THEME_REGISTRY.getId(this).toString();
+        return ThematicRegistry.THEME.getId(this).toString();
     }
 }

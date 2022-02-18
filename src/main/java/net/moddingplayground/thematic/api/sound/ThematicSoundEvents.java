@@ -1,19 +1,19 @@
-package net.moddingplayground.thematic.impl.sound;
+package net.moddingplayground.thematic.api.sound;
 
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.moddingplayground.thematic.api.Thematic;
 
-public class ThematicSoundEvents {
-    public static final SoundEvent BLOCK_RUSTIC_CHEST_TREASURE_OPEN = rusticChest("treasure_open");
-    public static final SoundEvent BLOCK_RUSTIC_CHEST_TREASURE_CLOSE = rusticChest("treasure_close");
+public interface ThematicSoundEvents {
+    SoundEvent BLOCK_RUSTIC_CHEST_TREASURE_OPEN = rusticChest("treasure_open");
+    SoundEvent BLOCK_RUSTIC_CHEST_TREASURE_CLOSE = rusticChest("treasure_close");
     private static SoundEvent rusticChest(String id) {
         return block("rustic_chest", id);
     }
 
-    public static final SoundEvent BLOCK_CHEST_METAL_OPEN = chestMetal("open");
-    public static final SoundEvent BLOCK_CHEST_METAL_CLOSE = chestMetal("close");
+    SoundEvent BLOCK_CHEST_METAL_OPEN = chestMetal("open");
+    SoundEvent BLOCK_CHEST_METAL_CLOSE = chestMetal("close");
     private static SoundEvent chestMetal(String id) {
         return block("chest_metal", id);
     }
