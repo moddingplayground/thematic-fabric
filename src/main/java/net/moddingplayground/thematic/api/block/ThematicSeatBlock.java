@@ -4,6 +4,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.Waterloggable;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
@@ -104,6 +106,28 @@ public class ThematicSeatBlock extends DefaultSeatBlock implements Waterloggable
             case WEST -> SHAPE_DOUBLE_WEST;
             case EAST -> SHAPE_DOUBLE_EAST;
         };
+    }
+
+    @Override
+    public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float distance) {
+        super.onLandedUpon(world, state, pos, entity, distance * 0.5f);
+    }
+
+    @Override
+    public void onEntityLand(BlockView world, Entity entity) {
+        if (entity.bypassesLandingEffects()) {
+            super.onEntityLand(world, entity);
+        } else {
+            this.bounceEntity(entity);
+        }
+    }
+
+    public void bounceEntity(Entity entity) {
+        Vec3d velocity = entity.getVelocity();
+        if (velocity.y < 0.0) {
+            double factor = entity instanceof LivingEntity ? 1.0D : 0.8D;
+            entity.setVelocity(velocity.x, -velocity.y * 0.66D * factor, velocity.z);
+        }
     }
 
     @Override

@@ -2,6 +2,8 @@ package net.moddingplayground.thematic.impl;
 
 import com.google.common.reflect.Reflection;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 import net.fabricmc.loader.api.entrypoint.EntrypointContainer;
@@ -95,6 +97,8 @@ public class ThematicImpl implements ModInitializer, Thematic {
             ThematicBlocks.class,
             ThematicItems.class
         );
+
+        ThematicBlocks.onInitialize();
 
         // register all decoratables
         ThematicRegistry.DECORATABLE.forEach(Decoratable::register);
