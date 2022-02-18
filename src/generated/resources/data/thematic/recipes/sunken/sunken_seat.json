@@ -1,0 +1,9 @@
+{
+  "type": "thematic:theming",
+  "theme": "thematic:sunken",
+  "ingredient": {
+    "item": "thematic:seat"
+  },
+  "result": "thematic:sunken_seat",
+  "count": 1
+}

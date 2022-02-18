@@ -1,0 +1,9 @@
+{
+  "type": "thematic:theming",
+  "theme": "thematic:rustic",
+  "ingredient": {
+    "item": "thematic:seat"
+  },
+  "result": "thematic:rustic_seat",
+  "count": 1
+}

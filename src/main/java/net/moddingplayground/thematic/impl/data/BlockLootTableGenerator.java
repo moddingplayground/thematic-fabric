@@ -16,6 +16,7 @@ public class BlockLootTableGenerator extends AbstractBlockLootTableGenerator {
     @Override
     public void generate() {
         this.add(DECORATORS_TABLE);
+        this.add(SEAT);
         for (Theme theme : ThematicRegistry.THEME) {
             for (Decoratable decoratable : ThematicRegistry.DECORATABLE) {
                 decoratable.getData(theme, DecoratableDataToymaker.class).ifPresent(t -> t.generateBlockLootTables(this));

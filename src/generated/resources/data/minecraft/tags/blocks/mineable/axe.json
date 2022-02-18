@@ -2,9 +2,11 @@
   "replace": false,
   "values": [
     "thematic:decorators_table",
+    "thematic:seat",
     "thematic:rustic_ladder",
     "thematic:rustic_bookshelf",
     "thematic:rustic_chest",
-    "thematic:trapped_rustic_chest"
+    "thematic:trapped_rustic_chest",
+    "thematic:rustic_seat"
   ]
 }

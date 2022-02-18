@@ -1,0 +1,9 @@
+{
+  "type": "thematic:theming",
+  "theme": "thematic:mechanical",
+  "ingredient": {
+    "item": "thematic:seat"
+  },
+  "result": "thematic:mechanical_seat",
+  "count": 1
+}

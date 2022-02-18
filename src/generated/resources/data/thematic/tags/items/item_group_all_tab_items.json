@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "thematic:ancient_rope",
+    "thematic:overgrown_anchor",
+    "thematic:oxidized_cog",
+    "thematic:decorators_table",
+    "thematic:seat"
+  ]
+}

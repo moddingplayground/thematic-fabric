@@ -15,8 +15,8 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
-import net.moddingplayground.thematic.api.stat.ThematicStats;
 import net.moddingplayground.thematic.api.screen.DecoratorsTableScreenHandler;
+import net.moddingplayground.thematic.api.stat.ThematicStats;
 
 import java.util.function.Supplier;
 

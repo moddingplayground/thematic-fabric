@@ -92,7 +92,8 @@ public abstract class BlockItemDecoratableData implements DecoratableData, Decor
 
     @Override
     public void generateBlockLootTables(AbstractBlockLootTableGenerator gen) {
-        gen.add(this.getBlock());
+        Block block = this.getBlock();
+        gen.add(block);
     }
 
     @Override

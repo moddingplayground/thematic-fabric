@@ -6,6 +6,8 @@
   "container.thematic:decorators_table": "Decorator's Table",
   "stat.thematic.interact_with_decorators_table": "Interactions with Decorator's Table",
 
+  "block.thematic.seat": "Seat",
+
   "itemGroup.thematic.themes": "Thematic",
   "itemGroup.thematic.themes.tab": "§7Thematic§r > %s",
   "itemGroup.thematic.themes.tab.thematic:rustic": "Rustic",
@@ -40,6 +42,10 @@
   "block.thematic.trapped_rustic_chest": "Trapped Coffer",
   "block.thematic.trapped_sunken_chest": "Trapped Treasure Chest",
   "block.thematic.trapped_mechanical_chest": "Trapped Copper Chest",
+
+  "block.thematic.rustic_seat": "Rustic Seat",
+  "block.thematic.sunken_seat": "Sunken Seat",
+  "block.thematic.mechanical_seat": "Mechanical Seat",
 
   "item.thematic.rope_banner_pattern": "Banner Pattern",
   "item.thematic.rope_banner_pattern.desc": "Rope",

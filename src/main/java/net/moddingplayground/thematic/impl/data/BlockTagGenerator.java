@@ -18,7 +18,7 @@ public class BlockTagGenerator extends AbstractTagGenerator<Block> {
 
     @Override
     public void generate() {
-        this.add(BlockTags.AXE_MINEABLE, DECORATORS_TABLE);
+        this.add(BlockTags.AXE_MINEABLE, DECORATORS_TABLE, SEAT);
 
         for (Theme theme : ThematicRegistry.THEME) {
             for (Decoratable decoratable : ThematicRegistry.DECORATABLE) {

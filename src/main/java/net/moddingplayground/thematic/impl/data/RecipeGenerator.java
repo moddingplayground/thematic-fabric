@@ -28,6 +28,14 @@ public class RecipeGenerator extends AbstractRecipeGenerator {
                                                             .criterion("has_plank", hasItems(ItemTags.PLANKS))
                                                             .criterion("has_dye", hasItems(ThematicItemTags.DYES)));
 
+        this.add("seat", ShapedRecipeJsonFactory.create(SEAT, 3)
+                                                            .input('#', Ingredient.fromTag(ItemTags.WOOL))
+                                                            .input('@', Ingredient.fromTag(ItemTags.WOODEN_FENCES))
+                                                            .pattern("###")
+                                                            .pattern("@ @")
+                                                            .criterion("has_wool", hasItems(ItemTags.WOOL))
+                                                            .criterion("has_fence", hasItems(ItemTags.WOODEN_FENCES)));
+
         for (Theme theme : ThematicRegistry.THEME) {
             for (Decoratable decoratable : ThematicRegistry.DECORATABLE) {
                 decoratable.getData(theme, DecoratableDataToymaker.class).ifPresent(t -> t.generateRecipes(this));

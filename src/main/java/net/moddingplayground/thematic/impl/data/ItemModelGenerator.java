@@ -16,7 +16,7 @@ public class ItemModelGenerator extends AbstractItemModelGenerator {
 
     @Override
     public void generate() {
-        this.block(DECORATORS_TABLE);
+        this.block(DECORATORS_TABLE, SEAT);
         this.add(ANCIENT_ROPE, OVERGROWN_ANCHOR, OXIDIZED_COG);
 
         for (Theme theme : ThematicRegistry.THEME) {

@@ -1,0 +1,43 @@
+{
+  "parent": "thematic:recipes/root",
+  "rewards": {
+    "recipes": [
+      "thematic:seat"
+    ]
+  },
+  "criteria": {
+    "has_wool": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "minecraft:wool"
+          }
+        ]
+      }
+    },
+    "has_fence": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "minecraft:wooden_fences"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "thematic:seat"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_wool",
+      "has_fence",
+      "has_the_recipe"
+    ]
+  ]
+}

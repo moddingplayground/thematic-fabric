@@ -12,6 +12,7 @@ import net.moddingplayground.thematic.api.theme.data.preset.block.BookshelfDecor
 import net.moddingplayground.thematic.api.theme.data.preset.block.LadderDecoratableData;
 import net.moddingplayground.thematic.api.theme.data.preset.block.LadderVaryingDecoratableData;
 import net.moddingplayground.thematic.api.theme.data.preset.block.LanternDecoratableData;
+import net.moddingplayground.thematic.api.theme.data.preset.block.SeatDecoratableData;
 import net.moddingplayground.thematic.impl.block.theme.lantern.MechanicalLanternBlock;
 import net.moddingplayground.thematic.impl.block.theme.lantern.RusticLanternBlock;
 import net.moddingplayground.thematic.impl.block.theme.lantern.SunkenLanternBlock;
@@ -43,13 +44,18 @@ public interface BuiltinDecoratables {
 
     Decoratable CHEST = register("chest", "%s_chest")
         .add(RUSTIC, t -> new RusticChestDecoratableData(t, Blocks.SPRUCE_PLANKS))
-        .add(SUNKEN, t -> new MetalChestDecoratableData(t, Blocks.CHAIN, s -> s.sounds(BlockSoundGroup.NETHERITE).requiresTool(), false))
+        .add(SUNKEN, t -> new MetalChestDecoratableData(t, Blocks.IRON_BARS, s -> s.sounds(BlockSoundGroup.NETHERITE).requiresTool(), false))
         .add(MECHANICAL, t -> new MetalChestDecoratableData(t, Blocks.OXIDIZED_COPPER, s -> s.sounds(BlockSoundGroup.COPPER).requiresTool(), false));
 
     Decoratable TRAPPED_CHEST = register("trapped_chest", "trapped_%s_chest")
         .add(RUSTIC, t -> new TrappedRusticChestDecoratableData(t, Blocks.SPRUCE_PLANKS))
-        .add(SUNKEN, t -> new TrappedMetalChestDecoratableData(t, Blocks.CHAIN, s -> s.sounds(BlockSoundGroup.NETHERITE).requiresTool(), false))
+        .add(SUNKEN, t -> new TrappedMetalChestDecoratableData(t, Blocks.IRON_BARS, s -> s.sounds(BlockSoundGroup.NETHERITE).requiresTool(), false))
         .add(MECHANICAL, t -> new TrappedMetalChestDecoratableData(t, Blocks.OXIDIZED_COPPER, s -> s.sounds(BlockSoundGroup.COPPER).requiresTool(), false));
+
+    Decoratable SEAT = register("seat", "%s_seat")
+        .add(RUSTIC, t -> new SeatDecoratableData(t, Blocks.SPRUCE_PLANKS))
+        .add(SUNKEN, t -> new SeatDecoratableData(t, Blocks.IRON_BARS, s -> s.sounds(BlockSoundGroup.NETHERITE).requiresTool(), false))
+        .add(MECHANICAL, t -> new SeatDecoratableData(t, Blocks.OXIDIZED_COPPER, s -> s.sounds(BlockSoundGroup.COPPER).requiresTool(), false));
 
     Decoratable BANNER_PATTERN = register("banner_pattern", "%s")
         .add(RUSTIC, t -> new BannerPatternWithItemDecoratableData(t, "rope_banner_pattern"))

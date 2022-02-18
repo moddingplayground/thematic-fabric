@@ -3,6 +3,7 @@ package net.moddingplayground.thematic.api.block;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -15,6 +16,7 @@ import java.util.function.Function;
 
 public interface ThematicBlocks {
     Block DECORATORS_TABLE = register("decorators_table", new DecoratorsTableBlock(FabricBlockSettings.of(Material.WOOD).strength(2.5f).sounds(BlockSoundGroup.WOOD)));
+    Block SEAT = register("seat", new ThematicSeatBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque()));
 
     private static Block register(String id, Block block, Function<Block, Item> item) {
         Identifier identifier = new Identifier(Thematic.MOD_ID, id);

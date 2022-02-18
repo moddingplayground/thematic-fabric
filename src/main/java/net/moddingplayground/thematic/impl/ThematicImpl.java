@@ -18,12 +18,12 @@ import net.moddingplayground.thematic.api.Thematic;
 import net.moddingplayground.thematic.api.ThematicEntrypoint;
 import net.moddingplayground.thematic.api.block.ThematicBlocks;
 import net.moddingplayground.thematic.api.item.ThematicItems;
-import net.moddingplayground.thematic.api.item.ThemeItem;
 import net.moddingplayground.thematic.api.recipe.ThematicRecipeSerializer;
 import net.moddingplayground.thematic.api.recipe.ThematicRecipeType;
 import net.moddingplayground.thematic.api.registry.ThematicRegistry;
 import net.moddingplayground.thematic.api.screen.ThematicScreenHandlerType;
 import net.moddingplayground.thematic.api.stat.ThematicStats;
+import net.moddingplayground.thematic.api.tag.ThematicItemTags;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.Theme;
 import net.moddingplayground.thematic.api.theme.ThemeColors;
@@ -84,7 +84,7 @@ public class ThematicImpl implements ModInitializer, Thematic {
                                      );
                                  }
                              })
-                             .defaultPredicate((group, item) -> item == ThematicBlocks.DECORATORS_TABLE.asItem() || item instanceof ThemeItem)
+                             .defaultPredicate((group, item) -> ThematicItemTags.ITEM_GROUP_ALL_TAB_ITEMS.contains(item))
                              .build(new Identifier(MOD_ID, "themes"), g -> GUIIcon.of(() -> new Identifier(MOD_ID, "icon.png")));
 
         // register base objects
