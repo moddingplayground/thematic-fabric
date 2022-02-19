@@ -2,8 +2,6 @@ package net.moddingplayground.thematic.impl;
 
 import com.google.common.reflect.Reflection;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
-import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 import net.fabricmc.loader.api.entrypoint.EntrypointContainer;
@@ -87,7 +85,7 @@ public class ThematicImpl implements ModInitializer, Thematic {
                                  }
                              })
                              .defaultPredicate((group, item) -> ThematicItemTags.ITEM_GROUP_ALL_TAB_ITEMS.contains(item))
-                             .build(new Identifier(MOD_ID, "themes"), g -> GUIIcon.of(() -> new Identifier(MOD_ID, "icon.png")));
+                             .build(new Identifier(MOD_ID, "themes"), g -> GUIIcon.of(() -> new ItemStack(ThematicBlocks.DECORATORS_TABLE)));
 
         // register base objects
         Reflection.initialize(
