@@ -1,4 +1,5 @@
 {
+  "parent": "thematic:block/template_seat",
   "textures": {
     "texture": "thematic:block/rustic_seat_right",
     "particle": "minecraft:block/spruce_planks"

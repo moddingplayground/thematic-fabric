@@ -1,4 +1,5 @@
 {
+  "parent": "thematic:block/template_seat",
   "textures": {
     "texture": "thematic:block/sunken_seat_left",
     "particle": "minecraft:block/iron_bars"
