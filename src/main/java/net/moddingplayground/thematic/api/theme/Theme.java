@@ -21,6 +21,7 @@ public class Theme {
     private final ThemeColors colors;
 
     private final Supplier<Identifier> id;
+    private final Supplier<Identifier> lootTableId;
     private final Supplier<String> translationKey;
 
     public Theme(Supplier<Item> item, ThemeColors colors) {
@@ -28,7 +29,8 @@ public class Theme {
         this.colors = colors;
 
         this.id = Suppliers.memoize(() -> ThematicRegistry.THEME.getId(this));
-        this.translationKey = Suppliers.memoize(() -> "%s.theme.%s".formatted(Thematic.MOD_ID, this.getId()));
+        this.lootTableId = Suppliers.memoize(this::createLootTableId);
+        this.translationKey = Suppliers.memoize(this::createTranslationKey);
     }
 
     public Item getItem() {
@@ -43,8 +45,21 @@ public class Theme {
         return this.id.get();
     }
 
+    public Identifier getLootTableId() {
+        return this.lootTableId.get();
+    }
+
+    protected Identifier createLootTableId() {
+        Identifier id = this.getId();
+        return new Identifier(Thematic.MOD_ID, "theme/%s/%s".formatted(id.getNamespace(), id.getPath()));
+    }
+
     public String getTranslationKey() {
         return this.translationKey.get();
+    }
+
+    protected String createTranslationKey() {
+        return "%s.theme.%s".formatted(Thematic.MOD_ID, this.getId());
     }
 
     public String format(String format) {

@@ -89,14 +89,13 @@ public class ThematicImpl implements ModInitializer, Thematic {
 
         // register base objects
         Reflection.initialize(
-            ThematicStats.class,
+            ThematicStats.class, ThematicScreenHandlerType.class,
             ThematicRecipeType.class, ThematicRecipeSerializer.class,
-            ThematicScreenHandlerType.class,
-            ThematicBlocks.class,
-            ThematicItems.class
+            ThematicBlocks.class, ThematicItems.class
         );
 
         ThematicBlocks.onInitialize();
+        ThematicItems.onInitialize();
 
         // register all decoratables
         ThematicRegistry.DECORATABLE.forEach(Decoratable::register);
