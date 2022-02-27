@@ -43,10 +43,6 @@ public class ThematicImpl implements ModInitializer, Thematic {
         instance = this;
     }
 
-    public TabbedItemGroup getItemGroup() {
-        return this.itemGroup;
-    }
-
     @SuppressWarnings("UnstableApiUsage")
     @Override
     public void onInitialize() {
@@ -101,6 +97,10 @@ public class ThematicImpl implements ModInitializer, Thematic {
         ThematicRegistry.DECORATABLE.forEach(Decoratable::register);
 
         this.initializer.finish();
+    }
+
+    public TabbedItemGroup getItemGroup() {
+        return this.itemGroup;
     }
 
     public static ThematicImpl getInstance() {
