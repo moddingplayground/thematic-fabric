@@ -12,7 +12,7 @@ import net.moddingplayground.frame.api.toymaker.v0.generator.model.block.Abstrac
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.item.AbstractItemModelGenerator;
 import net.moddingplayground.frame.api.toymaker.v0.generator.recipe.AbstractRecipeGenerator;
 import net.moddingplayground.thematic.api.Thematic;
-import net.moddingplayground.thematic.api.data.ThemingRecipeJsonFactory;
+import net.moddingplayground.thematic.api.data.ThemingRecipeJsonBuilder;
 import net.moddingplayground.thematic.api.item.ThemedBlockItem;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.Theme;
@@ -102,7 +102,7 @@ public abstract class BlockItemDecoratableData implements DecoratableData, Decor
         Identifier id = theme.getId();
         Item themeItem = theme.getItem();
         Item item = this.getItem();
-        gen.add("%s/%s".formatted(id.getPath(), item), new ThemingRecipeJsonFactory(theme, this.getIngredient(), item).criterion("has_theme", gen.hasItem(themeItem)));
+        gen.add("%s/%s".formatted(id.getPath(), item), new ThemingRecipeJsonBuilder(theme, this.getIngredient(), item).criterion("has_theme", gen.hasItem(themeItem)));
     }
 
     protected abstract Ingredient getIngredient();

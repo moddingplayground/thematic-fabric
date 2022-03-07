@@ -9,6 +9,8 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.World;
 import net.moddingplayground.thematic.api.BuiltinThemes;
 import net.moddingplayground.thematic.api.block.ThematicProperties;
@@ -18,6 +20,7 @@ import net.moddingplayground.thematic.api.theme.Theme;
 import net.moddingplayground.thematic.api.util.ChestSoundViewerCountManager;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class RusticChestBlockEntity extends MetalChestBlockEntity {
     public RusticChestBlockEntity(BlockPos pos, BlockState state) {
@@ -51,8 +54,12 @@ public class RusticChestBlockEntity extends MetalChestBlockEntity {
         if (state.getBlock() instanceof ChestBlock chest) {
             BlockPos pos = blockEntity.getPos();
             Inventory inventory = ChestBlock.getInventory(chest, state, world, pos, true);
-            Set<Item> set = Set.copyOf(ThematicItemTags.RUSTIC_TREASURE_ITEMS.values());
-            world.setBlockState(pos, state.with(ThematicProperties.TREASURE, inventory.containsAny(set)));
+
+            Set<Item> items = Registry.ITEM.getOrCreateEntryList(ThematicItemTags.RUSTIC_TREASURE_ITEMS)
+                                           .stream()
+                                           .map(RegistryEntry::value)
+                                           .collect(Collectors.toSet());
+            world.setBlockState(pos, state.with(ThematicProperties.TREASURE, inventory.containsAny(items)));
         }
     }
 }

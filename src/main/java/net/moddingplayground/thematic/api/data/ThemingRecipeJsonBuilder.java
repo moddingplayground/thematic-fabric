@@ -6,7 +6,7 @@ import net.minecraft.advancement.AdvancementRewards;
 import net.minecraft.advancement.CriterionMerger;
 import net.minecraft.advancement.criterion.CriterionConditions;
 import net.minecraft.advancement.criterion.RecipeUnlockedCriterion;
-import net.minecraft.data.server.recipe.CraftingRecipeJsonFactory;
+import net.minecraft.data.server.recipe.CraftingRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
@@ -24,16 +24,16 @@ import java.util.function.Consumer;
 /**
  * Allows for data generation of {@linkplain ThematicRecipeType#THEMING theming recipes}.
  */
-public class ThemingRecipeJsonFactory implements CraftingRecipeJsonFactory {
+public class ThemingRecipeJsonBuilder implements CraftingRecipeJsonBuilder {
     private final Theme theme;
     private final Ingredient input;
     private final Item output;
     private final int count;
-    private final Advancement.Task builder = Advancement.Task.create();
+    private final Advancement.Builder builder = Advancement.Builder.create();
     @Nullable private String group;
     private final RecipeSerializer<?> serializer;
 
-    public ThemingRecipeJsonFactory(RecipeSerializer<?> serializer, Theme theme, Ingredient input, ItemConvertible output, int outputCount) {
+    public ThemingRecipeJsonBuilder(RecipeSerializer<?> serializer, Theme theme, Ingredient input, ItemConvertible output, int outputCount) {
         this.serializer = serializer;
         this.theme = theme;
         this.input = input;
@@ -41,22 +41,22 @@ public class ThemingRecipeJsonFactory implements CraftingRecipeJsonFactory {
         this.count = outputCount;
     }
 
-    public ThemingRecipeJsonFactory(Theme theme, Ingredient input, ItemConvertible output, int outputCount) {
+    public ThemingRecipeJsonBuilder(Theme theme, Ingredient input, ItemConvertible output, int outputCount) {
         this(ThematicRecipeSerializer.THEMING, theme, input, output, outputCount);
     }
 
-    public ThemingRecipeJsonFactory(Theme theme, Ingredient input, ItemConvertible output) {
+    public ThemingRecipeJsonBuilder(Theme theme, Ingredient input, ItemConvertible output) {
         this(theme, input, output, 1);
     }
 
     @Override
-    public ThemingRecipeJsonFactory criterion(String string, CriterionConditions criterionConditions) {
+    public ThemingRecipeJsonBuilder criterion(String string, CriterionConditions criterionConditions) {
         this.builder.criterion(string, criterionConditions);
         return this;
     }
 
     @Override
-    public ThemingRecipeJsonFactory group(@Nullable String string) {
+    public ThemingRecipeJsonBuilder group(@Nullable String string) {
         this.group = string;
         return this;
     }
@@ -78,7 +78,7 @@ public class ThemingRecipeJsonFactory implements CraftingRecipeJsonFactory {
     }
 
     public record JsonProvider(Identifier recipeId, RecipeSerializer<?> serializer, String group, Theme theme,
-                               Ingredient input, Item output, int count, Advancement.Task builder,
+                               Ingredient input, Item output, int count, Advancement.Builder builder,
                                Identifier advancementId) implements RecipeJsonProvider {
 
         @Override

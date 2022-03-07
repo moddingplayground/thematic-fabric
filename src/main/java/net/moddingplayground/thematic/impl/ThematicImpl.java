@@ -22,6 +22,7 @@ import net.moddingplayground.thematic.api.recipe.ThematicRecipeSerializer;
 import net.moddingplayground.thematic.api.recipe.ThematicRecipeType;
 import net.moddingplayground.thematic.api.registry.ThematicRegistry;
 import net.moddingplayground.thematic.api.screen.ThematicScreenHandlerType;
+import net.moddingplayground.thematic.api.sound.ThematicSoundEvents;
 import net.moddingplayground.thematic.api.stat.ThematicStats;
 import net.moddingplayground.thematic.api.tag.ThematicItemTags;
 import net.moddingplayground.thematic.api.theme.Decoratable;
@@ -80,14 +81,15 @@ public class ThematicImpl implements ModInitializer, Thematic {
                                      );
                                  }
                              })
-                             .defaultPredicate((group, item) -> ThematicItemTags.ITEM_GROUP_ALL_TAB_ITEMS.contains(item))
+                             .defaultPredicate((group, item) -> item.getDefaultStack().isIn(ThematicItemTags.ITEM_GROUP_ALL_TAB_ITEMS))
                              .build(new Identifier(MOD_ID, "themes"), g -> GUIIcon.of(() -> new ItemStack(ThematicBlocks.DECORATORS_TABLE)));
 
         // register base objects
         Reflection.initialize(
             ThematicStats.class, ThematicScreenHandlerType.class,
             ThematicRecipeType.class, ThematicRecipeSerializer.class,
-            ThematicBlocks.class, ThematicItems.class
+            ThematicBlocks.class, ThematicItems.class,
+            ThematicSoundEvents.class
         );
 
         ThematicBlocks.onInitialize();

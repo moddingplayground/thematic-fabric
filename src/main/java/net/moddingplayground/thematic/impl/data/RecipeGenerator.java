@@ -1,6 +1,6 @@
 package net.moddingplayground.thematic.impl.data;
 
-import net.minecraft.data.server.recipe.ShapedRecipeJsonFactory;
+import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.tag.ItemTags;
 import net.moddingplayground.frame.api.toymaker.v0.generator.recipe.AbstractRecipeGenerator;
@@ -19,7 +19,7 @@ public class RecipeGenerator extends AbstractRecipeGenerator {
 
     @Override
     public void generate() {
-        this.add("decorators_table", ShapedRecipeJsonFactory.create(DECORATORS_TABLE, 1)
+        this.add("decorators_table", ShapedRecipeJsonBuilder.create(DECORATORS_TABLE, 1)
                                                             .input('#', Ingredient.fromTag(ItemTags.PLANKS))
                                                             .input('@', Ingredient.fromTag(ThematicItemTags.DYES))
                                                             .pattern("@@")
@@ -28,7 +28,7 @@ public class RecipeGenerator extends AbstractRecipeGenerator {
                                                             .criterion("has_plank", hasItems(ItemTags.PLANKS))
                                                             .criterion("has_dye", hasItems(ThematicItemTags.DYES)));
 
-        this.add("seat", ShapedRecipeJsonFactory.create(SEAT, 3)
+        this.add("seat", ShapedRecipeJsonBuilder.create(SEAT, 3)
                                                             .input('#', Ingredient.fromTag(ItemTags.WOOL))
                                                             .input('@', Ingredient.fromTag(ItemTags.WOODEN_FENCES))
                                                             .pattern("###")
