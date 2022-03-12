@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "thematic:sunken/sunken_gate"
+    ]
+  },
+  "criteria": {
+    "has_theme": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "thematic:overgrown_anchor"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "thematic:sunken/sunken_gate"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_theme",
+      "has_the_recipe"
+    ]
+  ]
+}

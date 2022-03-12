@@ -1,0 +1,7 @@
+{
+  "parent": "thematic:block/template_gate",
+  "textures": {
+    "gate": "thematic:block/sunken_gate",
+    "sides": "thematic:block/sunken_gate_sides"
+  }
+}

@@ -18,6 +18,7 @@ import java.util.function.Function;
 public interface ThematicBlocks {
     Block DECORATORS_TABLE = register("decorators_table", new DecoratorsTableBlock(FabricBlockSettings.of(Material.WOOD).strength(2.5f).sounds(BlockSoundGroup.WOOD)));
     Block SEAT = register("seat", new ThematicSeatBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque()));
+    Block GATE = register("gate", new GateBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque()));
 
     private static Block register(String id, Block block, Function<Block, Item> item) {
         Identifier identifier = new Identifier(Thematic.MOD_ID, id);

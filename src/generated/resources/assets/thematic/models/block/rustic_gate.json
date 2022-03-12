@@ -1,0 +1,7 @@
+{
+  "parent": "thematic:block/template_gate_hinge",
+  "textures": {
+    "gate": "thematic:block/rustic_gate",
+    "sides": "thematic:block/rustic_gate_sides"
+  }
+}

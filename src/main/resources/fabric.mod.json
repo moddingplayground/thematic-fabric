@@ -37,7 +37,10 @@
       "net.moddingplayground.thematic.impl.block.ThematicBlocksImpl",
       "net.moddingplayground.thematic.impl.item.ThematicItemsImpl"
     ],
-    "client":   [ "net.moddingplayground.thematic.impl.client.ThematicClientImpl" ],
+    "client": [
+      "net.moddingplayground.thematic.impl.client.ThematicClientImpl",
+      "net.moddingplayground.thematic.impl.client.block.ThematicBlocksClientImpl"
+    ],
     "toymaker": [ "net.moddingplayground.thematic.impl.data.ThematicToymakerImpl" ],
     "thematic": [ "net.moddingplayground.thematic.impl.ThematicMetaImpl" ]
   },

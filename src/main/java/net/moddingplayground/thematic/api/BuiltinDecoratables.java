@@ -9,6 +9,7 @@ import net.moddingplayground.thematic.api.registry.ThematicRegistry;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.data.preset.bannerpattern.BannerPatternWithItemDecoratableData;
 import net.moddingplayground.thematic.api.theme.data.preset.block.BookshelfDecoratableData;
+import net.moddingplayground.thematic.api.theme.data.preset.block.GateDecoratableData;
 import net.moddingplayground.thematic.api.theme.data.preset.block.LadderDecoratableData;
 import net.moddingplayground.thematic.api.theme.data.preset.block.LadderVaryingDecoratableData;
 import net.moddingplayground.thematic.api.theme.data.preset.block.LanternDecoratableData;
@@ -56,6 +57,11 @@ public interface BuiltinDecoratables {
         .add(RUSTIC, SeatDecoratableData.create(Blocks.SPRUCE_PLANKS))
         .add(SUNKEN, SeatDecoratableData.createMetal(Blocks.IRON_BARS, s -> s.sounds(BlockSoundGroup.NETHERITE).requiresTool()))
         .add(MECHANICAL, SeatDecoratableData.createMetal(Blocks.OXIDIZED_COPPER, s -> s.sounds(BlockSoundGroup.COPPER).requiresTool()));
+
+    Decoratable GATE = register("gate", "%s_gate")
+        .add(RUSTIC, GateDecoratableData.create(Blocks.SPRUCE_PLANKS))
+        .add(SUNKEN, GateDecoratableData.createMetal(Blocks.IRON_BARS, s -> s.sounds(BlockSoundGroup.NETHERITE).requiresTool()))
+        .add(MECHANICAL, GateDecoratableData.createMetal(Blocks.OXIDIZED_COPPER, s -> s.sounds(BlockSoundGroup.COPPER).requiresTool()));
 
     Decoratable BANNER_PATTERN = register("banner_pattern")
         .add(RUSTIC, BannerPatternWithItemDecoratableData.create("rope_banner_pattern"))

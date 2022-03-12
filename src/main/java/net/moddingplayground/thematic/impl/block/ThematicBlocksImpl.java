@@ -10,6 +10,7 @@ public final class ThematicBlocksImpl implements ThematicBlocks, ModInitializer 
     public void onInitialize() {
         FuelRegistry fuel = FuelRegistry.INSTANCE;
         fuel.add(SEAT, 300);
+        fuel.add(GATE, 200);
 
         FlammableBlockRegistry flammable = FlammableBlockRegistry.getDefaultInstance();
         flammable.add(SEAT, 30, 20);

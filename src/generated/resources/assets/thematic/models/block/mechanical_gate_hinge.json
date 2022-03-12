@@ -1,0 +1,7 @@
+{
+  "parent": "thematic:block/template_gate",
+  "textures": {
+    "gate": "thematic:block/mechanical_gate",
+    "sides": "thematic:block/mechanical_gate_sides"
+  }
+}

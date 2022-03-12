@@ -1,0 +1,9 @@
+{
+  "type": "thematic:theming",
+  "theme": "thematic:mechanical",
+  "ingredient": {
+    "item": "thematic:gate"
+  },
+  "result": "thematic:mechanical_gate",
+  "count": 1
+}

@@ -48,7 +48,7 @@ public class ItemTagGenerator extends AbstractTagGenerator<Item> {
         ).add(ItemTags.MUSIC_DISCS);
 
         for (Item item : Registry.ITEM) if (item instanceof ThemeItem) this.add(ThematicItemTags.ITEM_GROUP_ALL_TAB_ITEMS, item);
-        this.add(ThematicItemTags.ITEM_GROUP_ALL_TAB_ITEMS, DECORATORS_TABLE.asItem(), SEAT.asItem());
+        this.add(ThematicItemTags.ITEM_GROUP_ALL_TAB_ITEMS, DECORATORS_TABLE.asItem(), SEAT.asItem(), GATE.asItem());
 
         for (Item item : Registry.ITEM) if (item instanceof DyeItem) this.add(ThematicItemTags.DYES, item);
         CommonTag.DYES.run(t -> {}, t -> {

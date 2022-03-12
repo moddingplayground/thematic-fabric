@@ -7,6 +7,7 @@
   "stat.thematic.interact_with_decorators_table": "Interactions with Decorator's Table",
 
   "block.thematic.seat": "Seat",
+  "block.thematic.gate": "Gate",
 
   "itemGroup.thematic.themes": "Thematic",
   "itemGroup.thematic.themes.tab": "§7Thematic§r > %s",
@@ -46,6 +47,10 @@
   "block.thematic.rustic_seat": "Rustic Seat",
   "block.thematic.sunken_seat": "Sunken Seat",
   "block.thematic.mechanical_seat": "Mechanical Seat",
+
+  "block.thematic.rustic_gate": "Spruce Gate",
+  "block.thematic.sunken_gate": "Rusted Gate",
+  "block.thematic.mechanical_gate": "Reinforced Gate",
 
   "item.thematic.rope_banner_pattern": "Banner Pattern",
   "item.thematic.rope_banner_pattern.desc": "Rope",

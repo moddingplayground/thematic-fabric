@@ -1,0 +1,9 @@
+{
+  "type": "thematic:theming",
+  "theme": "thematic:sunken",
+  "ingredient": {
+    "item": "thematic:gate"
+  },
+  "result": "thematic:sunken_gate",
+  "count": 1
+}

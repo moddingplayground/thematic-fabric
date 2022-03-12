@@ -21,6 +21,7 @@ public class BlockLootTableGenerator extends AbstractBlockLootTableGenerator {
     public void generate() {
         this.add(DECORATORS_TABLE);
         this.add(SEAT);
+        this.add(GATE);
 
         for (Theme theme : ThematicRegistry.THEME) {
             for (Decoratable decoratable : ThematicRegistry.DECORATABLE) {

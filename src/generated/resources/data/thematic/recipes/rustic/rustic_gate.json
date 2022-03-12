@@ -1,0 +1,9 @@
+{
+  "type": "thematic:theming",
+  "theme": "thematic:rustic",
+  "ingredient": {
+    "item": "thematic:gate"
+  },
+  "result": "thematic:rustic_gate",
+  "count": 1
+}
