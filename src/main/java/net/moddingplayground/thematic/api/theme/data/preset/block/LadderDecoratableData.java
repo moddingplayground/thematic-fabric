@@ -18,9 +18,11 @@ import net.moddingplayground.frame.api.toymaker.v0.generator.model.item.Abstract
 import net.moddingplayground.frame.api.toymaker.v0.generator.tag.AbstractTagGenerator;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.Theme;
+import net.moddingplayground.thematic.api.theme.data.DecoratableData;
 import net.moddingplayground.thematic.impl.block.vanilla.PublicLadderBlock;
 
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 import static net.moddingplayground.frame.api.toymaker.v0.generator.model.InheritingModelGen.*;
 
@@ -34,6 +36,10 @@ public class LadderDecoratableData extends BlockItemDecoratableData {
 
     public LadderDecoratableData(Theme theme) {
         this(theme, s -> {}, true);
+    }
+
+    public static Function<Theme, DecoratableData> createMetal(Consumer<FabricBlockSettings> modifier) {
+        return theme -> new LadderDecoratableData(theme, modifier, false);
     }
 
     public boolean isWooden() {

@@ -13,8 +13,10 @@ import net.moddingplayground.thematic.api.Thematic;
 import net.moddingplayground.thematic.api.item.ThemedFrameBannerPatternItem;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.Theme;
+import net.moddingplayground.thematic.api.theme.data.DecoratableData;
 import net.moddingplayground.thematic.api.theme.data.DecoratableDataToymaker;
 
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class BannerPatternWithItemDecoratableData extends BannerPatternDecoratableData implements DecoratableDataToymaker {
@@ -33,6 +35,10 @@ public class BannerPatternWithItemDecoratableData extends BannerPatternDecoratab
 
     public BannerPatternWithItemDecoratableData(Theme theme, String id) {
         this(theme, id, ThemedFrameBannerPatternItem::new);
+    }
+
+    public static Function<Theme, DecoratableData> create(String id) {
+        return theme -> new BannerPatternWithItemDecoratableData(theme, id);
     }
 
     public String getId() {

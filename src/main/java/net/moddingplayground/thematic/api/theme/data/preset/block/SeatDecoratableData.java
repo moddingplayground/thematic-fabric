@@ -16,9 +16,11 @@ import net.moddingplayground.thematic.api.block.ThematicBlocks;
 import net.moddingplayground.thematic.api.block.ThematicSeatBlock;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.Theme;
+import net.moddingplayground.thematic.api.theme.data.DecoratableData;
 import net.moddingplayground.thematic.impl.data.StateModelGenerator;
 
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class SeatDecoratableData extends BlockItemDecoratableData {
     private final boolean wooden;
@@ -38,6 +40,14 @@ public class SeatDecoratableData extends BlockItemDecoratableData {
 
     public SeatDecoratableData(Theme theme, Block base) {
         this(theme, base, true);
+    }
+
+    public static Function<Theme, DecoratableData> create(Block base) {
+        return theme -> new SeatDecoratableData(theme, base);
+    }
+
+    public static Function<Theme, DecoratableData> createMetal(Block base, Consumer<FabricBlockSettings> modifier) {
+        return theme -> new SeatDecoratableData(theme, base, modifier, false);
     }
 
     public boolean isWooden() {

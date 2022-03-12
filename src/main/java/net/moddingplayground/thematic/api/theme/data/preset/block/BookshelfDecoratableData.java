@@ -15,8 +15,10 @@ import net.moddingplayground.frame.api.toymaker.v0.generator.model.block.Abstrac
 import net.moddingplayground.frame.api.toymaker.v0.generator.tag.AbstractTagGenerator;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.Theme;
+import net.moddingplayground.thematic.api.theme.data.DecoratableData;
 
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 import static net.moddingplayground.frame.api.toymaker.v0.generator.model.InheritingModelGen.*;
 
@@ -30,6 +32,14 @@ public class BookshelfDecoratableData extends BlockItemDecoratableData {
 
     public BookshelfDecoratableData(Theme theme, Consumer<FabricBlockSettings> modifier) {
         this(theme, modifier, true);
+    }
+
+    public static Function<Theme, DecoratableData> create(Consumer<FabricBlockSettings> modifier) {
+        return theme -> new BookshelfDecoratableData(theme, modifier);
+    }
+
+    public static Function<Theme, DecoratableData> createMetal(Consumer<FabricBlockSettings> modifier) {
+        return theme -> new BookshelfDecoratableData(theme, modifier, false);
     }
 
     public boolean isWooden() {

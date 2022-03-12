@@ -16,12 +16,19 @@ import net.moddingplayground.frame.api.toymaker.v0.generator.model.item.Abstract
 import net.moddingplayground.frame.api.toymaker.v0.generator.tag.AbstractTagGenerator;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.Theme;
+import net.moddingplayground.thematic.api.theme.data.DecoratableData;
+
+import java.util.function.Function;
 
 import static net.moddingplayground.frame.api.toymaker.v0.generator.model.block.BuildingBlocks.*;
 
 public class LanternDecoratableData extends BlockItemDecoratableData {
     public LanternDecoratableData(Theme theme, BlockFactory block) {
         super(theme, () -> block.create(FabricBlockSettings.copyOf(Blocks.LANTERN)));
+    }
+
+    public static Function<Theme, DecoratableData> create(BlockFactory block) {
+        return theme -> new LanternDecoratableData(theme, block);
     }
 
     @Override

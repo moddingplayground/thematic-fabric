@@ -23,6 +23,10 @@ public class Decoratable {
         this.themes = Maps.newLinkedHashMap();
     }
 
+    public Decoratable() {
+        this("%s");
+    }
+
     public String getFormat() {
         return this.format;
     }

@@ -9,6 +9,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.enums.ChestType;
 import net.minecraft.util.Identifier;
 import net.moddingplayground.thematic.api.theme.Theme;
+import net.moddingplayground.thematic.api.theme.data.DecoratableData;
 import net.moddingplayground.thematic.api.theme.data.preset.block.entity.chest.ChestDecoratableData;
 import net.moddingplayground.thematic.api.theme.data.preset.block.entity.chest.TrappedChestDecoratableData;
 import net.moddingplayground.thematic.impl.block.entity.theme.chest.TrappedRusticChestBlockEntity;
@@ -17,6 +18,7 @@ import org.apache.commons.compress.utils.Lists;
 
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class TrappedRusticChestDecoratableData extends TrappedChestDecoratableData<TrappedRusticChestBlockEntity> {
     public TrappedRusticChestDecoratableData(Theme theme, Block particle, Consumer<FabricBlockSettings> modifier, boolean wooden) {
@@ -26,6 +28,10 @@ public class TrappedRusticChestDecoratableData extends TrappedChestDecoratableDa
 
     public TrappedRusticChestDecoratableData(Theme theme, Block particle) {
         this(theme, particle, s -> {}, true);
+    }
+
+    public static Function<Theme, DecoratableData> create(Block particle) {
+        return theme -> new TrappedRusticChestDecoratableData(theme, particle);
     }
 
     @Override
