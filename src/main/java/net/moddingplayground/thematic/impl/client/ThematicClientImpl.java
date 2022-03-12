@@ -22,13 +22,11 @@ import net.moddingplayground.thematic.impl.client.render.block.entity.RusticChes
 import net.moddingplayground.thematic.impl.client.render.block.entity.SunkenChestBlockEntityRenderer;
 
 @Environment(EnvType.CLIENT)
-public class ThematicClientImpl implements Thematic, ClientModInitializer {
-    private static ThematicClientImpl instance = null;
-    protected final InitializationLogger initializer;
+public final class ThematicClientImpl implements Thematic, ClientModInitializer {
+    private final InitializationLogger initializer;
 
     public ThematicClientImpl() {
         this.initializer = new InitializationLogger(LOGGER, MOD_NAME, EnvType.CLIENT);
-        instance = this;
     }
 
     @SuppressWarnings("UnstableApiUsage")
@@ -48,9 +46,5 @@ public class ThematicClientImpl implements Thematic, ClientModInitializer {
         ThematicClientUtil.registerChestRenderer(BuiltinThemes.MECHANICAL, MechanicalChestBlockEntityRenderer::new);
 
         this.initializer.finish();
-    }
-
-    public static ThematicClientImpl getInstance() {
-        return instance;
     }
 }

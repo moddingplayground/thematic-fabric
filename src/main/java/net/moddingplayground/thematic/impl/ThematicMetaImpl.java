@@ -5,7 +5,7 @@ import net.moddingplayground.thematic.api.BuiltinDecoratables;
 import net.moddingplayground.thematic.api.BuiltinThemes;
 import net.moddingplayground.thematic.api.ThematicEntrypoint;
 
-public class ThematicMetaImpl implements ThematicEntrypoint {
+public final class ThematicMetaImpl implements ThematicEntrypoint {
     @SuppressWarnings("UnstableApiUsage")
     @Override
     public void onInitializeThematic() {

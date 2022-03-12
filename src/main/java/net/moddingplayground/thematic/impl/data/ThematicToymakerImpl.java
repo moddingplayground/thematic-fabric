@@ -9,7 +9,7 @@ import net.moddingplayground.frame.api.toymaker.v0.registry.generator.StateModel
 import net.moddingplayground.frame.api.toymaker.v0.registry.generator.TagGeneratorStore;
 import net.moddingplayground.thematic.api.Thematic;
 
-public class ThematicToymakerImpl implements Thematic, ToymakerEntrypoint {
+public final class ThematicToymakerImpl implements Thematic, ToymakerEntrypoint {
     @Override
     public void onInitializeToymaker() {
         ItemModelGeneratorStore.register(() -> new ItemModelGenerator(MOD_ID));

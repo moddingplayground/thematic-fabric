@@ -32,7 +32,11 @@
 
   "environment": "*",
   "entrypoints": {
-    "main":     [ "net.moddingplayground.thematic.impl.ThematicImpl" ],
+    "main": [
+      "net.moddingplayground.thematic.impl.ThematicImpl",
+      "net.moddingplayground.thematic.impl.block.ThematicBlocksImpl",
+      "net.moddingplayground.thematic.impl.item.ThematicItemsImpl"
+    ],
     "client":   [ "net.moddingplayground.thematic.impl.client.ThematicClientImpl" ],
     "toymaker": [ "net.moddingplayground.thematic.impl.data.ThematicToymakerImpl" ],
     "thematic": [ "net.moddingplayground.thematic.impl.ThematicMetaImpl" ]

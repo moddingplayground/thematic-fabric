@@ -11,8 +11,8 @@ import net.moddingplayground.frame.api.toymaker.v0.generator.loot.AbstractBlockL
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.block.AbstractStateModelGenerator;
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.item.AbstractItemModelGenerator;
 import net.moddingplayground.frame.api.toymaker.v0.generator.recipe.AbstractRecipeGenerator;
-import net.moddingplayground.thematic.api.Thematic;
 import net.moddingplayground.thematic.api.data.ThemingRecipeJsonBuilder;
+import net.moddingplayground.thematic.api.item.ThematicItemGroups;
 import net.moddingplayground.thematic.api.item.ThemedBlockItem;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.Theme;
@@ -30,7 +30,7 @@ public abstract class BlockItemDecoratableData implements DecoratableData, Decor
     public BlockItemDecoratableData(Theme theme, BlockFactory block, ItemFactory item) {
         this.theme = theme;
         if (block != null) this.block = Suppliers.memoize(block::create);
-        if (item != null)  this.item  = Suppliers.memoize(() -> item.create(theme, this.getBlock(), new FabricItemSettings().group(Thematic.getItemGroup())));
+        if (item != null)  this.item  = Suppliers.memoize(() -> item.create(theme, this.getBlock(), new FabricItemSettings().group(ThematicItemGroups.THEMES)));
     }
 
     public BlockItemDecoratableData(Theme theme, BlockFactory block) {

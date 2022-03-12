@@ -9,7 +9,7 @@ import net.minecraft.util.registry.Registry;
 import net.moddingplayground.frame.api.bannerpatterns.v0.FrameBannerPattern;
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.item.AbstractItemModelGenerator;
 import net.moddingplayground.frame.api.toymaker.v0.generator.recipe.AbstractRecipeGenerator;
-import net.moddingplayground.thematic.api.Thematic;
+import net.moddingplayground.thematic.api.item.ThematicItemGroups;
 import net.moddingplayground.thematic.api.item.ThemedFrameBannerPatternItem;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.Theme;
@@ -26,7 +26,7 @@ public class BannerPatternWithItemDecoratableData extends BannerPatternDecoratab
     public BannerPatternWithItemDecoratableData(Theme theme, String id, ItemFactory item, Supplier<FrameBannerPattern> pattern) {
         super(theme, pattern);
         this.id = id;
-        this.item = Suppliers.memoize(() -> item.create(theme, this.getPattern(), new FabricItemSettings().group(Thematic.getItemGroup()).maxCount(1)));
+        this.item = Suppliers.memoize(() -> item.create(theme, this.getPattern(), new FabricItemSettings().group(ThematicItemGroups.THEMES).maxCount(1)));
     }
 
     public BannerPatternWithItemDecoratableData(Theme theme, String id, ItemFactory item) {
