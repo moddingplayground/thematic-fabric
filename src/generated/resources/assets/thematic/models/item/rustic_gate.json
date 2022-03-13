@@ -1,3 +1,6 @@
 {
-  "parent": "thematic:block/rustic_gate"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "thematic:item/rustic_gate"
+  }
 }

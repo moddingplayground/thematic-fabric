@@ -1,3 +1,6 @@
 {
-  "parent": "thematic:block/sunken_gate"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "thematic:item/sunken_gate"
+  }
 }

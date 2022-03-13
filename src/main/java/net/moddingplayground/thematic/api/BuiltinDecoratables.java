@@ -28,15 +28,20 @@ import static net.moddingplayground.thematic.api.BuiltinThemes.*;
  * References to all built-in registered decoratables.
  */
 public interface BuiltinDecoratables {
-    Decoratable LANTERN = register("lantern", "%s_lantern")
-        .add(RUSTIC, LanternDecoratableData.create(RusticLanternBlock::new))
-        .add(SUNKEN, LanternDecoratableData.create(SunkenLanternBlock::new))
-        .add(MECHANICAL, LanternDecoratableData.create(MechanicalLanternBlock::new));
-
     Decoratable LADDER = register("ladder", "%s_ladder")
         .add(RUSTIC, LadderDecoratableData::new)
         .add(SUNKEN, LadderVaryingDecoratableData.createMetal(3, s -> s.sounds(BlockSoundGroup.CHAIN).strength(3.5f).requiresTool()))
         .add(MECHANICAL, LadderDecoratableData.createMetal(s -> s.sounds(BlockSoundGroup.COPPER).strength(3.5f).requiresTool()));
+
+    Decoratable GATE = register("gate", "%s_gate")
+        .add(RUSTIC, GateDecoratableData.create(Blocks.SPRUCE_PLANKS))
+        .add(SUNKEN, GateDecoratableData.createMetal(Blocks.IRON_BARS, s -> s.sounds(BlockSoundGroup.NETHERITE).requiresTool()))
+        .add(MECHANICAL, GateDecoratableData.createMetal(Blocks.OXIDIZED_COPPER, s -> s.sounds(BlockSoundGroup.COPPER).requiresTool()));
+
+    Decoratable LANTERN = register("lantern", "%s_lantern")
+        .add(RUSTIC, LanternDecoratableData.create(RusticLanternBlock::new))
+        .add(SUNKEN, LanternDecoratableData.create(SunkenLanternBlock::new))
+        .add(MECHANICAL, LanternDecoratableData.create(MechanicalLanternBlock::new));
 
     Decoratable BOOKSHELF = register("bookshelf", "%s_bookshelf")
         .add(RUSTIC, BookshelfDecoratableData.create(s -> s.mapColor(MapColor.SPRUCE_BROWN)))
@@ -57,11 +62,6 @@ public interface BuiltinDecoratables {
         .add(RUSTIC, SeatDecoratableData.create(Blocks.SPRUCE_PLANKS))
         .add(SUNKEN, SeatDecoratableData.createMetal(Blocks.IRON_BARS, s -> s.sounds(BlockSoundGroup.NETHERITE).requiresTool()))
         .add(MECHANICAL, SeatDecoratableData.createMetal(Blocks.OXIDIZED_COPPER, s -> s.sounds(BlockSoundGroup.COPPER).requiresTool()));
-
-    Decoratable GATE = register("gate", "%s_gate")
-        .add(RUSTIC, GateDecoratableData.create(Blocks.SPRUCE_PLANKS))
-        .add(SUNKEN, GateDecoratableData.createMetal(Blocks.IRON_BARS, s -> s.sounds(BlockSoundGroup.NETHERITE).requiresTool()))
-        .add(MECHANICAL, GateDecoratableData.createMetal(Blocks.OXIDIZED_COPPER, s -> s.sounds(BlockSoundGroup.COPPER).requiresTool()));
 
     Decoratable BANNER_PATTERN = register("banner_pattern")
         .add(RUSTIC, BannerPatternWithItemDecoratableData.create("rope_banner_pattern"))

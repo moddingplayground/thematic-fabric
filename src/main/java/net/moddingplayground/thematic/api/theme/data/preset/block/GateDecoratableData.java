@@ -7,9 +7,11 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.item.Item;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.tag.BlockTags;
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.block.AbstractStateModelGenerator;
+import net.moddingplayground.frame.api.toymaker.v0.generator.model.item.AbstractItemModelGenerator;
 import net.moddingplayground.frame.api.toymaker.v0.generator.tag.AbstractTagGenerator;
 import net.moddingplayground.thematic.api.block.GateBlock;
 import net.moddingplayground.thematic.api.block.ThematicBlocks;
@@ -76,6 +78,12 @@ public class GateDecoratableData extends BlockItemDecoratableData {
     public void generateStateModels(AbstractStateModelGenerator gen) {
         Block block = this.getBlock();
         gen.add(block, b -> StateModelGenerator.gate(gen, b));
+    }
+
+    @Override
+    public void generateItemModels(AbstractItemModelGenerator gen) {
+        Item item = this.getItem();
+        gen.generated(item);
     }
 
     @Override

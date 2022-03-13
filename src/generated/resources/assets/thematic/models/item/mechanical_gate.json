@@ -1,3 +1,6 @@
 {
-  "parent": "thematic:block/mechanical_gate"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "thematic:item/mechanical_gate"
+  }
 }
