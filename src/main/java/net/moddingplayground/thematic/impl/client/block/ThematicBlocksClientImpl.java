@@ -4,7 +4,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
+import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 import net.moddingplayground.thematic.api.BuiltinThemes;
 import net.moddingplayground.thematic.api.block.ThematicBlocks;
@@ -22,7 +22,7 @@ public final class ThematicBlocksClientImpl implements ThematicBlocks, ClientMod
         BlockRenderLayerMap renderLayers = BlockRenderLayerMap.INSTANCE;
         renderLayers.putBlocks(RenderLayer.getCutout(), ThematicBlocks.SEAT, ThematicBlocks.GATE);
 
-        ScreenRegistry.register(ThematicScreenHandlerType.DECORATORS_TABLE, DecoratorsTableScreen::new);
+        HandledScreens.register(ThematicScreenHandlerType.DECORATORS_TABLE, DecoratorsTableScreen::new);
         ThematicClientUtil.registerChestRenderer(BuiltinThemes.RUSTIC, RusticChestBlockEntityRenderer::new);
         ThematicClientUtil.registerChestRenderer(BuiltinThemes.SUNKEN, SunkenChestBlockEntityRenderer::new);
         ThematicClientUtil.registerChestRenderer(BuiltinThemes.MECHANICAL, MechanicalChestBlockEntityRenderer::new);

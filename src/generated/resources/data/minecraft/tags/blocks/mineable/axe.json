@@ -5,10 +5,10 @@
     "thematic:seat",
     "thematic:gate",
     "thematic:rustic_ladder",
+    "thematic:rustic_gate",
     "thematic:rustic_bookshelf",
     "thematic:rustic_chest",
     "thematic:trapped_rustic_chest",
-    "thematic:rustic_seat",
-    "thematic:rustic_gate"
+    "thematic:rustic_seat"
   ]
 }
