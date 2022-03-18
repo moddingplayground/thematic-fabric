@@ -55,9 +55,8 @@ public class DoorBlockMixin {
     private void thematic_synchronizeGate(World world, BlockPos pos, BlockState state) {
         BlockPos posg = state.get(HALF) == DoubleBlockHalf.UPPER ? pos.up() : pos.up(2);
         BlockState stateg = world.getBlockState(posg);
-        if (stateg.getBlock() instanceof GateBlock
-            && stateg.get(FACING) == state.get(FACING)
-            && stateg.get(HINGE) == state.get(HINGE)
-        ) world.setBlockState(posg, stateg.with(OPEN, state.get(OPEN)), Block.NOTIFY_LISTENERS);
+        if (stateg.getBlock() instanceof GateBlock && GateBlock.isCompatibleDoor(state, stateg)) {
+            world.setBlockState(posg, stateg.with(OPEN, state.get(OPEN)), Block.NOTIFY_LISTENERS);
+        }
     }
 }

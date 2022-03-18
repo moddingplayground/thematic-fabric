@@ -23,16 +23,20 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Util;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldEvents;
 import net.minecraft.world.event.GameEvent;
+
+import java.util.function.Function;
 
 @SuppressWarnings("deprecation")
 public class GateBlock extends Block {
@@ -45,6 +49,10 @@ public class GateBlock extends Block {
     public static final VoxelShape SOUTH_SHAPE = createCuboidShape(0.0, 0.0, 13.0, 16.0, 16.0, 16.0);
     public static final VoxelShape EAST_SHAPE = createCuboidShape(13.0, 0.0, 0.0, 16.0, 16.0, 16.0);
     public static final VoxelShape WEST_SHAPE = createCuboidShape(0.0, 0.0, 0.0, 3.0, 16.0, 16.0);
+
+    public static final Function<VoxelShape, VoxelShape> EXTENDED_SHAPE = Util.memoize(
+        shape -> VoxelShapes.union(shape, shape.offset(0, -1, 0), shape.offset(0, -2, 0))
+    );
 
     public GateBlock(AbstractBlock.Settings settings) {
         super(settings);
@@ -60,12 +68,14 @@ public class GateBlock extends Block {
         Direction facing = state.get(FACING);
         boolean closed = !state.get(OPEN);
         boolean right = state.get(HINGE) == DoorHinge.RIGHT;
-        return switch (facing) {
+        VoxelShape shape = switch (facing) {
             default    -> closed ?  WEST_SHAPE : (right ? SOUTH_SHAPE : NORTH_SHAPE );
             case SOUTH -> closed ? NORTH_SHAPE : (right ?  WEST_SHAPE :  EAST_SHAPE );
             case WEST  -> closed ?  EAST_SHAPE : (right ? NORTH_SHAPE : SOUTH_SHAPE );
             case NORTH -> closed ? SOUTH_SHAPE : (right ?  EAST_SHAPE :  WEST_SHAPE );
         };
+
+        return hasCompatibleDoor(world, pos, state) && context != ShapeContext.absent() ? EXTENDED_SHAPE.apply(shape) : shape;
     }
 
     @Override
@@ -88,13 +98,13 @@ public class GateBlock extends Block {
     }
 
     @Override
-    public BlockState getPlacementState(ItemPlacementContext ctx) {
-        BlockPos pos = ctx.getBlockPos();
-        World world = ctx.getWorld();
+    public BlockState getPlacementState(ItemPlacementContext context) {
+        BlockPos pos = context.getBlockPos();
+        World world = context.getWorld();
         boolean powered = world.isReceivingRedstonePower(pos);
 
         BlockState out = this.getDefaultState()
-                             .with(HINGE, this.getHinge(ctx))
+                             .with(HINGE, this.getHinge(context))
                              .with(POWERED, powered)
                              .with(OPEN, powered);
 
@@ -102,14 +112,14 @@ public class GateBlock extends Block {
         BlockState stated = world.getBlockState(posd);
         return stated.contains(FACING)
             ? out.with(FACING, stated.get(FACING))
-            : out.with(FACING, ctx.getPlayerFacing());
+            : out.with(FACING, context.getPlayerFacing());
 
     }
 
-    public DoorHinge getHinge(ItemPlacementContext ctx) {
-        World world = ctx.getWorld();
-        BlockPos pos = ctx.getBlockPos();
-        Direction facing = ctx.getPlayerFacing();
+    public DoorHinge getHinge(ItemPlacementContext context) {
+        World world = context.getWorld();
+        BlockPos pos = context.getBlockPos();
+        Direction facing = context.getPlayerFacing();
 
         BlockPos posd = pos.down();
         BlockState stated = world.getBlockState(posd);
@@ -138,7 +148,7 @@ public class GateBlock extends Block {
 
         int ox = facing.getOffsetX();
         int oz = facing.getOffsetZ();
-        Vec3d hit = ctx.getHitPos();
+        Vec3d hit = context.getHitPos();
         double x = hit.x - (double)pos.getX();
         double z = hit.z - (double)pos.getZ();
         return ox < 0 && z < 0.5 || ox > 0 && z > 0.5 || oz < 0 && x > 0.5 || oz > 0 && x < 0.5
@@ -153,7 +163,7 @@ public class GateBlock extends Block {
         world.setBlockState(pos, state, Block.NOTIFY_LISTENERS | Block.REDRAW_ON_MAIN_THREAD);
         world.syncWorldEvent(player, state.get(OPEN) ? this.getOpenSoundEventId() : this.getCloseSoundEventId(), pos, 0);
         world.emitGameEvent(player, this.isOpen(state) ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, pos);
-        this.synchronizeDoor(world, pos, world.getBlockState(pos));
+        synchronizeDoor(world, pos, world.getBlockState(pos));
         return ActionResult.success(world.isClient);
     }
 
@@ -166,18 +176,27 @@ public class GateBlock extends Block {
                 world.emitGameEvent(powered ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, pos);
             }
             world.setBlockState(pos, state.with(POWERED, powered).with(OPEN, powered), Block.NOTIFY_LISTENERS);
-            this.synchronizeDoor(world, pos, world.getBlockState(pos));
+            synchronizeDoor(world, pos, world.getBlockState(pos));
         }
     }
 
-    public void synchronizeDoor(World world, BlockPos pos, BlockState state) {
+    public static void synchronizeDoor(World world, BlockPos pos, BlockState state) {
         BlockPos posd = pos.down();
         BlockState stated = world.getBlockState(posd);
-        if (stated.getBlock() instanceof DoorBlock
+        if (hasCompatibleDoor(world, pos, state)) world.setBlockState(posd, stated.with(OPEN, state.get(OPEN)), Block.NOTIFY_LISTENERS);
+    }
+
+    public static boolean hasCompatibleDoor(BlockView world, BlockPos pos, BlockState state) {
+        BlockPos posd = pos.down();
+        BlockState stated = world.getBlockState(posd);
+        return stated.getBlock() instanceof DoorBlock
             && stated.get(DoorBlock.HALF) == DoubleBlockHalf.UPPER
-            && stated.get(FACING)         == state.get(FACING)
-            && stated.get(HINGE)          == state.get(HINGE)
-        ) world.setBlockState(posd, stated.with(OPEN, state.get(OPEN)), Block.NOTIFY_LISTENERS);
+            && isCompatibleDoor(state, stated);
+    }
+
+    public static boolean isCompatibleDoor(BlockState state, BlockState other) {
+        return state.get(FACING) == other.get(FACING)
+            && state.get(HINGE)  == other.get(HINGE);
     }
 
     public void playOpenCloseSound(World world, BlockPos pos, boolean open) {
