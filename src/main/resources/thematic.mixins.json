@@ -5,6 +5,7 @@
   "mixins": [
     "ChestBlockEntityAccessor",
     "ChestBlockEntityInvoker",
+    "DoorBlockMixin",
     "ItemAccessor",
     "ViewerCountManagerInvoker"
   ],
