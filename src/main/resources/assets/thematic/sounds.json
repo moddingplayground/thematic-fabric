@@ -19,5 +19,10 @@
   "block.chest_metal.open": {
     "sounds": [ "thematic:block/chest_metal/open" ],
     "subtitle": "subtitles.block.chest.open"
+  },
+
+  "ui.decorators_table.take_result": {
+    "sounds": [ "thematic:ui/decorators_table/take_result", "thematic:ui/decorators_table/take_result2" ],
+    "subtitle": "subtitles.thematic.ui.decorators_table.take_result"
   }
 }

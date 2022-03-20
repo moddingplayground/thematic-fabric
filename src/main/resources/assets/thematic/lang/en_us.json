@@ -6,6 +6,8 @@
   "container.thematic:decorators_table": "Decorator's Table",
   "stat.thematic.interact_with_decorators_table": "Interactions with Decorator's Table",
 
+  "subtitles.thematic.ui.decorators_table.take_result": "Decorator's Table used",
+
   "block.thematic.seat": "Seat",
   "block.thematic.gate": "Gate",
 

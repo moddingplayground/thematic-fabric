@@ -18,8 +18,17 @@ public interface ThematicSoundEvents {
         return block("chest_metal", id);
     }
 
+    SoundEvent UI_DECORATORS_TABLE_TAKE_RESULT = uiDecoratorsTable("take_result");
+    private static SoundEvent uiDecoratorsTable(String id) {
+        return ui("decorators_table.%s".formatted(id));
+    }
+
     private static SoundEvent block(String block, String id) {
         return register("block.%s.%s".formatted(block, id));
+    }
+
+    private static SoundEvent ui(String id) {
+        return register("ui.%s".formatted(id));
     }
 
     private static SoundEvent register(String id) {

@@ -15,12 +15,14 @@ import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.slot.CraftingResultSlot;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.moddingplayground.thematic.api.block.ThematicBlocks;
 import net.moddingplayground.thematic.api.item.ThemeItem;
 import net.moddingplayground.thematic.api.recipe.ThematicRecipeType;
+import net.moddingplayground.thematic.api.sound.ThematicSoundEvents;
 
 public class DecoratorsTableScreenHandler extends AbstractRecipeScreenHandler<CraftingInventory> {
     public final ScreenHandlerContext context;
@@ -204,6 +206,7 @@ public class DecoratorsTableScreenHandler extends AbstractRecipeScreenHandler<Cr
 
         @Override
         public void onTakeItem(PlayerEntity player, ItemStack stack) {
+            if (player.world.isClient) player.playSound(ThematicSoundEvents.UI_DECORATORS_TABLE_TAKE_RESULT, SoundCategory.BLOCKS, 1.0f, 1.0f);
             this.onCrafted(stack);
             DefaultedList<ItemStack> stacks = player.world.getRecipeManager().getRemainingStacks(ThematicRecipeType.THEMING, this.input, player.world);
             for (int i = 0; i < stacks.size(); ++i) {
