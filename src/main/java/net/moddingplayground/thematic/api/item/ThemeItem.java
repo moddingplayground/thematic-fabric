@@ -4,7 +4,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.moddingplayground.thematic.api.theme.Theme;
-import net.moddingplayground.thematic.api.util.Themed;
+import net.moddingplayground.thematic.api.theme.Themed;
 import net.moddingplayground.thematic.mixin.ItemAccessor;
 
 /**

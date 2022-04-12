@@ -3,7 +3,7 @@ package net.moddingplayground.thematic.api.item;
 import net.moddingplayground.frame.api.bannerpatterns.v0.FrameBannerPattern;
 import net.moddingplayground.frame.api.bannerpatterns.v0.FrameBannerPatternItem;
 import net.moddingplayground.thematic.api.theme.Theme;
-import net.moddingplayground.thematic.api.util.Themed;
+import net.moddingplayground.thematic.api.theme.Themed;
 
 import java.util.function.Supplier;
 

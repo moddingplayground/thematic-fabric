@@ -9,7 +9,6 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.util.Identifier;
 import net.moddingplayground.thematic.api.Thematic;
 import net.moddingplayground.thematic.api.registry.ThematicRegistry;
-import net.moddingplayground.thematic.api.util.Themed;
 
 import java.util.function.Supplier;
 

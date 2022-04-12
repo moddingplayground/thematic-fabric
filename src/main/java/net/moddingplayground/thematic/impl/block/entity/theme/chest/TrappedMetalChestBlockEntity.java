@@ -6,9 +6,9 @@ import net.minecraft.block.entity.TrappedChestBlockEntity;
 import net.minecraft.util.math.BlockPos;
 import net.moddingplayground.thematic.api.BuiltinDecoratables;
 import net.moddingplayground.thematic.api.theme.Theme;
+import net.moddingplayground.thematic.api.theme.Themed;
 import net.moddingplayground.thematic.api.theme.data.preset.block.entity.BlockEntityDecoratableData;
 import net.moddingplayground.thematic.api.util.ChestSoundViewerCountManager;
-import net.moddingplayground.thematic.api.util.Themed;
 
 public abstract class TrappedMetalChestBlockEntity extends TrappedChestBlockEntity implements Themed {
     public TrappedMetalChestBlockEntity(BlockPos pos, BlockState state) {

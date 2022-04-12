@@ -9,9 +9,9 @@ import net.minecraft.world.World;
 import net.moddingplayground.thematic.api.BuiltinDecoratables;
 import net.moddingplayground.thematic.api.sound.ThematicSoundEvents;
 import net.moddingplayground.thematic.api.theme.Theme;
+import net.moddingplayground.thematic.api.theme.Themed;
 import net.moddingplayground.thematic.api.theme.data.preset.block.entity.BlockEntityDecoratableData;
 import net.moddingplayground.thematic.api.util.ChestSoundViewerCountManager;
-import net.moddingplayground.thematic.api.util.Themed;
 
 public abstract class MetalChestBlockEntity extends ChestBlockEntity implements Themed {
     public MetalChestBlockEntity(BlockPos pos, BlockState state) {

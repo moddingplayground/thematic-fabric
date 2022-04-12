@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.world.World;
 import net.moddingplayground.thematic.api.theme.Theme;
-import net.moddingplayground.thematic.api.util.Themed;
+import net.moddingplayground.thematic.api.theme.Themed;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
