@@ -1,6 +1,7 @@
 package net.moddingplayground.thematic.api.registry;
 
 import net.fabricmc.fabric.api.event.registry.FabricRegistryBuilder;
+import net.fabricmc.fabric.api.event.registry.RegistryAttribute;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.DefaultedRegistry;
 import net.moddingplayground.thematic.api.Thematic;
@@ -12,6 +13,8 @@ public interface ThematicRegistry {
     DefaultedRegistry<Decoratable> DECORATABLE = register("decoratable", Decoratable.class,"lantern");
 
     private static <T> DefaultedRegistry<T> register(String id, Class<T> clazz, String def) {
-        return FabricRegistryBuilder.createDefaulted(clazz, new Identifier(Thematic.MOD_ID, id), new Identifier(Thematic.MOD_ID, def)).buildAndRegister();
+        return FabricRegistryBuilder.createDefaulted(clazz, new Identifier(Thematic.MOD_ID, id), new Identifier(Thematic.MOD_ID, def))
+                                    .attribute(RegistryAttribute.SYNCED)
+                                    .buildAndRegister();
     }
 }
