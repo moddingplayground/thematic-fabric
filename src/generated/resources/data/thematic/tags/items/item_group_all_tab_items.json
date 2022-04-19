@@ -1,11 +1,11 @@
 {
   "replace": false,
   "values": [
-    "thematic:ancient_rope",
-    "thematic:overgrown_anchor",
-    "thematic:oxidized_cog",
-    "thematic:decorators_table",
+    "thematic:gate",
     "thematic:seat",
-    "thematic:gate"
+    "thematic:decorators_table",
+    "thematic:oxidized_cog",
+    "thematic:overgrown_anchor",
+    "thematic:ancient_rope"
   ]
 }

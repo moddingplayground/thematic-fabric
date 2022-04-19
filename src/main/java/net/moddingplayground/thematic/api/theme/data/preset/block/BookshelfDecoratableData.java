@@ -3,14 +3,13 @@ package net.moddingplayground.thematic.api.theme.data.preset.block;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.item.Item;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.Identifier;
 import net.moddingplayground.frame.api.contentregistries.v0.StateRegistry;
-import net.moddingplayground.frame.api.tags.v0.CommonTag;
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.block.AbstractStateModelGenerator;
 import net.moddingplayground.frame.api.toymaker.v0.generator.tag.AbstractTagGenerator;
 import net.moddingplayground.thematic.api.theme.Decoratable;
@@ -74,13 +73,7 @@ public class BookshelfDecoratableData extends BlockItemDecoratableData {
     public void generateBlockTags(AbstractTagGenerator<Block> gen) {
         Block block = this.getBlock();
         gen.add(this.isWooden() ? BlockTags.AXE_MINEABLE : BlockTags.PICKAXE_MINEABLE, block);
-        CommonTag.BOOKSHELVES.run(tag -> gen.add(tag, block), t -> {});
-    }
-
-    @Override
-    public void generateItemTags(AbstractTagGenerator<Item> gen) {
-        Item item = this.getItem();
-        CommonTag.BOOKSHELVES.run(t -> {}, tag -> gen.add(tag, item));
+        gen.add(ConventionalBlockTags.BOOKSHELVES, block);
     }
 
     @Override

@@ -1,11 +1,11 @@
 package net.moddingplayground.thematic.impl.data;
 
+import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.item.Items;
 import net.minecraft.tag.ItemTags;
 import net.moddingplayground.frame.api.toymaker.v0.generator.recipe.AbstractRecipeGenerator;
 import net.moddingplayground.thematic.api.registry.ThematicRegistry;
-import net.moddingplayground.thematic.api.tag.ThematicItemTags;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.Theme;
 import net.moddingplayground.thematic.api.theme.data.DecoratableDataToymaker;
@@ -21,12 +21,12 @@ public class RecipeGenerator extends AbstractRecipeGenerator {
     public void generate() {
         this.add("decorators_table", ShapedRecipeJsonBuilder.create(DECORATORS_TABLE, 1)
                                                             .input('#', ItemTags.PLANKS)
-                                                            .input('@', ThematicItemTags.DYES)
+                                                            .input('@', ConventionalItemTags.DYES)
                                                             .pattern("@@")
                                                             .pattern("##")
                                                             .pattern("##")
                                                             .criterion("has_plank", hasItems(ItemTags.PLANKS))
-                                                            .criterion("has_dye", hasItems(ThematicItemTags.DYES)));
+                                                            .criterion("has_dye", hasItems(ConventionalItemTags.DYES)));
 
         this.add("seat", ShapedRecipeJsonBuilder.create(SEAT, 3)
                                                             .input('#', ItemTags.WOOL)

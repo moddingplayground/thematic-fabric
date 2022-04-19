@@ -1,8 +1,11 @@
 {
   "replace": false,
   "values": [
-    "thematic:rustic_chest",
+    "thematic:trapped_mechanical_chest",
+    "thematic:mechanical_chest",
+    "thematic:trapped_sunken_chest",
     "thematic:sunken_chest",
-    "thematic:mechanical_chest"
+    "thematic:trapped_rustic_chest",
+    "thematic:rustic_chest"
   ]
 }

@@ -10,7 +10,7 @@
       "tag": "minecraft:planks"
     },
     "@": {
-      "tag": "thematic:dyes"
+      "tag": "c:dyes"
     }
   },
   "result": {

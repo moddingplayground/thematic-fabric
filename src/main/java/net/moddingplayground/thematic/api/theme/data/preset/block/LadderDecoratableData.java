@@ -12,7 +12,6 @@ import net.minecraft.item.Item;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.tag.BlockTags;
 import net.moddingplayground.frame.api.contentregistries.v0.StateRegistry;
-import net.moddingplayground.frame.api.tags.v0.CommonTag;
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.block.AbstractStateModelGenerator;
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.item.AbstractItemModelGenerator;
 import net.moddingplayground.frame.api.toymaker.v0.generator.tag.AbstractTagGenerator;
@@ -85,13 +84,6 @@ public class LadderDecoratableData extends BlockItemDecoratableData {
         Block block = this.getBlock();
         gen.add(BlockTags.CLIMBABLE, block);
         gen.add(this.isWooden() ? BlockTags.AXE_MINEABLE : BlockTags.PICKAXE_MINEABLE, block);
-        CommonTag.LADDERS.run(tag -> gen.add(tag, block), t -> {});
-    }
-
-    @Override
-    public void generateItemTags(AbstractTagGenerator<Item> gen) {
-        Item item = this.getItem();
-        CommonTag.LADDERS.run(t -> {}, tag -> gen.add(tag, item));
     }
 
     @Override

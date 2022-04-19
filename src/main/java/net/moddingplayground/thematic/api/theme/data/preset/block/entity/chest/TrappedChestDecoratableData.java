@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
 import net.fabricmc.fabric.api.event.client.ClientSpriteRegistryCallback;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntityType;
@@ -25,7 +26,6 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
-import net.moddingplayground.frame.api.tags.v0.CommonTag;
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.InheritingModelGen;
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.block.AbstractStateModelGenerator;
 import net.moddingplayground.frame.api.toymaker.v0.generator.model.item.AbstractItemModelGenerator;
@@ -64,18 +64,6 @@ public class TrappedChestDecoratableData<C extends TrappedChestBlockEntity> exte
         this.modifier = modifier;
         this.particle = particle;
         this.wooden = wooden;
-    }
-
-    public TrappedChestDecoratableData(Theme theme, FabricBlockEntityTypeBuilder.Factory<C> type, Block particle, Consumer<FabricBlockSettings> modifier) {
-        this(theme, type, particle, modifier, true);
-    }
-
-    public TrappedChestDecoratableData(Theme theme, FabricBlockEntityTypeBuilder.Factory<C> type, Block particle, boolean wooden) {
-        this(theme, type, particle, s -> {}, wooden);
-    }
-
-    public TrappedChestDecoratableData(Theme theme, FabricBlockEntityTypeBuilder.Factory<C> type, Block particle) {
-        this(theme, type, particle, s -> {});
     }
 
     public C getBlockEntityForRender() {
@@ -152,16 +140,7 @@ public class TrappedChestDecoratableData<C extends TrappedChestBlockEntity> exte
         Block block = this.getBlock();
         boolean wooden = this.isWooden();
         gen.add(wooden ? BlockTags.AXE_MINEABLE : BlockTags.PICKAXE_MINEABLE, block);
-        CommonTag.TRAPPED_CHESTS.run(tag -> gen.add(tag, block), t -> {});
-        if (wooden) CommonTag.TRAPPED_WOODEN_CHESTS.run(tag -> gen.add(tag, block), t -> {});
-    }
-
-    @Override
-    public void generateItemTags(AbstractTagGenerator<Item> gen) {
-        Item item = this.getItem();
-        boolean wooden = this.isWooden();
-        CommonTag.TRAPPED_CHESTS.run(t -> {}, tag -> gen.add(tag, item));
-        if (wooden) CommonTag.TRAPPED_WOODEN_CHESTS.run(t -> {}, tag -> gen.add(tag, item));
+        gen.add(ConventionalBlockTags.CHESTS, block);
     }
 
     @Override

@@ -1,20 +1,20 @@
 {
   "replace": false,
   "values": [
-    "thematic:rustic_lantern",
-    "thematic:sunken_ladder",
-    "thematic:sunken_gate",
-    "thematic:sunken_lantern",
-    "thematic:sunken_bookshelf",
-    "thematic:sunken_chest",
-    "thematic:trapped_sunken_chest",
-    "thematic:sunken_seat",
-    "thematic:mechanical_ladder",
-    "thematic:mechanical_gate",
-    "thematic:mechanical_lantern",
-    "thematic:mechanical_bookshelf",
-    "thematic:mechanical_chest",
+    "thematic:mechanical_seat",
     "thematic:trapped_mechanical_chest",
-    "thematic:mechanical_seat"
+    "thematic:mechanical_chest",
+    "thematic:mechanical_bookshelf",
+    "thematic:mechanical_lantern",
+    "thematic:mechanical_gate",
+    "thematic:mechanical_ladder",
+    "thematic:sunken_seat",
+    "thematic:trapped_sunken_chest",
+    "thematic:sunken_chest",
+    "thematic:sunken_bookshelf",
+    "thematic:sunken_lantern",
+    "thematic:sunken_gate",
+    "thematic:sunken_ladder",
+    "thematic:rustic_lantern"
   ]
 }

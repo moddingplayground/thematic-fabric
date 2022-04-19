@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "thematic:rustic_bookshelf",
+    "thematic:mechanical_bookshelf",
     "thematic:sunken_bookshelf",
-    "thematic:mechanical_bookshelf"
+    "thematic:rustic_bookshelf"
   ]
 }

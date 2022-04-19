@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "thematic:rustic_ladder",
+    "thematic:mechanical_ladder",
     "thematic:sunken_ladder",
-    "thematic:mechanical_ladder"
+    "thematic:rustic_ladder"
   ]
 }
