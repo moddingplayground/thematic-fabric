@@ -1,31 +1,24 @@
 package net.moddingplayground.thematic.api.theme.data.preset.bannerpattern;
 
-import com.google.common.base.Suppliers;
+import net.minecraft.block.entity.BannerPattern;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import net.moddingplayground.frame.api.bannerpatterns.v0.FrameBannerPattern;
-import net.moddingplayground.frame.api.bannerpatterns.v0.FrameBannerPatterns;
 import net.moddingplayground.thematic.api.theme.Decoratable;
 import net.moddingplayground.thematic.api.theme.Theme;
 import net.moddingplayground.thematic.api.theme.data.DecoratableData;
-
-import java.util.function.Supplier;
+import net.moddingplayground.thematic.api.util.AccessibleMemoizeFunction;
 
 public class BannerPatternDecoratableData implements DecoratableData {
     private final Theme theme;
-    private final Supplier<FrameBannerPattern> pattern;
+    private final AccessibleMemoizeFunction<Identifier, BannerPattern> pattern;
 
-    public BannerPatternDecoratableData(Theme theme, Supplier<FrameBannerPattern> pattern) {
+    public BannerPatternDecoratableData(Theme theme, BannerPatternFactory pattern) {
         this.theme = theme;
-        this.pattern = Suppliers.memoize(pattern::get);
-    }
-
-    public BannerPatternDecoratableData(Theme theme, boolean special) {
-        this(theme, () -> new FrameBannerPattern(special));
+        this.pattern = new AccessibleMemoizeFunction<>(pattern::create);
     }
 
     public BannerPatternDecoratableData(Theme theme) {
-        this(theme, FrameBannerPattern::new);
+        this(theme, id -> new BannerPattern(id.toString()));
     }
 
     @Override
@@ -33,20 +26,31 @@ public class BannerPatternDecoratableData implements DecoratableData {
         return this.theme;
     }
 
-    public FrameBannerPattern getPattern() {
-        return this.pattern.get();
+    public BannerPattern getPattern() {
+        if (this.pattern.isEmpty()) throw new IllegalStateException("Pattern must be present!");
+        return this.pattern.getFirst();
     }
 
-    public static FrameBannerPattern getPattern(Theme theme, Decoratable decoratable) {
+    public BannerPattern getPattern(Identifier id) {
+        return this.pattern.apply(id);
+    }
+
+    public BannerPattern getPattern(Decoratable decoratable) {
+        return this.getPattern(this.createId(decoratable));
+    }
+
+    public static BannerPattern getPattern(Theme theme, Decoratable decoratable) {
         return decoratable.getData(theme, BannerPatternDecoratableData.class)
                           .orElseThrow()
-                          .getPattern();
+                          .getPattern(decoratable);
     }
 
     @Override
     public void register(Decoratable decoratable) {
         Identifier id = this.createId(decoratable);
-        FrameBannerPattern pattern = this.getPattern();
-        Registry.register(FrameBannerPatterns.REGISTRY, id, pattern);
+        BannerPattern pattern = this.getPattern(id);
+        Registry.register(Registry.BANNER_PATTERN, id, pattern);
     }
+
+    @FunctionalInterface public interface BannerPatternFactory { BannerPattern create(Identifier id); }
 }

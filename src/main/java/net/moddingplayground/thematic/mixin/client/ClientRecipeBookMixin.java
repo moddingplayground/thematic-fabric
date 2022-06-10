@@ -5,7 +5,6 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.recipebook.ClientRecipeBook;
 import net.minecraft.client.recipebook.RecipeBookGroup;
 import net.minecraft.recipe.Recipe;
-import net.minecraft.recipe.RecipeType;
 import net.moddingplayground.thematic.api.recipe.ThematicRecipeType;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -21,7 +20,6 @@ public class ClientRecipeBookMixin {
      */
     @Inject(method = "getGroupForRecipe", at = @At("HEAD"), cancellable = true)
     private static void onGetGroupForRecipe(Recipe<?> recipe, CallbackInfoReturnable<RecipeBookGroup> cir) {
-        RecipeType<?> recipeType = recipe.getType();
-        if (recipeType == ThematicRecipeType.THEMING) cir.setReturnValue(RecipeBookGroup.UNKNOWN);
+        if (recipe.getType() == ThematicRecipeType.THEMING) cir.setReturnValue(RecipeBookGroup.UNKNOWN);
     }
 }

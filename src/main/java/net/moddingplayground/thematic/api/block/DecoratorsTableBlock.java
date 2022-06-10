@@ -8,7 +8,6 @@ import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -26,7 +25,7 @@ public class DecoratorsTableBlock extends Block {
 
     public DecoratorsTableBlock(Settings settings) {
         super(settings);
-        this.title = Suppliers.memoize(() -> new TranslatableText("container.%s".formatted(Registry.BLOCK.getId(this))));
+        this.title = Suppliers.memoize(() -> Text.translatable("container.%s".formatted(Registry.BLOCK.getId(this))));
     }
 
     @Override

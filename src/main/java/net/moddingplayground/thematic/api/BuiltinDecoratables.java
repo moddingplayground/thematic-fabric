@@ -2,6 +2,7 @@ package net.moddingplayground.thematic.api;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.block.MapColor;
+import net.minecraft.tag.BannerPatternTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.moddingplayground.thematic.api.registry.ThematicRegistry;
@@ -64,9 +65,9 @@ public interface BuiltinDecoratables {
         .add(MECHANICAL, SeatDecoratableData.createMetal(Blocks.OXIDIZED_COPPER, COPPER_REQUIRES_TOOL));
 
     Decoratable BANNER_PATTERN = register("banner_pattern")
-        .add(RUSTIC, BannerPatternWithItemDecoratableData.create("rope_banner_pattern"))
-        .add(SUNKEN, BannerPatternWithItemDecoratableData.create("anchor_banner_pattern"))
-        .add(MECHANICAL, BannerPatternWithItemDecoratableData.create("cog_banner_pattern"));
+        .add(RUSTIC, BannerPatternWithItemDecoratableData.create("rope_banner_pattern", BannerPatternTags.NO_ITEM_REQUIRED))
+        .add(SUNKEN, BannerPatternWithItemDecoratableData.create("anchor_banner_pattern", BannerPatternTags.NO_ITEM_REQUIRED))
+        .add(MECHANICAL, BannerPatternWithItemDecoratableData.create("cog_banner_pattern", BannerPatternTags.NO_ITEM_REQUIRED)); // TODO
 
     private static Decoratable register(String id, Decoratable decoratable) {
         return Registry.register(ThematicRegistry.DECORATABLE, new Identifier(Thematic.MOD_ID, id), decoratable);

@@ -24,7 +24,7 @@ public interface ThematicItemGroups {
                                    ThemeColors colors = theme.getColors();
                                    Style style = Style.EMPTY.withColor(colors.getDark());
                                    builder.tab(Tab.builder()
-                                                  .displayText(tab -> createDisplayText(tab.getGroup(), tab).shallowCopy().fillStyle(style))
+                                                  .displayText(tab -> createDisplayText(tab.getGroup(), tab).copy().fillStyle(style))
                                                   .predicate((group, item) -> Theme.tabPredicate(theme, item))
                                                   .build(id.toString(), GUIIcon.of(() -> new ItemStack(theme.getItem())))
                                    );

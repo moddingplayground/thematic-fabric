@@ -173,7 +173,7 @@ public class GateBlock extends Block {
         if (!this.getDefaultState().isOf(block) && powered != state.get(POWERED)) {
             if (powered != state.get(OPEN)) {
                 this.playOpenCloseSound(world, pos, powered);
-                world.emitGameEvent(powered ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, pos);
+                world.emitGameEvent(null, powered ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, pos);
             }
             world.setBlockState(pos, state.with(POWERED, powered).with(OPEN, powered), Block.NOTIFY_LISTENERS);
             synchronizeDoor(world, pos, world.getBlockState(pos));

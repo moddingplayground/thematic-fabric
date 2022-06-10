@@ -2,7 +2,6 @@ package net.moddingplayground.thematic.api.theme;
 
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.moddingplayground.thematic.api.Thematic;
 
@@ -18,7 +17,7 @@ public interface Themed {
         Theme theme = this.getTheme();
         ThemeColors colors = theme.getColors();
         Style style = Style.EMPTY.withColor(light ? colors.getLight() : colors.getDark());
-        return text.shallowCopy().fillStyle(style);
+        return text.copy().fillStyle(style);
     }
 
     default Text colorText(Text text) {
@@ -28,7 +27,7 @@ public interface Themed {
     default void addColoredTooltip(List<Text> tooltip) {
         Theme theme = this.getTheme();
         String key = theme.getTranslationKey();
-        Text text = this.colorText(new TranslatableText(key), false);
-        tooltip.add(new TranslatableText("text.%s.theme".formatted(Thematic.MOD_ID), text).formatted(Formatting.GRAY));
+        Text text = this.colorText(Text.translatable(key), false);
+        tooltip.add(Text.translatable("text.%s.theme".formatted(Thematic.MOD_ID), text).formatted(Formatting.GRAY));
     }
 }
