@@ -33,6 +33,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
+      "net.moddingplayground.thematic.impl.ThematicEntrypointsImpl",
       "net.moddingplayground.thematic.impl.ThematicImpl",
       "net.moddingplayground.thematic.impl.block.ThematicBlocksImpl",
       "net.moddingplayground.thematic.impl.item.ThematicItemsImpl"
